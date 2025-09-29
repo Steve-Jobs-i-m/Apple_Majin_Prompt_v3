@@ -10,3 +10,7 @@
 # Build
 /build
 /dist
+
+# Output files from automation scripts
+checkbox-report.json
+dashboard.html
