@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Hero Title Slide</title>
+  <desc id="desc">Black background with centered white title text in an Apple keynote style.</desc>
+  <rect width="1920" height="1080" fill="#000000" />
+  <text x="960" y="520" fill="#FFFFFF" font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif"
+        font-size="160" font-weight="600" letter-spacing="0.5" text-anchor="middle" dominant-baseline="central">
+    MacBook Pro
+  </text>
+  <text x="960" y="660" fill="#6E6E73" font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif"
+        font-size="64" font-weight="400" letter-spacing="0.4" text-anchor="middle">
+    Beyond Pro.
+  </text>
+</svg>

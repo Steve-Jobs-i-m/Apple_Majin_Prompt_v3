@@ -1,0 +1,12 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' role='img' aria-labelledby='title desc'>
+  <title id='title'>Before / After Split Slide</title>
+  <desc id='desc'>Split slide comparing before and after states with central divider.</desc>
+  <rect width='960' height='1080' fill='#F5F5F7' />
+  <rect x='960' width='960' height='1080' fill='#000000' />
+  <rect x='950' width='20' height='1080' fill='#FFFFFF' opacity='0.3' />
+
+  <text x='480' y='540' text-anchor='middle' font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif"
+        font-size='120' font-weight='600' fill='#000000'>Before</text>
+  <text x='1440' y='540' text-anchor='middle' font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif"
+        font-size='120' font-weight='600' fill='#FFFFFF'>After</text>
+</svg>

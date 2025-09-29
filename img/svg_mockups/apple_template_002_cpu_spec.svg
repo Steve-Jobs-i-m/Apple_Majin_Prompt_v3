@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">10-core CPU Specification Slide</title>
+  <desc id="desc">Two-column layout describing CPU cores with an Apple-like M series die illustration.</desc>
+  <rect width="1920" height="1080" fill="#000000" />
+
+  <!-- Left column text -->
+  <g transform="translate(220,200)" fill="#FFFFFF" font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif">
+    <text x="0" y="0" font-size="88" font-weight="600" letter-spacing="0.2">10-core CPU</text>
+    <rect x="0" y="40" width="520" height="2" fill="#3CDFFF" opacity="0.6" />
+    <text x="0" y="160" font-size="40" font-weight="500" fill="#A1A1AA">4 performance cores</text>
+    <text x="0" y="220" font-size="32" font-weight="400" fill="#D9D9E3">High-efficiency Firestorm architecture</text>
+    <text x="0" y="320" font-size="40" font-weight="500" fill="#A1A1AA">6 efficiency cores</text>
+    <text x="0" y="380" font-size="32" font-weight="400" fill="#D9D9E3">Next-gen Icestorm design, ultra low power</text>
+  </g>
+
+  <!-- Right column die graphic -->
+  <g transform="translate(1160,240)">
+    <rect width="400" height="400" rx="60" fill="#0A84FF" opacity="0.2" />
+    <rect x="40" y="40" width="320" height="320" rx="48" fill="#0A84FF" />
+    <rect x="84" y="84" width="232" height="232" rx="36" fill="#051E38" />
+    <rect x="112" y="112" width="176" height="176" rx="28" fill="#0A84FF" opacity="0.85" />
+    <text x="200" y="216" text-anchor="middle" font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif"
+          font-size="120" font-weight="600" fill="#FFFFFF">M4</text>
+  </g>
+</svg>

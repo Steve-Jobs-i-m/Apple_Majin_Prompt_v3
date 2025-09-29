@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Split Table Slide</title>
+  <desc id="desc">Two-column table with minimalist Apple keynote aesthetic.</desc>
+  <rect width="1920" height="1080" fill="#030303" />
+
+  <g transform="translate(360,240)" font-family="'SF Pro Display','Inter','Helvetica Neue',Arial,sans-serif" fill="#FFFFFF">
+    <rect x="0" y="0" width="1200" height="600" rx="48" fill="#0D0D0F" />
+    <line x1="600" y1="80" x2="600" y2="520" stroke="#1F1F25" stroke-width="4" />
+
+    <text x="140" y="120" font-size="56" font-weight="600">Performance</text>
+    <text x="740" y="120" font-size="56" font-weight="600">Efficiency</text>
+
+    <g font-size="36" font-weight="400" fill="#B5B5BB">
+      <text x="140" y="220">10-core CPU</text>
+      <text x="140" y="300">18-core GPU</text>
+      <text x="140" y="380">Neural Engine 38 TOPS</text>
+      <text x="140" y="460">Up to 128GB unified memory</text>
+
+      <text x="740" y="220">22 hours battery life</text>
+      <text x="740" y="300">Advanced thermal design</text>
+      <text x="740" y="380">Two active performance modes</text>
+      <text x="740" y="460">Ultra efficient media engine</text>
+    </g>
+  </g>
+</svg>

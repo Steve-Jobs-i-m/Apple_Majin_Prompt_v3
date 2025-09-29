@@ -17,6 +17,7 @@ Google Apps Script を用いて Apple らしいミニマルな Google スライ�
 | `appsscript.json` | Apps Script プロジェクト設定 (タイムゾーン・実行環境など)。 |
 | `docs/` | 要件定義、ロードマップ、デザイン要件、Google スライド MVP 設計の資料。 |
 | `Apple_like_design_template/` | Apple プレゼンの参考レイアウト画像 (JPEG)。 |
+| `img/svg_mockups/` | JPEG リファレンスを再現した Apple 風 SVG スライドモック。 |
 | `AGENTS.md` | チームロールと開発フローのガイドライン。 |
 | `Apple_like_system_prompt.md`, `system_prompt.md`, `GEMINI.md` | プロンプト設計や他モデル向けガイドライン。 |
 

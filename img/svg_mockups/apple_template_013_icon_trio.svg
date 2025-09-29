@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Icon Trio Slide</title>
+  <desc id="desc">Three minimalist white icons aligned horizontally on a black background.</desc>
+  <rect width="1920" height="1080" fill="#000000" />
+
+  <!-- Floor baseline -->
+  <rect x="400" y="700" width="1120" height="8" fill="#1F1F1F" />
+
+  <!-- Lamp icon -->
+  <g transform="translate(520,340)" stroke="#FFFFFF" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 40 L40 220 H200 Z" />
+    <path d="M120 220 V320" />
+    <path d="M70 320 H170" />
+  </g>
+
+  <!-- Chair icon -->
+  <g transform="translate(860,360)" stroke="#FFFFFF" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="20" y="60" width="220" height="130" rx="32" />
+    <path d="M60 190 V320" />
+    <path d="M200 190 V320" />
+    <path d="M60 260 H200" />
+  </g>
+
+  <!-- Bed icon -->
+  <g transform="translate(1220,400)" stroke="#FFFFFF" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="0" y="80" width="280" height="120" rx="36" />
+    <path d="M0 200 V320" />
+    <path d="M280 200 V320" />
+    <path d="M0 320 H280" />
+    <rect x="20" y="0" width="120" height="80" rx="36" />
+    <rect x="140" y="0" width="120" height="80" rx="36" />
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080' role='img' aria-labelledby='title desc'>
+  <title id='title'>Image Collage Slide</title>
+  <desc id='desc'>Asymmetric collage with one large landscape image on the left and two stacked portraits on the right.</desc>
+  <defs>
+    <linearGradient id='glow' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#1D2C44' stop-opacity='0.7'/>
+      <stop offset='100%' stop-color='#090B12' stop-opacity='0.1'/>
+    </linearGradient>
+  </defs>
+  <rect width='1920' height='1080' fill='#010103' />
+
+  <g>
+    <rect x='320' y='220' width='880' height='580' rx='36' fill='#0E1524' />
+    <rect x='320' y='220' width='880' height='580' rx='36' fill='url(#glow)' />
+    <rect x='360' y='260' width='800' height='500' rx='30' fill='#0A1C3A' />
+  </g>
+
+  <g>
+    <rect x='1280' y='220' width='320' height='260' rx='32' fill='#121826' />
+    <rect x='1280' y='550' width='320' height='260' rx='32' fill='#121826' />
+    <rect x='1320' y='252' width='240' height='196' rx='26' fill='#152D52' />
+    <rect x='1320' y='582' width='240' height='196' rx='26' fill='#1B2442' />
+  </g>
+</svg>
