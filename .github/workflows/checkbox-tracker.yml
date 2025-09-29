@@ -1,6 +1,11 @@
 ---
 name: Markdown Checkbox Tracker
 
+permissions:
+  contents: read
+  issues: write
+  projects: write
+
 on:
   push:
     branches: [main, develop]
@@ -31,6 +36,21 @@ jobs:
       - name: Generate dashboard
         run: |
           node .github/scripts/generate-dashboard.js checkbox-report.json
+
+      - name: Sync checkbox tasks to Projects
+        if: ${{ secrets.CHECKBOX_PROJECT_TOKEN && secrets.CHECKBOX_PROJECT_ID && secrets.CHECKBOX_PROJECT_STATUS_TODO_OPTION_ID && secrets.CHECKBOX_PROJECT_STATUS_DONE_OPTION_ID }}
+        env:
+          GH_TOKEN: ${{ secrets.CHECKBOX_PROJECT_TOKEN }}
+          PROJECT_ID: ${{ secrets.CHECKBOX_PROJECT_ID }}
+          KEY_FIELD_ID: ${{ secrets.CHECKBOX_PROJECT_KEY_FIELD_ID }}
+          TITLE_FIELD_ID: ${{ secrets.CHECKBOX_PROJECT_TITLE_FIELD_ID }}
+          STATUS_FIELD_ID: ${{ secrets.CHECKBOX_PROJECT_STATUS_FIELD_ID }}
+          STATUS_TODO_OPTION_ID: ${{ secrets.CHECKBOX_PROJECT_STATUS_TODO_OPTION_ID }}
+          STATUS_DONE_OPTION_ID: ${{ secrets.CHECKBOX_PROJECT_STATUS_DONE_OPTION_ID }}
+          BODY_FIELD_ID: ${{ secrets.CHECKBOX_PROJECT_BODY_FIELD_ID }}
+          FILE_FIELD_ID: ${{ secrets.CHECKBOX_PROJECT_FILE_FIELD_ID }}
+          LINE_FIELD_ID: ${{ secrets.CHECKBOX_PROJECT_LINE_FIELD_ID }}
+        run: node .github/scripts/sync-project-items.js
 
       - name: Upload results
         uses: actions/upload-artifact@v4
