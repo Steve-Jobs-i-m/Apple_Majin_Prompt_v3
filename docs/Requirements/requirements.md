@@ -108,6 +108,10 @@
 - 日本語: 余白トークン変更による崩れ → デザインスナップショットとビジュアル差分チェックで回帰検知。
 - English: Spacing token regressions → Maintain visual snapshots and run diff checks to detect breakages.
 
+## 参照資料 / Reference Materials
+- [SVG モック要件定義 (`docs/Requirements/svg_mockup_requirements.md`)](./svg_mockup_requirements.md)
+- [コンポーネント別要求仕様 (`docs/Requirements/component_requirements.md`)](./component_requirements.md)
+
 ## 未解決事項 / Open Issues
 - 日本語: San Francisco フォント利用に関するライセンス表現をメニュー上にどう明記するか。
 - English: How to document San Francisco font licensing notices within the menu interface remains undecided.
