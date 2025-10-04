@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<defs>
+  <linearGradient id="bg-kpi" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#040717" />
+    <stop offset="100%" stop-color="#0b1224" />
+  </linearGradient>
+</defs>
+<rect x="0" y="0" width="960" height="540" fill="url(#bg-kpi)" />
+<rect x="865" y="20" width="75" height="36" fill="#1b2644" stroke="#2f3e62" stroke-width="1.2" rx="14" ry="14" />
+<rect x="25" y="20" width="830" height="65" fill="#121d36" stroke="#24324f" stroke-width="1.8" rx="18" ry="18" />
+<rect x="25" y="80" width="260" height="4" fill="#38bdf8" stroke="none" stroke-width="0" rx="2" ry="2" />
+<rect x="25" y="90" width="910" height="40" fill="#162240" stroke="#24324f" stroke-width="1.5" rx="14" ry="14" />
+<rect x="25" y="132" width="291.33" height="156" fill="#162240" stroke="#2f3e62" stroke-width="1.3" rx="18" ry="18" />
+<rect x="43" y="150" width="255.33" height="24" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="43" y="186" width="255.33" height="54" fill="#162240" stroke="#24324f" stroke-width="1.4" rx="16" ry="16" />
+<rect x="43" y="226" width="255.33" height="32" fill="#1c2a4b" stroke="#24324f" stroke-width="1.2" rx="14" ry="14" />
+<rect x="334.33" y="132" width="291.33" height="156" fill="#162240" stroke="#2f3e62" stroke-width="1.3" rx="18" ry="18" />
+<rect x="352.33" y="150" width="255.33" height="24" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="352.33" y="186" width="255.33" height="54" fill="#162240" stroke="#24324f" stroke-width="1.4" rx="16" ry="16" />
+<rect x="352.33" y="226" width="255.33" height="32" fill="#1c2a4b" stroke="#24324f" stroke-width="1.2" rx="14" ry="14" />
+<rect x="643.67" y="132" width="291.33" height="156" fill="#162240" stroke="#2f3e62" stroke-width="1.3" rx="18" ry="18" />
+<rect x="661.67" y="150" width="255.33" height="24" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="661.67" y="186" width="255.33" height="54" fill="#162240" stroke="#24324f" stroke-width="1.4" rx="16" ry="16" />
+<rect x="661.67" y="226" width="255.33" height="32" fill="#1c2a4b" stroke="#24324f" stroke-width="1.2" rx="14" ry="14" />
+<rect x="25" y="306" width="291.33" height="156" fill="#162240" stroke="#2f3e62" stroke-width="1.3" rx="18" ry="18" />
+<rect x="43" y="324" width="255.33" height="24" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="43" y="360" width="255.33" height="54" fill="#162240" stroke="#24324f" stroke-width="1.4" rx="16" ry="16" />
+<rect x="43" y="400" width="255.33" height="32" fill="#1c2a4b" stroke="#24324f" stroke-width="1.2" rx="14" ry="14" />
+<rect x="334.33" y="306" width="291.33" height="156" fill="#162240" stroke="#2f3e62" stroke-width="1.3" rx="18" ry="18" />
+<rect x="352.33" y="324" width="255.33" height="24" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="352.33" y="360" width="255.33" height="54" fill="#162240" stroke="#24324f" stroke-width="1.4" rx="16" ry="16" />
+<rect x="352.33" y="400" width="255.33" height="32" fill="#1c2a4b" stroke="#24324f" stroke-width="1.2" rx="14" ry="14" />
+<rect x="643.67" y="306" width="291.33" height="156" fill="#162240" stroke="#2f3e62" stroke-width="1.3" rx="18" ry="18" />
+<rect x="661.67" y="324" width="255.33" height="24" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="661.67" y="360" width="255.33" height="54" fill="#162240" stroke="#24324f" stroke-width="1.4" rx="16" ry="16" />
+<rect x="661.67" y="400" width="255.33" height="32" fill="#1c2a4b" stroke="#24324f" stroke-width="1.2" rx="14" ry="14" />
+<rect x="15" y="505" width="250" height="20" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="895" y="505" width="50" height="20" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<text x="902.5" y="42.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Logo</text>
+<text x="440" y="58.35" fill="#f8fafc" font-size="16.25" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Title</text>
+<text x="480" y="114.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Subhead</text>
+<text x="170.67" y="166.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Metric Name</text>
+<text x="170.67" y="217.86" fill="#f8fafc" font-size="13.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">42</text>
+<text x="170.67" y="246.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">+8%</text>
+<text x="480" y="166.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Metric Name</text>
+<text x="480" y="217.86" fill="#f8fafc" font-size="13.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">42</text>
+<text x="480" y="246.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">+8%</text>
+<text x="789.33" y="166.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Metric Name</text>
+<text x="789.33" y="217.86" fill="#f8fafc" font-size="13.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">42</text>
+<text x="789.33" y="246.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">+8%</text>
+<text x="170.67" y="340.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Metric Name</text>
+<text x="170.67" y="391.86" fill="#f8fafc" font-size="13.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">42</text>
+<text x="170.67" y="420.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">+8%</text>
+<text x="480" y="340.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Metric Name</text>
+<text x="480" y="391.86" fill="#f8fafc" font-size="13.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">42</text>
+<text x="480" y="420.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">+8%</text>
+<text x="789.33" y="340.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Metric Name</text>
+<text x="789.33" y="391.86" fill="#f8fafc" font-size="13.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">42</text>
+<text x="789.33" y="420.32" fill="#cbd5f5" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">+8%</text>
+<text x="140" y="519.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Footer</text>
+<text x="920" y="519.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Page</text>
+<title>KPI Grid</title>
+</svg>

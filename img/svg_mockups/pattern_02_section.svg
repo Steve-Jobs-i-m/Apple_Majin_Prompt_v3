@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<defs>
+  <linearGradient id="bg-section" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#040717" />
+    <stop offset="100%" stop-color="#0b1224" />
+  </linearGradient>
+</defs>
+<rect x="0" y="0" width="960" height="540" fill="url(#bg-section)" />
+<rect x="55" y="230" width="840" height="80" fill="#121d36" stroke="#24324f" stroke-width="1.8" rx="18" ry="18" />
+<rect x="15" y="505" width="250" height="20" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="895" y="505" width="50" height="20" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<text x="235" y="140" fill="rgba(255,255,255,0.08)" font-size="160" font-family="Inter, 'Noto Sans JP', sans-serif" font-weight="700" text-anchor="middle" dominant-baseline="hanging">01</text>
+<text x="475" y="277.2" fill="#f8fafc" font-size="20" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Section Title</text>
+<text x="140" y="519.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Footer</text>
+<text x="920" y="519.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Page</text>
+<title>Section Divider</title>
+</svg>

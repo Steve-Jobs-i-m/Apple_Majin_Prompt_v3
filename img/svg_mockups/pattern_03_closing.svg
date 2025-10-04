@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+<defs>
+  <linearGradient id="bg-closing" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#040717" />
+    <stop offset="100%" stop-color="#0b1224" />
+  </linearGradient>
+</defs>
+<rect x="0" y="0" width="960" height="540" fill="url(#bg-closing)" />
+<rect x="192" y="151.2" width="576" height="90" fill="#121d36" stroke="#24324f" stroke-width="1.8" rx="18" ry="18" />
+<rect x="192" y="251.2" width="288" height="6" fill="#38bdf8" stroke="none" stroke-width="0" rx="2" ry="2" />
+<rect x="288" y="301.2" width="384" height="180" fill="#1c2a4b" stroke="#24324f" stroke-width="1.4" rx="20" ry="20" />
+<rect x="15" y="505" width="250" height="20" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<rect x="895" y="505" width="50" height="20" fill="none" stroke="#24324f" stroke-width="1" rx="10" ry="10" />
+<text x="480" y="204.3" fill="#f8fafc" font-size="22.5" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Thank you</text>
+<text x="480" y="399.84" fill="#cbd5f5" font-size="24" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Logo / Visual</text>
+<text x="140" y="519.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Footer</text>
+<text x="920" y="519.32" fill="#8aa0c8" font-size="12" font-family="Inter, 'Noto Sans JP', sans-serif" text-anchor="middle">Page</text>
+<title>Closing Slide</title>
+</svg>
