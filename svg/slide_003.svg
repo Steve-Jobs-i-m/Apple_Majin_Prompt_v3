@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
-<rect width="1920" height="1080" fill="#F1F2F4"/>
-<circle cx="1330" cy="540" r="250" fill="#D9DCE2"/>
-<circle cx="1330" cy="450" r="180" fill="#C7CAD0"/>
-<text x="340" y="350" fill="black" font-family="Helvetica, Arial, sans-serif" font-size="96" font-weight="bold">Jobs = i’m</text>
-<text x="340" y="450" fill="black" font-family="Helvetica, Arial, sans-serif" font-size="56">就労移行利用者ニート</text>
-<text x="340" y="550" fill="#777" font-family="Helvetica, Arial, sans-serif" font-size="48">私はいつも常識を疑う。</text>
-</svg>
