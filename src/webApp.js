@@ -3,7 +3,7 @@
 // ========================================
 
 function doGet(e) {
-  const htmlTemplate = HtmlService.createTemplateFromFile('index.html');
+  const htmlTemplate = HtmlService.createTemplateFromFile('index');
   htmlTemplate.settings = loadSettings();
   return htmlTemplate.evaluate().setTitle('Google Slide Generator').setXFrameOptionsMode(HtmlService.XFrameOptionsMode.DEFAULT);
 }
