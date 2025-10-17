@@ -587,7 +587,7 @@ const CONFIG = {
     }
   },
   FONTS: {
-    family: 'Noto Sans JP',
+    family: 'Inter, SF Pro Display, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Noto Sans JP, Helvetica Neue, Arial, sans-serif',
     sizes: {
       title: 40,
       date: 16,
@@ -602,6 +602,13 @@ const CONFIG = {
       processStep: 14,
       axis: 12,
       ghostNum: 180
+    },
+    weights: {
+      light: 300,
+      regular: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700
     }
   },
   COLORS: {
@@ -632,6 +639,115 @@ const CONFIG = {
     header: '',
     closing: ''
   },
-  FOOTER_TEXT: `© ${new Date().getFullYear()} Your Company`
+  FOOTER_TEXT: `© ${new Date().getFullYear()} Your Company`,
+  
+  // Apple Design Tokens
+  APPLE_TOKENS: {
+    // Typography Scale (based on Apple HIG)
+    typography: {
+      largeTitle: 72,     // Hero titles
+      title1: 48,         // Section titles
+      title2: 32,         // Card headers
+      title3: 24,         // Content titles
+      headline: 20,       // Emphasized text
+      body: 16,           // Standard body text
+      callout: 14,        // Secondary text
+      subhead: 13,        // Tertiary text
+      footnote: 12,       // Small annotations
+      caption1: 11,       // Captions
+      caption2: 10        // Tiny text
+    },
+    
+    // Spacing Scale (8pt grid system)
+    spacing: {
+      xs: 4,    // 4px
+      sm: 8,    // 8px
+      md: 16,   // 16px
+      lg: 24,   // 24px
+      xl: 32,   // 32px
+      xxl: 48,  // 48px
+      xxxl: 64  // 64px
+    },
+    
+    // Safe Margins (percentage-based for responsive)
+    safeMargins: {
+      horizontal: 0.06,  // 6% left/right
+      vertical: 0.075    // 7.5% top/bottom
+    },
+    
+    // Border Radius
+    cornerRadius: {
+      small: 8,
+      medium: 12,
+      large: 20,
+      xlarge: 24
+    },
+    
+    // Elevation (shadows)
+    shadows: {
+      none: { blur: 0, offsetX: 0, offsetY: 0, alpha: 0 },
+      small: { blur: 4, offsetX: 0, offsetY: 2, alpha: 0.1 },
+      medium: { blur: 8, offsetX: 0, offsetY: 4, alpha: 0.12 },
+      large: { blur: 16, offsetX: 0, offsetY: 8, alpha: 0.15 }
+    },
+    
+    // Line Heights
+    lineHeights: {
+      tight: 1.1,
+      normal: 1.2,
+      relaxed: 1.5,
+      loose: 1.8
+    },
+    
+    // Letter Spacing (tracking)
+    letterSpacing: {
+      tight: -0.5,
+      normal: 0,
+      wide: 0.5,
+      wider: 1.0
+    },
+    
+    // Color Semantics (Light Mode)
+    colors: {
+      light: {
+        background: '#FFFFFF',
+        backgroundSecondary: '#F5F5F7',
+        backgroundTertiary: '#E8E8ED',
+        text: '#1D1D1F',
+        textSecondary: '#86868B',
+        textTertiary: '#AEAEB2',
+        accent: '#0A84FF',
+        accentHover: '#0070E0',
+        border: '#D2D2D7',
+        separator: '#E5E5EA'
+      },
+      dark: {
+        background: '#000000',
+        backgroundSecondary: '#1C1C1E',
+        backgroundTertiary: '#2C2C2E',
+        text: '#FFFFFF',
+        textSecondary: '#98989D',
+        textTertiary: '#636366',
+        accent: '#0A84FF',
+        accentHover: '#409CFF',
+        border: '#38383A',
+        separator: '#48484A'
+      }
+    },
+    
+    // Animation Timing (for future use)
+    timing: {
+      fast: 200,
+      normal: 300,
+      slow: 500
+    },
+    
+    // Content Limits
+    limits: {
+      maxObjectsPerSlide: 4,
+      maxTextLength: 150,
+      maxBulletPoints: 6
+    }
+  }
 };
 

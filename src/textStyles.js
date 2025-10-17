@@ -2,6 +2,68 @@
 // 8. テキストスタイリング関数群
 // ========================================
 
+/**
+ * Apply Apple-style typography settings
+ * Uses Apple design tokens for consistent typography
+ * @param {TextRange} textRange - Text range to style
+ * @param {Object} opt - Options
+ * @param {number} opt.size - Font size (from APPLE_TOKENS.typography)
+ * @param {string} opt.color - Text color
+ * @param {boolean} opt.bold - Bold weight
+ * @param {string} opt.weight - Font weight (light, regular, medium, semibold, bold)
+ * @param {number} opt.lineHeight - Line height multiplier
+ * @param {number} opt.letterSpacing - Letter spacing in px
+ * @param {SlidesApp.ParagraphAlignment} opt.align - Text alignment
+ */
+function applyAppleTextStyle(textRange, opt = {}) {
+  const style = textRange.getTextStyle();
+  
+  // Set font family with Apple fallback chain
+  style.setFontFamily(CONFIG.FONTS.family);
+  
+  // Set color (semantic colors for light/dark mode)
+  style.setForegroundColor(opt.color || CONFIG.COLORS.text_primary);
+  
+  // Set font size (prefer Apple typography scale)
+  const fontSize = opt.size || CONFIG.APPLE_TOKENS.typography.body;
+  style.setFontSize(fontSize);
+  
+  // Set font weight
+  // Note: Apps Script doesn't support numeric font weights directly
+  // We approximate with bold on/off
+  if (opt.weight) {
+    const isBold = ['semibold', 'bold'].includes(opt.weight);
+    style.setBold(isBold);
+  } else {
+    style.setBold(opt.bold || false);
+  }
+  
+  // Apply paragraph-level styles
+  if (opt.align || opt.lineHeight) {
+    try {
+      textRange.getParagraphs().forEach(p => {
+        const paraStyle = p.getRange().getParagraphStyle();
+        
+        // Set alignment
+        if (opt.align) {
+          paraStyle.setParagraphAlignment(opt.align);
+        }
+        
+        // Set line height (Apps Script uses percentage: 100 = single spacing)
+        if (opt.lineHeight) {
+          const lineHeightPercent = Math.round(opt.lineHeight * 100);
+          paraStyle.setLineSpacing(lineHeightPercent);
+        }
+      });
+    } catch (e) {
+      Logger.log(`Paragraph style error: ${e.message}`);
+    }
+  }
+  
+  // Letter spacing is not supported in Apps Script
+  // This is noted for future reference
+}
+
 function applyTextStyle(textRange, opt) {
   const style = textRange.getTextStyle();
   style.setFontFamily(CONFIG.FONTS.family).setForegroundColor(opt.color || CONFIG.COLORS.text_primary).setFontSize(opt.size || CONFIG.FONTS.sizes.body).setBold(opt.bold || false);
