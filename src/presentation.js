@@ -5,14 +5,27 @@
 /** settingsオブジェクトに基づき、CONFIG内の動的カラーを更新します */
 function updateDynamicColors(settings) {
   const primary = settings.primaryColor;
-  CONFIG.COLORS.background_gray = generateTintedGray(primary, 10, 98); 
-  CONFIG.COLORS.faint_gray = generateTintedGray(primary, 10, 93);
-  CONFIG.COLORS.ghost_gray = generateTintedGray(primary, 38, 88);
-  CONFIG.COLORS.table_header_bg = generateTintedGray(primary, 20, 94);
-  CONFIG.COLORS.lane_border = generateTintedGray(primary, 15, 85);
-  CONFIG.COLORS.card_border = generateTintedGray(primary, 15, 85);
-  CONFIG.COLORS.neutral_gray = generateTintedGray(primary, 5, 62);
-  CONFIG.COLORS.process_arrow = CONFIG.COLORS.ghost_gray;
+  const mode = settings.themeMode || 'light';
+  
+  // Generate Apple-style semantic colors
+  const semanticColors = generateAppleSemanticColors(primary, mode);
+  
+  // Apply to CONFIG.COLORS
+  CONFIG.COLORS.background_white = semanticColors.background;
+  CONFIG.COLORS.background_gray = semanticColors.backgroundSecondary;
+  CONFIG.COLORS.faint_gray = semanticColors.backgroundTertiary;
+  CONFIG.COLORS.text_primary = semanticColors.text;
+  CONFIG.COLORS.primary_color = semanticColors.accent;
+  
+  // Legacy compatibility
+  CONFIG.COLORS.ghost_gray = generateAppleTintedGray(primary, 8, mode === 'light' ? 88 : 30);
+  CONFIG.COLORS.table_header_bg = semanticColors.backgroundTertiary;
+  CONFIG.COLORS.lane_border = semanticColors.border;
+  CONFIG.COLORS.card_border = semanticColors.border;
+  CONFIG.COLORS.neutral_gray = semanticColors.textSecondary;
+  CONFIG.COLORS.process_arrow = semanticColors.textTertiary;
+  CONFIG.COLORS.separator = semanticColors.separator;
+  CONFIG.COLORS.card_bg = semanticColors.cardBg;
 }
 
 function generateSlidesFromWebApp(slideDataString, settings) {

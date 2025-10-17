@@ -13,8 +13,12 @@ function saveSettings(settings) {
     const storableSettings = Object.assign({}, settings);
     storableSettings.showTitleUnderline = String(storableSettings.showTitleUnderline);
     storableSettings.showBottomBar = String(storableSettings.showBottomBar);
-    storableSettings.showDateColumn = String(storableSettings.showDateColumn); // 日付カラム設定を追加
+    storableSettings.showDateColumn = String(storableSettings.showDateColumn);
     storableSettings.enableGradient = String(storableSettings.enableGradient);
+    // Apple-style options
+    storableSettings.appleStyleTitle = String(storableSettings.appleStyleTitle || 'false');
+    storableSettings.appleStyleTable = String(storableSettings.appleStyleTable || 'false');
+    storableSettings.themeMode = settings.themeMode || 'light';
     PropertiesService.getUserProperties().setProperties(storableSettings, false);
     return {
       status: 'success',
@@ -48,23 +52,27 @@ function saveSelectedPreset(presetName) {
 function loadSettings() {
   const properties = PropertiesService.getUserProperties().getProperties();
   return {
-    primaryColor: properties.primaryColor || '#4285F4',
+    primaryColor: properties.primaryColor || '#0A84FF',
     gradientStart: properties.gradientStart || '#4285F4',
     gradientEnd: properties.gradientEnd || '#ff52df',
-    fontFamily: properties.fontFamily || 'Noto Sans JP',
+    fontFamily: properties.fontFamily || CONFIG.FONTS.family,
     showTitleUnderline: properties.showTitleUnderline === 'false' ? false : true,
     showBottomBar: properties.showBottomBar === 'false' ? false : true,
-    showDateColumn: properties.showDateColumn === 'false' ? false : true, // 日付カラム設定を追加（デフォルトtrue）
+    showDateColumn: properties.showDateColumn === 'false' ? false : true,
     enableGradient: properties.enableGradient === 'true' ? true : false,
     footerText: properties.footerText || '© Google Inc.',
-    headerLogoUrl: properties.headerLogoUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/2560px-Google_Gemini_logo.svg.png',
-    closingLogoUrl: properties.closingLogoUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/2560px-Google_Gemini_logo.svg.png',
+    headerLogoUrl: properties.headerLogoUrl || '',
+    closingLogoUrl: properties.closingLogoUrl || '',
     titleBgUrl: properties.titleBgUrl || '',
     sectionBgUrl: properties.sectionBgUrl || '',
     mainBgUrl: properties.mainBgUrl || '',
     closingBgUrl: properties.closingBgUrl || '',
     driveFolderUrl: properties.driveFolderUrl || '',
-    selectedPreset: properties.selectedPreset || 'default'
+    selectedPreset: properties.selectedPreset || 'apple',
+    // Apple-style options (FR-02, FR-03)
+    appleStyleTitle: properties.appleStyleTitle === 'true' ? true : false,
+    appleStyleTable: properties.appleStyleTable === 'true' ? true : false,
+    themeMode: properties.themeMode || 'light'
   };
 }
 
