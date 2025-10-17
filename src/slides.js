@@ -38,7 +38,61 @@ function createContentCushion(slide, area, settings, layout) {
   border.setTransparent();
 }
 function createTitleSlide(slide, data, layout, pageNum, settings) {
-  setBackgroundImageFromUrl(slide, layout, CONFIG.BACKGROUND_IMAGES.title, CONFIG.COLORS.background_white);
+  // Apple-style: Pure background (no images typically, but respect settings)
+  const bgColor = settings.appleStyleTitle ? '#000000' : CONFIG.COLORS.background_white;
+  if (settings.appleStyleTitle && !CONFIG.BACKGROUND_IMAGES.title) {
+    slide.getBackground().setSolidFill(bgColor);
+  } else {
+    setBackgroundImageFromUrl(slide, layout, CONFIG.BACKGROUND_IMAGES.title, bgColor);
+  }
+  
+  // Apple-style title: Single centered text, no logo, no date
+  // FR-13: タイトルスライドは 1 つのテキストオブジェクトのみを中央配置で描画
+  if (settings.appleStyleTitle) {
+    // Calculate safe margins (FR-14: 上下 7.5%、左右 6%)
+    const safeMarginH = layout.pageW_pt * CONFIG.APPLE_TOKENS.safeMargins.horizontal;
+    const safeMarginV = layout.pageH_pt * CONFIG.APPLE_TOKENS.safeMargins.vertical;
+    
+    const titleWidth = layout.pageW_pt - (safeMarginH * 2);
+    const titleHeight = layout.pageH_pt - (safeMarginV * 2);
+    
+    // Create single centered text box
+    const titleShape = slide.insertShape(
+      SlidesApp.ShapeType.TEXT_BOX, 
+      safeMarginH, 
+      safeMarginV, 
+      titleWidth, 
+      titleHeight
+    );
+    
+    // FR-14: Inter 600 / letter-spacing 0〜0.5px を維持
+    setStyledText(titleShape, data.title, {
+      size: CONFIG.APPLE_TOKENS.typography.largeTitle,
+      bold: false, // Use weight instead
+      color: settings.appleStyleTitle ? '#FFFFFF' : CONFIG.COLORS.text_primary,
+      align: SlidesApp.ParagraphAlignment.CENTER
+    });
+    
+    // Set font weight to semibold (600)
+    try {
+      const textStyle = titleShape.getText().getTextStyle();
+      textStyle.setFontFamily(CONFIG.FONTS.family);
+      // Apps Script doesn't support font-weight directly, use bold as approximation
+      textStyle.setBold(true); // Closest to 600 weight
+    } catch (e) {
+      Logger.log(`Font styling error: ${e.message}`);
+    }
+    
+    // Center alignment
+    try {
+      titleShape.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+    } catch (e) {}
+    
+    // No logo, no date, no other elements (FR-13)
+    return;
+  }
+  
+  // Traditional style (for backwards compatibility)
   const logoRect = layout.getRect('titleSlide.logo');
   try {
     if (CONFIG.LOGOS.header) {
@@ -798,37 +852,112 @@ function createTableSlide(slide, data, layout, pageNum, settings) {
   
   const headers = Array.isArray(data.headers) ? data.headers : [];
   const rows = Array.isArray(data.rows) ? data.rows : [];
-  try {
-    if (headers.length > 0) {
-      const table = slide.insertTable(rows.length + 1, headers.length, area.left, area.top, area.width, area.height);
+  
+  // FR-11: chatgpt.com style - horizontal lines only, no vertical lines or filled backgrounds
+  if (settings.appleStyleTable && headers.length > 0) {
+    // Calculate row height with generous spacing
+    const totalRows = rows.length + 1; // headers + data rows
+    const rowHeight = area.height / totalRows;
+    const colWidth = area.width / headers.length;
+    
+    // Draw headers
+    for (let c = 0; c < headers.length; c++) {
+      const headerBox = slide.insertShape(
+        SlidesApp.ShapeType.TEXT_BOX,
+        area.left + (c * colWidth),
+        area.top,
+        colWidth,
+        rowHeight
+      );
+      setStyledText(headerBox, String(headers[c] || ''), {
+        bold: true,
+        color: CONFIG.COLORS.text_primary,
+        align: SlidesApp.ParagraphAlignment.CENTER
+      });
+      try {
+        headerBox.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+      } catch (e) {}
+    }
+    
+    // Draw horizontal line under headers
+    const headerLineY = area.top + rowHeight;
+    const headerLine = slide.insertLine(
+      SlidesApp.LineCategory.STRAIGHT,
+      area.left,
+      headerLineY,
+      area.left + area.width,
+      headerLineY
+    );
+    headerLine.getLineFill().setSolidFill(CONFIG.COLORS.separator || '#E5E5EA');
+    headerLine.setWeight(1.5);
+    
+    // Draw data rows
+    for (let r = 0; r < rows.length; r++) {
       for (let c = 0; c < headers.length; c++) {
-        const cell = table.getCell(0, c);
-        cell.getFill().setSolidFill(CONFIG.COLORS.table_header_bg);
-        setStyledText(cell, String(headers[c] || ''), {
-          bold: true,
-          color: CONFIG.COLORS.text_primary,
+        const cellBox = slide.insertShape(
+          SlidesApp.ShapeType.TEXT_BOX,
+          area.left + (c * colWidth),
+          area.top + ((r + 1) * rowHeight),
+          colWidth,
+          rowHeight
+        );
+        setStyledText(cellBox, String((rows[r] || [])[c] || ''), {
           align: SlidesApp.ParagraphAlignment.CENTER
         });
         try {
-          cell.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+          cellBox.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
         } catch (e) {}
       }
-      for (let r = 0; r < rows.length; r++) {
+      
+      // Draw horizontal line between rows (except after last row)
+      if (r < rows.length - 1) {
+        const rowLineY = area.top + ((r + 2) * rowHeight);
+        const rowLine = slide.insertLine(
+          SlidesApp.LineCategory.STRAIGHT,
+          area.left,
+          rowLineY,
+          area.left + area.width,
+          rowLineY
+        );
+        rowLine.getLineFill().setSolidFill(CONFIG.COLORS.separator || '#E5E5EA');
+        rowLine.setWeight(0.75);
+      }
+    }
+  } else {
+    // Traditional table style
+    try {
+      if (headers.length > 0) {
+        const table = slide.insertTable(rows.length + 1, headers.length, area.left, area.top, area.width, area.height);
         for (let c = 0; c < headers.length; c++) {
-          const cell = table.getCell(r + 1, c);
-          cell.getFill().setSolidFill(CONFIG.COLORS.background_white);
-          setStyledText(cell, String((rows[r] || [])[c] || ''), {
+          const cell = table.getCell(0, c);
+          cell.getFill().setSolidFill(CONFIG.COLORS.table_header_bg);
+          setStyledText(cell, String(headers[c] || ''), {
+            bold: true,
+            color: CONFIG.COLORS.text_primary,
             align: SlidesApp.ParagraphAlignment.CENTER
           });
           try {
             cell.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
           } catch (e) {}
         }
+        for (let r = 0; r < rows.length; r++) {
+          for (let c = 0; c < headers.length; c++) {
+            const cell = table.getCell(r + 1, c);
+            cell.getFill().setSolidFill(CONFIG.COLORS.background_white);
+            setStyledText(cell, String((rows[r] || [])[c] || ''), {
+              align: SlidesApp.ParagraphAlignment.CENTER
+            });
+            try {
+              cell.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+            } catch (e) {}
+          }
+        }
       }
+    } catch (e) {
+      Logger.log(`Table creation error: ${e.message}`);
     }
-  } catch (e) {
-    Logger.log(`Table creation error: ${e.message}`);
   }
+  
   drawBottomBarAndFooter(slide, layout, pageNum, settings);
 }
 

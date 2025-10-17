@@ -3,6 +3,84 @@
 // ========================================
 
 /**
+ * Create an Apple-style card shape with proper rounded corners (FR-15)
+ * @param {Slide} slide - Slide object
+ * @param {number} left - Left position
+ * @param {number} top - Top position  
+ * @param {number} width - Width
+ * @param {number} height - Height
+ * @param {Object} options - Optional styling
+ * @return {Shape} Card shape
+ */
+function createAppleCard(slide, left, top, width, height, options = {}) {
+  const card = slide.insertShape(
+    SlidesApp.ShapeType.ROUND_RECTANGLE, 
+    left, top, width, height
+  );
+  
+  // Apply Apple-style corner radius (FR-15: 20-24px)
+  const cornerRadius = options.cornerRadius || CONFIG.APPLE_TOKENS.cornerRadius.large;
+  // Note: Apps Script doesn't support setting corner radius directly
+  // The ROUND_RECTANGLE shape uses a default radius
+  
+  // Apply fill color
+  if (options.fillColor) {
+    card.getFill().setSolidFill(options.fillColor);
+  }
+  
+  // Apply border
+  if (options.borderColor) {
+    card.getBorder().getLineFill().setSolidFill(options.borderColor);
+    card.getBorder().setWeight(options.borderWeight || 1);
+  } else if (options.noBorder) {
+    card.getBorder().setTransparent();
+  }
+  
+  // Apply subtle shadow (FR-15)
+  if (options.shadow) {
+    const shadowDef = CONFIG.APPLE_TOKENS.shadows[options.shadow] || CONFIG.APPLE_TOKENS.shadows.small;
+    // Note: Apps Script has limited shadow support
+    // This is a placeholder for future enhancement
+  }
+  
+  return card;
+}
+
+/**
+ * Check if items need to be split across multiple slides (FR-12)
+ * FR-12: 各スライドの表示要素は 3〜4 オブジェクト以内に制限し、超過する場合は自動でスライドを分割すること
+ * @param {Array} items - Array of items to display
+ * @param {number} maxPerSlide - Maximum items per slide (default: 4)
+ * @return {Array} Array of item groups, each representing one slide
+ */
+function splitItemsForAppleStyle(items, maxPerSlide = null) {
+  const max = maxPerSlide || CONFIG.APPLE_TOKENS.limits.maxObjectsPerSlide;
+  if (!items || items.length <= max) {
+    return [items];
+  }
+  
+  const groups = [];
+  for (let i = 0; i < items.length; i += max) {
+    groups.push(items.slice(i, i + max));
+  }
+  return groups;
+}
+
+/**
+ * Truncate text to Apple-style length limit (FR-12)
+ * @param {string} text - Text to truncate
+ * @param {number} maxLength - Maximum length (default from tokens)
+ * @return {string} Truncated text
+ */
+function truncateToAppleLength(text, maxLength = null) {
+  const max = maxLength || CONFIG.APPLE_TOKENS.limits.maxTextLength;
+  if (!text || text.length <= max) {
+    return text;
+  }
+  return text.substring(0, max - 3) + '...';
+}
+
+/**
  * 安全にレイアウト矩形を取得するヘルパー関数
  * @param {Object} layout - レイアウトマネージャー
  * @param {string} path - レイアウトパス

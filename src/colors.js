@@ -217,3 +217,99 @@ function generateCompareColors(baseColor) {
   };
 }
 
+/**
+ * Apple-style semantic color generation
+ * Generates colors that follow Apple HIG principles with proper contrast
+ * @param {string} baseColor - Base primary color
+ * @param {string} mode - 'light' or 'dark' mode
+ * @return {Object} Semantic color palette
+ */
+function generateAppleSemanticColors(baseColor, mode = 'light') {
+  const isLight = mode === 'light';
+  
+  if (isLight) {
+    return {
+      background: '#FFFFFF',
+      backgroundSecondary: generateTintedGray(baseColor, 5, 98),
+      backgroundTertiary: generateTintedGray(baseColor, 8, 95),
+      text: '#1D1D1F',
+      textSecondary: '#86868B',
+      textTertiary: '#AEAEB2',
+      accent: baseColor,
+      accentHover: darkenColor(baseColor, 0.1),
+      border: '#D2D2D7',
+      separator: '#E5E5EA',
+      cardBg: generateTintedGray(baseColor, 10, 96)
+    };
+  } else {
+    return {
+      background: '#000000',
+      backgroundSecondary: '#1C1C1E',
+      backgroundTertiary: '#2C2C2E',
+      text: '#FFFFFF',
+      textSecondary: '#98989D',
+      textTertiary: '#636366',
+      accent: baseColor,
+      accentHover: lightenColor(baseColor, 0.2),
+      border: '#38383A',
+      separator: '#48484A',
+      cardBg: '#1C1C1E'
+    };
+  }
+}
+
+/**
+ * Calculate WCAG 2.1 contrast ratio between two colors
+ * @param {string} color1 - First color in hex format
+ * @param {string} color2 - Second color in hex format
+ * @return {number} Contrast ratio (1 to 21)
+ */
+function calculateContrastRatio(color1, color2) {
+  const rgb1 = hexToRgb(color1);
+  const rgb2 = hexToRgb(color2);
+  
+  if (!rgb1 || !rgb2) return 1;
+  
+  const luminance = (r, g, b) => {
+    const [rs, gs, bs] = [r, g, b].map(c => {
+      c = c / 255;
+      return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+  };
+  
+  const l1 = luminance(rgb1.r, rgb1.g, rgb1.b);
+  const l2 = luminance(rgb2.r, rgb2.g, rgb2.b);
+  
+  const lighter = Math.max(l1, l2);
+  const darker = Math.min(l1, l2);
+  
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+/**
+ * Check if color pair meets WCAG AA standards (4.5:1 for normal text, 3:1 for large text)
+ * @param {string} foreground - Foreground color
+ * @param {string} background - Background color
+ * @param {boolean} isLargeText - Is the text large (18pt+ or 14pt+ bold)
+ * @return {boolean} True if compliant
+ */
+function meetsWCAG_AA(foreground, background, isLargeText = false) {
+  const ratio = calculateContrastRatio(foreground, background);
+  return ratio >= (isLargeText ? 3.0 : 4.5);
+}
+
+/**
+ * Apple-style tinted gray with better contrast control
+ * Uses Apple's approach of subtle tinting while maintaining readability
+ * @param {string} tintColorHex - Color to tint with
+ * @param {number} tintStrength - How much to tint (0-20 recommended)
+ * @param {number} lightness - Target lightness (0-100)
+ * @return {string} Hex color
+ */
+function generateAppleTintedGray(tintColorHex, tintStrength = 5, lightness = 96) {
+  // Apple uses very subtle tints - cap at 20% saturation
+  const cappedSaturation = Math.min(20, Math.max(0, tintStrength));
+  return generateTintedGray(tintColorHex, cappedSaturation, lightness);
+}
+
