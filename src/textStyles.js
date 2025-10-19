@@ -103,7 +103,8 @@ function setBulletsWithInlineStyles(shape, points) {
   });
   const tr = shape.getText().setText(combined || '—');
   applyTextStyle(tr, {
-    size: CONFIG.FONTS.sizes.body
+    size: CONFIG.FONTS.sizes.body,
+    align: SlidesApp.ParagraphAlignment.START  // 左揃えに戻す
   });
   // 箇条書きスタイルを別途適用する場合はここで
   try {
@@ -305,17 +306,7 @@ function drawArrowBetweenRects(slide, a, b, arrowH, arrowGap, settings) {
  * @param {Object} settings - ユーザー設定
  */
 function drawAgendaItems(slide, layout, area, items, settings) {
-  // アジェンダ用の座布団を作成
-  createContentCushion(slide, area, settings, layout);
-  
-  // 番号なしの改行箇条書きとして表示
-  const padding = layout.pxToPt(30); // パディング
-  const textRect = {
-    left: area.left + padding,
-    top: area.top + padding,
-    width: area.width - (padding * 2),
-    height: area.height - (padding * 2)
-  };
+  // 座布団を削除し、直接テキストボックスを配置
   
   // 改行で結合（中黒なし、番号なし）
   const cleanItems = items.map(item => {
@@ -327,17 +318,17 @@ function drawAgendaItems(slide, layout, area, items, settings) {
   
   const bodyShape = slide.insertShape(
     SlidesApp.ShapeType.TEXT_BOX, 
-    textRect.left, 
-    textRect.top, 
-    textRect.width, 
-    textRect.height
+    area.left, 
+    area.top, 
+    area.width, 
+    area.height
   );
   
   // 改行で結合（中黒や番号を追加しない）
   const combinedText = cleanItems.join('\n\n');
   setStyledText(bodyShape, combinedText, { 
     size: CONFIG.FONTS.sizes.body,
-    align: SlidesApp.ParagraphAlignment.START
+    align: SlidesApp.ParagraphAlignment.START  // 左揃えに戻す
   });
   
   // 行間を調整

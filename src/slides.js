@@ -224,25 +224,9 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
       const leftRect = offsetRect(adjustedLeftRect, 0, dy);
       const rightRect = offsetRect(adjustedRightRect, 0, dy);
       
-      createContentCushion(slide, leftRect, settings, layout);
-      createContentCushion(slide, rightRect, settings, layout);
-      
-      // テキストボックスを座布団の内側に配置（パディングを追加）
-      const padding = layout.pxToPt(20); // 20pxのパディング
-      const leftTextRect = {
-        left: leftRect.left + padding,
-        top: leftRect.top + padding,
-        width: leftRect.width - (padding * 2),
-        height: leftRect.height - (padding * 2)
-      };
-      const rightTextRect = {
-        left: rightRect.left + padding,
-        top: rightRect.top + padding,
-        width: rightRect.width - (padding * 2),
-        height: rightRect.height - (padding * 2)
-      };
-      const leftShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, leftTextRect.left, leftTextRect.top, leftTextRect.width, leftTextRect.height);
-      const rightShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, rightTextRect.left, rightTextRect.top, rightTextRect.width, rightTextRect.height);
+      // 座布団を削除し、直接テキストボックスを配置
+      const leftShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, leftRect.left, leftRect.top, leftRect.width, leftRect.height);
+      const rightShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, rightRect.left, rightRect.top, rightRect.width, rightRect.height);
       setBulletsWithInlineStyles(leftShape, L);
       setBulletsWithInlineStyles(rightShape, R);
     } else {
@@ -251,17 +235,8 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
       const adjustedBodyRect = adjustAreaForSubhead(baseBodyRect, data.subhead, layout);
       const bodyRect = offsetRect(adjustedBodyRect, 0, dy);
       
-      createContentCushion(slide, bodyRect, settings, layout);
-      
-      // テキストボックスを座布団の内側に配置（パディングを追加）
-      const padding = layout.pxToPt(20); // 20pxのパディング
-      const textRect = {
-        left: bodyRect.left + padding,
-        top: bodyRect.top + padding,
-        width: bodyRect.width - (padding * 2),
-        height: bodyRect.height - (padding * 2)
-      };
-      const bodyShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textRect.left, textRect.top, textRect.width, textRect.height);
+      // 座布団を削除し、直接テキストボックスを配置
+      const bodyShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, bodyRect.left, bodyRect.top, bodyRect.width, bodyRect.height);
       
       if (isAgenda) {
         // アジェンダの場合は改行箇条書き（中黒なし）
@@ -273,7 +248,7 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
         const combinedText = cleanItems.join('\n\n');
         setStyledText(bodyShape, combinedText, { 
           size: CONFIG.FONTS.sizes.body,
-          align: SlidesApp.ParagraphAlignment.START
+          align: SlidesApp.ParagraphAlignment.START  // 左揃えに戻す
         });
         try {
           bodyShape.getText().getParagraphs().forEach(p => {
@@ -281,7 +256,7 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
           });
         } catch (e) {}
       } else {
-        // 通常のコンテンツは中黒付き箇条書き
+        // 通常のコンテンツは中黒付き箇条書き（左揃え）
         setBulletsWithInlineStyles(bodyShape, points);
       }
     }
@@ -292,8 +267,7 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
     const adjustedArea = adjustAreaForSubhead(baseArea, data.subhead, layout);
     const area = offsetRect(adjustedArea, 0, dy);
     
-    // 画像表示時も座布団を作成
-    createContentCushion(slide, area, settings, layout);
+    // 画像のみの場合は座布団なしで直接表示
     renderImagesInArea(slide, layout, area, normalizeImages(data.images));
   }
   drawBottomBarAndFooter(slide, layout, pageNum, settings);
@@ -2517,18 +2491,8 @@ function createImageTextSlide(slide, data, layout, pageNum, settings) {
     }
     
     if (points.length > 0) {
-      // テキストエリアに座布団を作成
-      createContentCushion(slide, textArea, settings, layout);
-      
-      // テキストボックスを座布団の内側に配置（パディングを追加）
-      const padding = layout.pxToPt(20); // 20pxのパディング
-      const textRect = {
-        left: textArea.left + padding,
-        top: textArea.top + padding,
-        width: textArea.width - (padding * 2),
-        height: textArea.height - (padding * 2)
-      };
-      const textShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textRect.left, textRect.top, textRect.width, textRect.height);
+      // 座布団を削除し、直接テキストボックスを配置
+      const textShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textArea.left, textArea.top, textArea.width, textArea.height);
       setBulletsWithInlineStyles(textShape, points);
     }
   } else {
@@ -2537,18 +2501,8 @@ function createImageTextSlide(slide, data, layout, pageNum, settings) {
     const imageArea = offsetRect(layout.getRect('imageTextSlide.rightImage'), 0, dy);
     
     if (points.length > 0) {
-      // テキストエリアに座布団を作成
-      createContentCushion(slide, textArea, settings, layout);
-      
-      // テキストボックスを座布団の内側に配置（パディングを追加）
-      const padding = layout.pxToPt(20); // 20pxのパディング
-      const textRect = {
-        left: textArea.left + padding,
-        top: textArea.top + padding,
-        width: textArea.width - (padding * 2),
-        height: textArea.height - (padding * 2)
-      };
-      const textShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textRect.left, textRect.top, textRect.width, textRect.height);
+      // 座布団を削除し、直接テキストボックスを配置
+      const textShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textArea.left, textArea.top, textArea.width, textArea.height);
       setBulletsWithInlineStyles(textShape, points);
     }
     
