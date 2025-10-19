@@ -7,6 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.3.0] - 2025-10-19
 
+### Added - Minimal Design System Implementation
+
+#### Apps Script Code Updates
+- **Updated `src/config.js`** to v3.3.0 minimal design system:
+  - `APPLE_TOKENS.version`: '3.3.0' for tracking
+  - `APPLE_TOKENS.typography`: Updated to 96/64/32/24pt scale
+  - `APPLE_TOKENS.safeMargins`: Doubled to 12%/15% (115px/81px at 960×540)
+  - `APPLE_TOKENS.limits`: Stricter limits (1-4 objects, 100 char text, 3 bullets)
+  - `APPLE_TOKENS.minimalRules`: Updated object limits per slide type
+  - `FONTS.sizes`: All sizes updated to v3.3.0 scale
+  - `POS_PX`: All slide types updated to 12%/15% margins
+
+- **Enhanced `src/helpers.js`** with object validation:
+  - `countSlideObjects(slide)`: Count all objects on a slide
+  - `validateSlideObjectCount(slide, type)`: Validate against v3.3.0 limits
+  - `logSlideObjectCount(slide, type, title)`: Debug logging with warnings
+  - Updated `splitItemsForAppleStyle()` documentation
+
+#### Documentation Updates
+- **Updated `IMPLEMENTATION_NOTES.md`** with v3.3.0 section:
+  - Major changes summary
+  - Updated design tokens reference
+  - New helper functions documentation
+  - Slide positioning changes
+  - Version tracking for all requirements
+
+- **Updated `docs/Requirements/requirements.md`**:
+  - FR-12: 3-4 objects → 1-4 objects (strict)
+  - FR-13: Title slides 1 object (decorations prohibited)
+  - FR-14: Margins 6%/7.5% → 12%/15%, titles 64-96pt
+  - FR-15: Cards 24px radius, doubled whitespace
+  - NFR-04: 230px/162px margins, 64-96pt headlines
+
+- **Updated `docs/Requirements/svg_mockup_requirements.md`**:
+  - Complete v3.3.0 specification
+  - All 32 slide types documented
+  - Design tokens formalized
+  - Implementation checklist added
+
+- **Updated `README.md`**:
+  - v3.3.0 feature section
+  - Version history with v3.3.0 entry
+  - Repository structure updates
+
 ### Added - Minimal SVG Mockups (3-4 Objects Max)
 
 #### Complete SVG Mockup Regeneration

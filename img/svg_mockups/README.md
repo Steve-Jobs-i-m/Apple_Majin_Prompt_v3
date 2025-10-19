@@ -44,7 +44,7 @@
 | 012 | Icon Trio | 3 | 3つのアイコン |
 | 013 | Image Collage | 3 | 画像コラージュ |
 | 014 | Hero Image | 1 | ヒーロー画像 |
-| 015 | Quote Testimonial | 2 | 引用・証言 |
+| 015 | Quote Testimonial | 3 | 引用・証言 (縦線バー付き) |
 | 016 | Before After | 2 | Before/After比較 |
 | 017 | Stats Contrast | 2 | 統計コントラスト |
 | 018 | Feature Slots | 3 | 機能スロット |
@@ -55,7 +55,7 @@
 | 023 | Bullet Cards | 3 | 箇条書きカード |
 | 024 | Progress Bar | 3 | プログレスバー |
 | 025 | Cycle Diagram | 3 | サイクル図 |
-| 026 | Triangle Diagram | 3 | トライアングル図 |
+| 026 | Triangle Diagram | 4 | トライアングル図 (接続線付き) |
 | 027 | Pyramid Diagram | 3 | ピラミッド図 |
 | 028 | Flow Chart | 3 | フローチャート |
 | 029 | Step Up Diagram | 3 | ステップアップ図 |

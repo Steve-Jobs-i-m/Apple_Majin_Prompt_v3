@@ -1,9 +1,8 @@
 # 要件定義 / Requirements Definition
 
 ## プロジェクト概要 / Project Overview
-- **Version:** 3.3.0 (Minimal Design System)
-- 日本語: Google Apps Script を用いて、まじん式スライドの仕組みを継承しつつ Apple らしい**極限までミニマルで洗練された** Google スライド資料を自動生成するプロジェクトです。**1〜4 オブジェクト以内**の制限と**余白倍増**により、"Less is More" を実現します。
-- English: This project uses Google Apps Script to evolve the Majin-style automation into **ultra-minimal** Apple-inspired Google Slides presentations. With **1–4 objects max** and **doubled whitespace**, we achieve "Less is More."
+- 日本語: Google Apps Script を用いて、まじん式スライドの仕組みを継承しつつ Apple らしいミニマルで洗練された Google スライド資料を自動生成するプロジェクトです。
+- English: This project uses Google Apps Script to evolve the Majin-style automation into Apple-inspired, minimal, and refined Google Slides presentations.
 
 ## 目的 / Objectives
 - 日本語: 余白を生かしたタイポグラフィ主導のスライドを一貫した品質で短時間に生成する。
@@ -49,10 +48,10 @@
 | FR-09 | 設定リセット時は Apple テーマ用の初期トークン（ライトモード／ミッドグレイ背景／アクセント#0A84FF）へ戻すこと。 | Reset settings to Apple theme defaults (light mode, mid-gray backgrounds, accent `#0A84FF`). |
 | FR-10 | 生成結果をプレビュー用サンドボックスプレゼンに出力後、利用者が承認すると本番プレゼンへ適用する 2 段階フローを提供すること。 | Support a two-step flow that renders to a sandbox deck first and applies to the target deck upon user approval. |
 | FR-11 | テーブルレイアウトは chatgpt.com のように横線のみで区切り、ヘッダー太字・行間を広く確保し、垂直線や塗りつぶし背景を使用しないこと。 | Render table layouts with horizontal separators only, bold headers, generous row spacing, and no vertical rules or filled backgrounds to mirror chatgpt.com styling. |
-| FR-12 | **[v3.3.0]** 各スライドの表示要素は 1〜4 オブジェクト以内に厳密に制限し、"Less is More" の哲学に従うこと。超過する場合は自動でスライドを分割すること。 | **[v3.3.0]** Strictly limit visible objects per slide to 1–4 following "Less is More" philosophy, and automatically split slides when the threshold is exceeded. |
-| FR-13 | **[v3.3.0]** タイトルスライドは 1 つのテキストオブジェクトのみを中央配置で描画し、ロゴ・サブタイトル・影・装飾を禁止すること。 | **[v3.3.0]** Render title slides with exactly one centered text object, prohibiting logos, subtitles, shadows, or decorations. |
-| FR-14 | **[v3.3.0]** タイトル文字サイズはスライド幅に応じて安全余白（上下 15%、左右 12%）内で最大化し、64-96pt / Inter 600-700 / letter-spacing 0〜0.5px を維持すること。 | **[v3.3.0]** Maximize title font size within generous safe margins (top/bottom 15%, left/right 12%) using 64-96pt / Inter weight 600-700 and 0–0.5px letter spacing. |
-| FR-15 | **[v3.3.0]** カード、図、プログレスバーは半径 24px の角丸と最小限の影、最大 3 要素までのレイアウトを用意し、余白を倍増すること。 | **[v3.3.0]** Provide card, diagram, and progress layouts with 24px rounded corners, minimal shadows, at most three elements, and doubled whitespace. |
+| FR-12 | 各スライドの表示要素は 3〜4 オブジェクト以内に制限し、超過する場合は自動でスライドを分割すること。 | Limit visible objects per slide to 3–4 and automatically split slides when the threshold is exceeded. |
+| FR-13 | タイトルスライドは 1 つのテキストオブジェクトのみを中央配置で描画し、ロゴ・サブタイトル・影・自動改行を禁止すること。 | Render title slides with exactly one centered text object, prohibiting logos, subtitles, shadows, or auto line breaks. |
+| FR-14 | タイトル文字サイズはスライド幅に応じて安全余白（上下 7.5%、左右 6%）内で最大化し、Inter 600 / letter-spacing 0〜0.5px を維持すること。 | Maximize title font size within safe margins (top/bottom 7.5%, left/right 6%) using Inter weight 600 and 0–0.5px letter spacing. |
+| FR-15 | カード、図、プログレスバーは半径 20〜24px の角丸と控えめな影、最大 3 要素までのレイアウトを用意すること。 | Provide card, diagram, and progress layouts with 20–24px rounded corners, subtle shadows, and at most three elements. |
 | FR-16 | 生成結果は `style`（デザイントークン）と `slideData`（スライド配列）の 2 オブジェクトとして出力し、Apps Script から直接読み込める JSON 等価形式にすること。 | Output generation results as two objects—`style` design tokens and `slideData` slide array—in a JSON-equivalent structure consumable by Apps Script. |
 
 ## 非機能要件 / Non-Functional Requirements
@@ -61,30 +60,21 @@
 | NFR-01 | スクリプトは Google Apps Script V8 ランタイムで 6 分以内に完了し、100 スライド以内の構成を想定する。 | Complete within six minutes on Google Apps Script V8 and target decks up to 100 slides. |
 | NFR-02 | Apple HIG のグリッド（8pt グリッド）とモジュール比率を破らないようレイアウトを算出する。 | Compute layouts that honor the Apple HIG grid (8pt) and modular ratios. |
 | NFR-03 | デザインパラメータは JSON 形式のトークン定義で管理し、Pull Request ベースで変更を可視化できること。 | Manage design parameters via JSON-like token definitions tracked through pull requests. |
-| NFR-04 | **[v3.3.0]** 全スライドで最低 230px (12%) の横余白と 162px (15%) の縦余白を確保し、見出しサイズ 64-96pt の巨大タイポグラフィを保証する。 | **[v3.3.0]** Guarantee minimum 230px (12%) horizontal and 162px (15%) vertical margins across slides, with 64-96pt headline sizes for oversized typography. |
+| NFR-04 | 全スライドで最低 16px の余白と 28px の見出しサイズを確保し、可読性を保証する。 | Guarantee minimum 16px padding and 28px heading size across slides for readability. |
 | NFR-05 | ログ・警告は日本語と英語で出力し、デザインチームと開発チーム双方が理解できるようにする。 | Output logs and warnings bilingually so both design and engineering teams can understand. |
 | NFR-06 | 依存ライブラリを追加する場合は Apps Script の制限内で軽量に保ち、ビルドステップを増やさない。 | Keep any new dependencies lightweight within Apps Script limits and avoid introducing build steps. |
 
 ## データおよび設定 / Data and Configuration
-- **Version:** 3.3.0 設計トークン
 - 日本語: `slideData` は Apple 風テンプレート向けフィールド（ライト/ダーク指定、アクセントカラー、デバイス枠有無、短いステートメント）を含む構造へ更新する。
 - English: Update `slideData` to include Apple-themed fields (light/dark selection, accent color, device frame flags, succinct statements).
-- 日本語: **[v3.3.0]** `CONFIG.APPLE_TOKENS` に以下の設計トークンを定義する:
-  - **Margins:** 水平 230px (12%), 垂直 162px (15%)
-  - **Typography:** Hero 96pt / Title 64pt / Body 32pt / Caption 24pt (Inter 400-700)
-  - **Colors:** 最大 3 色 (背景 `#000000`, テキスト `#FFFFFF`, アクセント `#0A84FF`)
-  - **Shapes:** 角丸半径 24px, 影なし or 最小限
-- English: **[v3.3.0]** Define the following design tokens in `CONFIG.APPLE_TOKENS`:
-  - **Margins:** Horizontal 230px (12%), Vertical 162px (15%)
-  - **Typography:** Hero 96pt / Title 64pt / Body 32pt / Caption 24pt (Inter 400-700)
-  - **Colors:** 3-color max (bg `#000000`, text `#FFFFFF`, accent `#0A84FF`)
-  - **Shapes:** 24px radius, no shadows or minimal only
+- 日本語: `CONFIG.APPLE_TOKENS` にタイポグラフィスケール、余白、カラーセット、影設定を定義する。
+- English: Define typography scale, spacing, color sets, and elevation settings in `CONFIG.APPLE_TOKENS`.
 - 日本語: テーブル描画は横罫線のみを用い、行間に余白を設けて chatgpt.com 風の軽やかな見た目を再現する。
 - English: Draw tables using horizontal rules only with airy row spacing to emulate the chatgpt.com look.
 - 日本語: `style` オブジェクトにテーマ別トークン（フォント、カラー、スペーシング、アルゴリズム）を保持し、`slideData` とセットで出力する。
 - English: Store theme-specific tokens (fonts, colors, spacing, algorithms) inside a `style` object and output it alongside `slideData`.
-- 日本語: タイトル自動フィット用パラメータ（安全余白 12%/15%、最大行数、letter-spacing）を `style.algorithms.titleFit` に構造化して定義する。
-- English: Define title auto-fit parameters (safe margins 12%/15%, max lines, letter spacing) under `style.algorithms.titleFit`.
+- 日本語: タイトル自動フィット用パラメータ（安全余白、最大行数、letter-spacing）を `style.algorithms.titleFit` に構造化して定義する。
+- English: Define title auto-fit parameters (safe margins, max lines, letter spacing) under `style.algorithms.titleFit`.
 - 日本語: デフォルトアセットはローカルの `img/apple` ディレクトリで管理し、公開 URL に変換して利用する。
 - English: Store default assets under `img/apple` locally and expose them via public URLs for use.
 - 日本語: ライト/ダークテーマ差分は設定プロパティとスライド ID の組み合わせで記録する。
@@ -105,8 +95,8 @@
 - English: Use custom-created generic assets instead of official Apple logos or device imagery.
 - 日本語: テーマ切替やプレビューのため、対象プレゼンとは別にサンドボックス用プレゼン ID を設定する必要がある。
 - English: Require a sandbox presentation ID separate from the target deck to enable theme switching and previews.
-- 日本語: タイトルスライドは 1 テキストのみ許容されるため、slideData に複数要素を定義しないこと。**[v3.3.0]** 全32スライドタイプは 1〜4 オブジェクト制限を遵守すること。
-- English: Restrict title slides to a single text node—do not wire multiple elements in slideData. **[v3.3.0]** All 32 slide types must adhere to the 1–4 object limit.
+- 日本語: タイトルスライドは 1 テキストのみ許容されるため、slideData に複数要素を定義しないこと。
+- English: Restrict title slides to a single text node—do not wire multiple elements in slideData.
 - 日本語: Apps Script の API 制限上、画像挿入は 30 枚以内を目安とし、それ以上は手動対応とする。
 - English: Due to Apps Script API quotas, limit automated image insertions to roughly 30; handle extras manually.
 

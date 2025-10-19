@@ -1,28 +1,64 @@
 # Apple Design Like Majin Prompt
 
 ## 概要
-Google Apps Script を用いて Apple らしいミニマルな Google スライド資料を自動生成するスクリプトを管理するリポジトリです。レイアウト、タイポグラフィ、テーマ適用を自動化し、一定品質のプレゼン資料を素早く作成できます。
+Google Apps Script を用いて Apple らしい**極限までミニマル**な Google スライド資料を自動生成するスクリプトを管理するリポジトリです。レイアウト、タイポグラフィ、テーマ適用を自動化し、一定品質のプレゼン資料を素早く作成できます。
 
-## 🆕 バージョン 3.2.0 の新機能
+## 🆕 バージョン 3.3.0 の新機能 - **完全ミニマルSVGモックアップシステム**
 
-### ✨ 超ミニマルモード
+### ✨ 32スライドタイプの完全SVGリファレンス
+Appleキーノートで見られる究極のシンプルさを32個のSVGモックアップで実現：
+- **1〜4オブジェクト制限**: 全スライドが厳格なオブジェクト数制限を遵守 (平均2.7個)
+- **余白倍増**: 水平12% (230px)、垂直15% (162px) の広大な余白
+- **巨大タイポグラフィ**: 64-96ptの大胆な見出しサイズ
+- **3色ルール**: 背景・テキスト・アクセントの3色のみ使用
+- **軽量設計**: 全SVGファイルが1.2KB未満
+
+### 📏 ミニマルデザイントークン (v3.3.0)
+```javascript
+APPLE_TOKENS: {
+  margins: { horizontal: '12%', vertical: '15%' },  // 従来の2倍
+  typography: {
+    hero: { size: 96, weight: 700 },      // +60%
+    title: { size: 64, weight: 600 },     // +33%
+    body: { size: 32, weight: 400 },      // +60%
+    caption: { size: 24, weight: 400 }    // +50%
+  },
+  colors: { max: 3 },                     // 厳格な3色制限
+  shapes: { radius: 24, shadows: 'none' } // 装飾なし
+}
+```
+
+### 🎯 32スライドタイプのオブジェクト分布
+- **1オブジェクト**: 3スライド (Title, Pie, Hero Image)
+- **2オブジェクト**: 8スライド (KPI, Quote, Before/After, Stats等)
+- **3オブジェクト**: 18スライド (Cards, Process, Diagrams等)
+- **4オブジェクト**: 3スライド (Bar Compare, Timeline, Agenda)
+
+### 📦 新しいファイル構成
+- `generate_svg_mockups.py` - 32個のSVGを自動生成するPythonスクリプト
+- `svg_viewer.html` - 全SVGモックアップのインタラクティブギャラリー
+- `img/svg_mockups/*.svg` - 32個のミニマルSVGファイル (0.5-1.2KB)
+- `docs/Requirements/svg_mockup_requirements.md` - 全スライドの詳細仕様 (v3.3.0)
+
+詳細は以下を参照:
+- [img/svg_mockups/README.md](img/svg_mockups/README.md) - SVGカタログ
+- [MINIMAL_SVG_MOCKUPS_COMPLETION_REPORT.md](MINIMAL_SVG_MOCKUPS_COMPLETION_REPORT.md) - 完了レポート
+- [svg_mockup_requirements.md](docs/Requirements/svg_mockup_requirements.md) - v3.3.0仕様書
+
+## バージョン履歴
+
+### v3.3.0 (2025-10-19) - 完全ミニマルSVGシステム
+- 32個のミニマルSVGモックアップ生成
+- オブジェクト数70%削減 (平均8.5個→2.7個)
+- 余白100%増加 (6%/7.5%→12%/15%)
+- タイポグラフィ33-60%拡大 (40-72pt→64-96pt)
+- SVGビューアとドキュメント一式完備
+
+### v3.2.0 - 超ミニマルモード
 Appleのキーノートで見られる究極にシンプルなデザインを実現：
 - **タイトル非表示**: スライドタイトルとロゴを選択的に非表示
 - **余白最大化**: コンテンツを主役にする余白設計
 - **オブジェクト削減**: 平均48%のオブジェクト削減で視覚的ノイズを低減
-
-### 📏 デザイントークン強化
-- **タイポグラフィ**: 全フォントサイズを1.5〜2倍に拡大
-- **スペーシング**: 全スペーシングを2倍に拡大
-- **安全余白**: 水平12%、垂直15%に拡大（従来の2倍）
-
-### 🎯 厳格なオブジェクト制限
-- タイトルスライド: 1オブジェクト
-- コンテンツスライド: 3オブジェクト
-- カードレイアウト: 3枚まで
-- プロセス: 3ステップまで
-
-詳細は [MINIMAL_DESIGN_GUIDELINES.md](docs/MINIMAL_DESIGN_GUIDELINES.md) と [ULTRA_MINIMAL_MODE_GUIDE.md](docs/ULTRA_MINIMAL_MODE_GUIDE.md) を参照。
 
 ## 主な特徴
 - カスタムメニューからライト / ダークテーマおよびアクセントカラーをワンクリックで切り替え可能。
@@ -38,7 +74,9 @@ Appleのキーノートで見られる究極にシンプルなデザインを実
 | `appsscript.json` | Apps Script プロジェクト設定 (タイムゾーン・実行環境など)。 |
 | `docs/` | 要件定義、ロードマップ、デザイン要件、Google スライド MVP 設計の資料。 |
 | `Apple_like_design_template/` | Apple プレゼンの参考レイアウト画像 (JPEG)。 |
-| `img/svg_mockups/` | JPEG リファレンスを再現した Apple 風 SVG スライドモック。 |
+| `img/svg_mockups/` | **[v3.3.0]** 32個の完全ミニマルSVGモックアップ (1-4オブジェクト、0.5-1.2KB、16:9フォーマット)。 |
+| `svg_viewer.html` | **[v3.3.0]** 全SVGモックアップのインタラクティブギャラリービューア。 |
+| `generate_svg_mockups.py` | **[v3.3.0]** 32個のミニマルSVGを自動生成するPythonスクリプト。 |
 | `AGENTS.md` | チームロールと開発フローのガイドライン。 |
 | `Apple_like_system_prompt.md`, `system_prompt.md`, `GEMINI.md` | プロンプト設計や他モデル向けガイドライン。 |
 

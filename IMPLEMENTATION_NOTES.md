@@ -3,10 +3,61 @@
 ## Overview
 This document tracks the implementation of Apple design principles in the Google Slides generator based on `docs/Requirements/requirements.md`.
 
+**Current Version:** 3.3.0 (Minimal Design System)  
+**Last Updated:** 2025-10-19
+
+## Version 3.3.0 Updates 🆕
+
+### Major Changes
+1. **Minimal Design System**: Complete overhaul to 1-4 object limit per slide
+2. **Typography Enhancement**: Enlarged to 96pt hero, 64pt titles, 32pt body
+3. **Doubled Whitespace**: Safe margins increased to 12%/15% (from 6%/7.5%)
+4. **SVG Mockup System**: 32 minimal SVG references with strict object counting
+5. **Object Validation**: New helper functions to enforce limits
+
+### Updated Design Tokens (v3.3.0)
+```javascript
+APPLE_TOKENS: {
+  version: '3.3.0',
+  typography: {
+    hero: 96,      // [NEW] Maximum impact titles
+    title: 64,     // [UPDATED] 48→64pt
+    subtitle: 32,  // [UPDATED] Body enlarged
+    caption: 24    // [UPDATED] Minimum readable
+  },
+  safeMargins: {
+    horizontal: 0.12,    // [DOUBLED] 6%→12%
+    vertical: 0.15,      // [DOUBLED] 7.5%→15%
+    horizontalPx: 115,   // At 960×540 base
+    verticalPx: 81       // At 960×540 base
+  },
+  limits: {
+    maxObjectsPerSlide: 4,        // [STRICT] 1-4 objects
+    maxObjectsPerSlideStrict: 3,  // [RECOMMENDED] 3 objects
+    maxTextLength: 100,           // [REDUCED] 150→100
+    maxBulletPoints: 3,           // [REDUCED] 4→3
+    maxLinesInCard: 2             // [REDUCED] 3→2
+  }
+}
+```
+
+### New Helper Functions (v3.3.0)
+- `countSlideObjects(slide)` - Count all objects on a slide
+- `validateSlideObjectCount(slide, type)` - Validate against v3.3.0 limits
+- `logSlideObjectCount(slide, type, title)` - Debug logging with warnings
+
+### Updated Slide Positioning (v3.3.0)
+All `POS_PX` values updated to 12%/15% margins:
+- `left: 115px` (was 25px or 60px)
+- `top: 81px` (was 20px or 40px)
+- `width: 730px` (was 830px or 910px)
+- Content area heights reduced proportionally
+
 ## Completed Requirements
 
 ### FR-04: Design Token System ✅
 - Added `CONFIG.APPLE_TOKENS` in `config.js`
+- **[v3.3.0]** Updated to minimal design system with version tracking
 - Includes typography scale, spacing, safe margins, corner radius, shadows, line heights, and semantic colors
 - Supports both light and dark modes
 
@@ -21,21 +72,25 @@ This document tracks the implementation of Apple design principles in the Google
 - Generous row spacing with bold headers
 - Controlled by `settings.appleStyleTable` flag
 
-### FR-12: Object Limiting ✅
-- Added `splitItemsForAppleStyle()` helper to limit objects to 3-4 per slide
+### FR-12: Object Limiting ✅ [UPDATED v3.3.0]
+- **[v3.3.0]** Updated to 1-4 object strict limit (was 3-4)
+- Added `splitItemsForAppleStyle()` helper to limit objects per slide
 - Added `truncateToAppleLength()` for text length management
+- **[NEW]** `countSlideObjects()`, `validateSlideObjectCount()`, `logSlideObjectCount()`
 - Default limits defined in `CONFIG.APPLE_TOKENS.limits`
 
-### FR-13 & FR-14: Title Slide Minimal Style ✅
-- Single centered text object only
-- Safe margins: 6% horizontal, 7.5% vertical
+### FR-13 & FR-14: Title Slide Minimal Style ✅ [UPDATED v3.3.0]
+- Single centered text object only (1 object limit)
+- **[v3.3.0]** Safe margins: 12% horizontal, 15% vertical (DOUBLED)
+- **[v3.3.0]** Font size: 96pt hero titles (was 64pt)
 - No logos, no dates, no subtitles when `settings.appleStyleTitle` is enabled
-- Font: Inter 600 weight (approximated with bold in Apps Script)
+- Font: Inter 600-700 weight (approximated with bold in Apps Script)
 - Letter spacing: 0-0.5px (documented but not supported in Apps Script)
 
-### FR-15: Rounded Corners and Shadows ✅
+### FR-15: Rounded Corners and Shadows ✅ [UPDATED v3.3.0]
 - Added `createAppleCard()` helper for consistent card creation
-- Corner radius: 20-24px (using ROUND_RECTANGLE shape type)
+- **[v3.3.0]** Corner radius: 24px (was 20-24px range)
+- **[v3.3.0]** Shadows: none or minimal only
 - Shadow definitions in tokens (limited support in Apps Script API)
 
 ### FR-06: WCAG AA Contrast ✅
@@ -68,17 +123,21 @@ Implemented `generateAppleSemanticColors()` with proper light/dark mode support:
 
 ## Typography System
 
-### Apple Typography Scale
+### Apple Typography Scale (v3.3.0)
 From `CONFIG.APPLE_TOKENS.typography`:
-- largeTitle: 72pt (Hero titles)
-- title1: 48pt (Section titles)
-- title2: 32pt (Card headers)
-- title3: 24pt (Content titles)
-- headline: 20pt (Emphasized text)
-- body: 16pt (Standard body text)
-- callout: 14pt (Secondary text)
-- subhead: 13pt (Tertiary text)
-- footnote: 12pt (Small annotations)
+- **hero: 96pt** - [v3.3.0] Hero/Large titles (maximum impact)
+- **title: 64pt** - [v3.3.0] Main titles (bold statements)  
+- **subtitle: 32pt** - [v3.3.0] Subtitles/body (comfortable reading)
+- **caption: 24pt** - [v3.3.0] Captions/labels (minimum readable)
+
+### FONTS.sizes (v3.3.0) 
+Updated to match v3.3.0 scale:
+- title: 96pt (was 64pt) - Hero impact
+- sectionTitle: 64pt (was 56pt) - Section emphasis
+- contentTitle: 64pt (was 32pt) - Content hierarchy
+- body: 32pt (was 18pt) - Comfortable reading
+- subhead: 24pt (was 18pt) - Clear labels
+- All other sizes proportionally increased
 - caption1: 11pt (Captions)
 - caption2: 10pt (Tiny text)
 

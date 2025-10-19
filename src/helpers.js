@@ -48,7 +48,8 @@ function createAppleCard(slide, left, top, width, height, options = {}) {
 
 /**
  * Check if items need to be split across multiple slides (FR-12)
- * FR-12: 各スライドの表示要素は 3〜4 オブジェクト以内に制限し、超過する場合は自動でスライドを分割すること
+ * FR-12: 各スライドの表示要素は 1〜4 オブジェクト以内に制限し、超過する場合は自動でスライドを分割すること
+ * v3.3.0: Updated to 1-4 object limit with strict enforcement
  * @param {Array} items - Array of items to display
  * @param {number} maxPerSlide - Maximum items per slide (default: 4)
  * @return {Array} Array of item groups, each representing one slide
@@ -64,6 +65,71 @@ function splitItemsForAppleStyle(items, maxPerSlide = null) {
     groups.push(items.slice(i, i + max));
   }
   return groups;
+}
+
+/**
+ * Count objects on a slide (v3.3.0)
+ * Counts shapes, images, tables, and text boxes
+ * @param {Slide} slide - Slide to count objects on
+ * @return {number} Number of objects
+ */
+function countSlideObjects(slide) {
+  if (!slide) return 0;
+  let count = 0;
+  try {
+    count += slide.getShapes().length;
+    count += slide.getImages().length;
+    count += slide.getTables().length;
+  } catch (e) {
+    Logger.log(`Error counting objects: ${e.message}`);
+  }
+  return count;
+}
+
+/**
+ * Validate slide object count against v3.3.0 limits
+ * @param {Slide} slide - Slide to validate
+ * @param {string} slideType - Type of slide (title, hero, content, etc.)
+ * @return {Object} Validation result {valid, count, limit, warning}
+ */
+function validateSlideObjectCount(slide, slideType = 'content') {
+  const count = countSlideObjects(slide);
+  const rules = CONFIG.APPLE_TOKENS.minimalRules;
+  
+  let limit;
+  switch (slideType) {
+    case 'title':
+      limit = rules.titleSlideObjectLimit; // 1
+      break;
+    case 'hero':
+      limit = rules.heroSlideObjectLimit; // 1
+      break;
+    case 'content':
+    default:
+      limit = rules.contentSlideObjectLimit; // 3
+      break;
+  }
+  
+  const valid = count <= limit;
+  const warning = valid ? null : 
+    `⚠️ v3.3.0 Warning: ${slideType} slide has ${count} objects (limit: ${limit}). Consider splitting or simplifying.`;
+  
+  return { valid, count, limit, warning };
+}
+
+/**
+ * Log object count for debugging (v3.3.0)
+ * @param {Slide} slide - Slide to log
+ * @param {string} slideType - Type of slide
+ * @param {string} title - Slide title for identification
+ */
+function logSlideObjectCount(slide, slideType, title = '') {
+  const validation = validateSlideObjectCount(slide, slideType);
+  const status = validation.valid ? '✓' : '⚠️';
+  Logger.log(`${status} [v3.3.0] ${slideType.toUpperCase()} "${title}": ${validation.count}/${validation.limit} objects`);
+  if (validation.warning) {
+    Logger.log(validation.warning);
+  }
 }
 
 /**

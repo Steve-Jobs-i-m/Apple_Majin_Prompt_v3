@@ -114,95 +114,95 @@ const CONFIG = {
     },
     processSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115: 12% horizontal margin
+        top: 81,           // [v3.3.0] 20→81: 15% vertical margin
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115: 12% margin
+        top: 81,           // [v3.3.0] 20→81: 15% margin
+        width: 730,        // [v3.3.0] 910→730: Account for doubled margins
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115: Align with title
+        top: 161,          // [v3.3.0] 80→161: More space below title
+        width: 180,        // [v3.3.0] 260→180: Shorter underline
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115: Align with title
+        top: 181,          // [v3.3.0] 90→181: More space
+        width: 730,        // [v3.3.0] 910→730: Narrower
+        height: 50
       },
       area: {
-        left: 25,
-        top: 132,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115: Larger margin
+        top: 250,          // [v3.3.0] 132→250: Significantly more top space
+        width: 730,        // [v3.3.0] 910→730: Narrower content area
+        height: 209        // [v3.3.0] 330→209: Less tall (540-81-250-81 bottom margin)
       }
     },
     timelineSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115: 12% margin
+        top: 81,           // [v3.3.0] 20→81: 15% margin
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115: 12% margin
+        top: 81,           // [v3.3.0] 20→81: 15% margin
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       area: {
-        left: 25,
-        top: 132,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 132→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 330→209
       }
     },
     diagramSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       lanesArea: {
-        left: 25,
-        top: 132,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 132→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 330→209
       }
     },
     cardsSlide: {
@@ -238,321 +238,321 @@ const CONFIG = {
     },
     tableSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       area: {
-        left: 25,
-        top: 130,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 130→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 330→209
       }
     },
     progressSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       area: {
-        left: 25,
-        top: 132,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 132→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 330→209
       }
     },
     quoteSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 88,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 88→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 100,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 100→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       quoteBar: {
-        width: 4,          // Left vertical bar width (Markdown-style)
+        width: 3,          // [v3.3.0] 4→3: Thinner vertical bar
         leftOffset: 32      // Distance between bar and text
       }
     },
     kpiSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       gridArea: {
-        left: 25,
-        top: 132,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 132→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 330→209
       }
     },
     triangleSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       area: {
-        left: 25,
-        top: 110,
-        width: 910,
-        height: 350
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 110→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 350→209
       }
     },
     flowChartSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       singleRow: {
-        left: 25,
-        top: 160,
-        width: 910,
-        height: 180
+        left: 115,         // [v3.3.0] 25→115
+        top: 270,          // [v3.3.0] 160→270
+        width: 730,        // [v3.3.0] 910→730
+        height: 189        // [v3.3.0] 180→189
       },
       upperRow: {
-        left: 25,
-        top: 150,
-        width: 910,
-        height: 120
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 150→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 100        // [v3.3.0] 120→100
       },
       lowerRow: {
-        left: 25,
-        top: 290,
-        width: 910,
-        height: 120
+        left: 115,         // [v3.3.0] 25→115
+        top: 359,          // [v3.3.0] 290→359
+        width: 730,        // [v3.3.0] 910→730
+        height: 100        // [v3.3.0] 120→100
       }
     },
     stepUpSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       stepArea: {
-        left: 25,
-        top: 130,
-        width: 910,
-        height: 330
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 130→250
+        width: 730,        // [v3.3.0] 910→730
+        height: 209        // [v3.3.0] 330→209
       }
     },
     imageTextSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 115,        // [v3.3.0] 20→115
+        top: 81,           // [v3.3.0] 20→81
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 115,         // [v3.3.0] 25→115
+        top: 81,           // [v3.3.0] 20→81
+        width: 730,        // [v3.3.0] 830→730
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 115,         // [v3.3.0] 25→115
+        top: 161,          // [v3.3.0] 80→161
+        width: 180,        // [v3.3.0] 260→180
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 115,         // [v3.3.0] 25→115
+        top: 181,          // [v3.3.0] 90→181
+        width: 730,        // [v3.3.0] 910→730
+        height: 50
       },
       leftImage: {
-        left: 25,
-        top: 150,
-        width: 440,
-        height: 270  // キャプション分減算
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 150→250
+        width: 330,        // [v3.3.0] 440→330
+        height: 179        // [v3.3.0] 270→179: Adjusted for margins
       },
       leftImageCaption: {
-        left: 25,
-        top: 430,
-        width: 440,
+        left: 115,         // [v3.3.0] 25→115
+        top: 439,          // [v3.3.0] 430→439
+        width: 330,        // [v3.3.0] 440→330
         height: 30
       },
       rightText: {
-        left: 485,
-        top: 150,
-        width: 450,
-        height: 310
+        left: 465,         // [v3.3.0] 485→465
+        top: 250,          // [v3.3.0] 150→250
+        width: 380,        // [v3.3.0] 450→380
+        height: 209        // [v3.3.0] 310→209
       },
       leftText: {
-        left: 25,
-        top: 150,
-        width: 450,
-        height: 310
+        left: 115,         // [v3.3.0] 25→115
+        top: 250,          // [v3.3.0] 150→250
+        width: 380,        // [v3.3.0] 450→380
+        height: 209        // [v3.3.0] 310→209
       },
       rightImage: {
-        left: 495,
-        top: 150,
-        width: 440,
-        height: 270  // キャプション分減算
+        left: 515,         // [v3.3.0] 495→515
+        top: 250,          // [v3.3.0] 150→250
+        width: 330,        // [v3.3.0] 440→330
+        height: 179        // [v3.3.0] 270→179
       },
       rightImageCaption: {
-        left: 495,
-        top: 430,
-        width: 440,
+        left: 515,         // [v3.3.0] 495→515
+        top: 439,          // [v3.3.0] 430→439
+        width: 330,        // [v3.3.0] 440→330
         height: 30
       }
     },
       pyramidSlide: {
         headerLogo: {
-          right: 20,
-          top: 20,
+          right: 115,        // [v3.3.0] 20→115
+          top: 81,           // [v3.3.0] 20→81
           width: 75
         },
         title: {
-          left: 25,
-          top: 20,
-          width: 830,
-          height: 65
+          left: 115,         // [v3.3.0] 25→115
+          top: 81,           // [v3.3.0] 20→81
+          width: 730,        // [v3.3.0] 830→730
+          height: 80
         },
         titleUnderline: {
-          left: 25,
-          top: 88,
-          width: 260,
-          height: 4
+          left: 115,         // [v3.3.0] 25→115
+          top: 161,          // [v3.3.0] 88→161
+          width: 180,        // [v3.3.0] 260→180
+          height: 3
         },
         subhead: {
-          left: 25,
-          top: 100,
-          width: 910,
-          height: 40
+          left: 115,         // [v3.3.0] 25→115
+          top: 181,          // [v3.3.0] 100→181
+          width: 730,        // [v3.3.0] 910→730
+          height: 50
         },
         pyramidArea: {
-          left: 25,
-          top: 120,
-          width: 910,
-          height: 360
+          left: 115,         // [v3.3.0] 25→115
+          top: 250,          // [v3.3.0] 120→250
+          width: 730,        // [v3.3.0] 910→730
+          height: 209        // [v3.3.0] 360→209
         }
       },
     sectionSlide: {
@@ -593,19 +593,20 @@ const CONFIG = {
   FONTS: {
     family: 'Inter, SF Pro Display, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Noto Sans JP, Helvetica Neue, Arial, sans-serif',
     sizes: {
-      title: 64,           // 40→64: Main title (significantly larger)
-      date: 18,            // 16→18: Date text
-      sectionTitle: 56,    // 38→56: Section title (commanding presence)
-      contentTitle: 32,    // 24→32: Content title (clear hierarchy)
-      subhead: 18,         // 16→18: Subhead (readable)
-      body: 18,            // 14→18: Body text (comfortable reading)
-      footer: 11,          // 9→11: Footer (still readable)
-      chip: 13,            // 11→13: Chip labels
-      laneTitle: 16,       // 13→16: Lane titles
-      small: 12,           // 10→12: Small text
-      processStep: 18,     // 14→18: Process steps (clear)
-      axis: 14,            // 12→14: Axis labels
-      ghostNum: 200        // 180→200: Ghost numbers (massive impact)
+      // v3.3.0 Typography Scale: 96pt Hero, 64pt Title, 32pt Body, 24pt Caption
+      title: 96,           // [v3.3.0] 64→96: Hero title (maximum impact)
+      date: 24,            // [v3.3.0] 18→24: Date text (aligned to caption)
+      sectionTitle: 64,    // [v3.3.0] 56→64: Section title (bold statement)
+      contentTitle: 64,    // [v3.3.0] 32→64: Content title (clear hierarchy)
+      subhead: 24,         // [v3.3.0] 18→24: Subhead (aligned to caption)
+      body: 32,            // [v3.3.0] 18→32: Body text (comfortable reading)
+      footer: 18,          // [v3.3.0] 11→18: Footer (more readable)
+      chip: 18,            // [v3.3.0] 13→18: Chip labels
+      laneTitle: 24,       // [v3.3.0] 16→24: Lane titles (aligned to caption)
+      small: 18,           // [v3.3.0] 12→18: Small text
+      processStep: 24,     // [v3.3.0] 18→24: Process steps (clear)
+      axis: 18,            // [v3.3.0] 14→18: Axis labels
+      ghostNum: 200        // Ghost numbers (massive impact) - unchanged
     },
     weights: {
       light: 300,
@@ -645,21 +646,33 @@ const CONFIG = {
   },
   FOOTER_TEXT: `© ${new Date().getFullYear()} Your Company`,
   
-  // Apple Design Tokens (Enhanced for Minimal Design)
+  // ========================================
+  // Apple Design Tokens v3.3.0 - Minimal Design System
+  // ========================================
   APPLE_TOKENS: {
-    // Typography Scale (based on Apple HIG) - ENLARGED for impact
+    // Version
+    version: '3.3.0',
+    
+    // Typography Scale (v3.3.0 - Minimal Design)
+    // Based on: 96pt Hero, 64pt Title, 32pt Body, 24pt Caption
     typography: {
-      largeTitle: 96,     // 72→96: Hero titles (maximum visual impact)
-      title1: 64,         // 48→64: Section titles (bold statements)
-      title2: 40,         // 32→40: Card headers (clear hierarchy)
-      title3: 28,         // 24→28: Content titles (readable from distance)
-      headline: 24,       // 20→24: Emphasized text (stronger presence)
-      body: 18,           // 16→18: Standard body text (comfortable reading)
-      callout: 16,        // 14→16: Secondary text (still prominent)
-      subhead: 14,        // 13→14: Tertiary text (minimum comfortable size)
-      footnote: 12,       // Small annotations
-      caption1: 11,       // Captions
-      caption2: 10        // Tiny text
+      hero: 96,           // [v3.3.0] Hero/Large Title - maximum visual impact
+      title: 64,          // [v3.3.0] Main titles - bold statements
+      subtitle: 32,       // [v3.3.0] Subtitles/body - comfortable reading
+      caption: 24,        // [v3.3.0] Captions/labels - minimum readable size
+      
+      // Legacy mapping (for backwards compatibility)
+      largeTitle: 96,     
+      title1: 64,         
+      title2: 40,         
+      title3: 32,         // Aligned to subtitle
+      headline: 24,       // Aligned to caption
+      body: 32,           // [v3.3.0] Enlarged from 18pt
+      callout: 24,        // Aligned to caption
+      subhead: 24,        // Aligned to caption
+      footnote: 18,       
+      caption1: 24,       
+      caption2: 18        
     },
     
     // Spacing Scale (8pt grid system) - DOUBLED for breathing room
@@ -673,10 +686,15 @@ const CONFIG = {
       xxxl: 128  // 64→128px: Hero spacing (DOUBLED)
     },
     
-    // Safe Margins (percentage-based for responsive) - DOUBLED for minimalism
+    // Safe Margins (v3.3.0 - DOUBLED for minimalism)
+    // Canvas: 1920×1080 → Horizontal: 230px (12%), Vertical: 162px (15%)
     safeMargins: {
       horizontal: 0.12,  // 6%→12%: Left/right breathing room (DOUBLED)
-      vertical: 0.15     // 7.5%→15%: Top/bottom breathing room (DOUBLED)
+      vertical: 0.15,    // 7.5%→15%: Top/bottom breathing room (DOUBLED)
+      
+      // Absolute pixel values (at 960×540 base)
+      horizontalPx: 115, // 12% of 960 = 115.2px
+      verticalPx: 81     // 15% of 540 = 81px
     },
     
     // Border Radius
@@ -746,32 +764,32 @@ const CONFIG = {
       slow: 500
     },
     
-    // Content Limits - STRICT enforcement for minimalism
+    // Content Limits - v3.3.0 STRICT enforcement for minimalism
     limits: {
-      maxObjectsPerSlide: 4,        // Hard limit: 3-4 objects maximum
-      maxObjectsPerSlideStrict: 3,  // Recommended: 3 objects for pure minimalism
-      maxTextLength: 120,           // 150→120: Shorter, punchier text
-      maxBulletPoints: 4,           // 6→4: Fewer bullets, more impact
-      maxLinesInCard: 3,            // Maximum text lines per card
-      maxCharsPerLine: 40,          // Characters per line for readability
-      autoSplitThreshold: 150       // Auto-split slides when text exceeds this
+      maxObjectsPerSlide: 4,        // [v3.3.0] Hard limit: 1-4 objects maximum
+      maxObjectsPerSlideStrict: 3,  // [v3.3.0] Recommended: 3 objects for pure minimalism
+      maxTextLength: 100,           // [v3.3.0] 150→100: Even shorter, punchier text
+      maxBulletPoints: 3,           // [v3.3.0] 6→3: Fewer bullets, more impact
+      maxLinesInCard: 2,            // [v3.3.0] Maximum text lines per card (reduced)
+      maxCharsPerLine: 35,          // [v3.3.0] Characters per line for readability
+      autoSplitThreshold: 120       // [v3.3.0] Auto-split slides when text exceeds this
     },
     
-    // Minimal Design Rules
+    // Minimal Design Rules v3.3.0
     minimalRules: {
-      titleSlideObjectLimit: 1,     // Title slides: ONLY 1 text object
-      heroSlideObjectLimit: 2,      // Hero slides: Maximum 2 objects
-      contentSlideObjectLimit: 3,   // Content slides: Maximum 3 objects
-      cardLayoutMaxItems: 3,        // Card layouts: Maximum 3 cards
-      processStepsMax: 3,           // Process slides: Maximum 3 steps
-      timelineItemsMax: 4,          // Timeline: Maximum 4 milestones
-      comparisonItemsMax: 3,        // Comparison: Maximum 3 items per side
-      enforceStrictMode: true,      // Enable strict object counting
+      titleSlideObjectLimit: 1,     // [v3.3.0] Title slides: ONLY 1 text object
+      heroSlideObjectLimit: 1,      // [v3.3.0] Hero slides: ONLY 1 object (image or text)
+      contentSlideObjectLimit: 3,   // [v3.3.0] Content slides: Maximum 3 objects
+      cardLayoutMaxItems: 3,        // [v3.3.0] Card layouts: Maximum 3 cards
+      processStepsMax: 3,           // [v3.3.0] Process slides: Maximum 3 steps
+      timelineItemsMax: 4,          // [v3.3.0] Timeline: Maximum 4 milestones
+      comparisonItemsMax: 2,        // [v3.3.0] Comparison: Maximum 2 items per side
+      enforceStrictMode: true,      // [v3.3.0] Enable strict object counting
       
-      // Ultra Minimal Mode Settings (NEW)
+      // Ultra Minimal Mode Settings
       hideContentTitles: false,     // Hide titles in content slides
       hideLogoInContent: false,     // Hide header logos in content slides
-      hideTitleUnderline: true,     // Hide decorative underlines (already minimal)
+      hideTitleUnderline: true,     // [v3.3.0] Hide decorative underlines (minimal)
       ultraMinimalMode: false,      // MASTER SWITCH: Hide ALL titles, logos, underlines
       
       // Fine-grained control per slide type
@@ -781,31 +799,39 @@ const CONFIG = {
       hideTitleInStats: true        // Stats slides focus on data comparison
     },
     
-    // Color Usage Restrictions (Apple's 3-color rule)
+    // Color Usage Restrictions (v3.3.0 - Apple's 3-color rule)
     colorRestrictions: {
-      maxColorsPerSlide: 3,         // Use only 3 colors per slide
+      maxColorsPerSlide: 3,         // [v3.3.0] Use only 3 colors per slide
       primaryColorUsage: 'text',    // Black for text
       secondaryColorUsage: 'subtle',// Gray for supporting elements
       accentColorUsage: 'highlight' // One accent color for emphasis only
     },
     
-    // Typography Enhancement
+    // Typography Enhancement v3.3.0
     typographyEnhancement: {
       preferBoldOverSize: false,    // Use size hierarchy, not bold
-      minHeadingSize: 28,           // Minimum size for any heading
-      maxTextLinesBeforeSplit: 5,   // Split slide if text exceeds 5 lines
+      minHeadingSize: 32,           // [v3.3.0] Minimum size for any heading (increased)
+      maxTextLinesBeforeSplit: 4,   // [v3.3.0] Split slide if text exceeds 4 lines
       lineHeightMultiplier: 1.2,    // Consistent line height
-      letterSpacingTight: -0.5,     // For large titles
-      letterSpacingNormal: 0,       // For body text
-      letterSpacingWide: 0.5        // For small caps/labels
+      letterSpacingTight: -0.5,     // For large titles (96pt, 64pt)
+      letterSpacingNormal: 0,       // For body text (32pt)
+      letterSpacingWide: 0.5        // For small caps/labels (24pt)
     },
     
-    // White Space Ratios (Content vs Empty Space)
+    // White Space Ratios v3.3.0 (Content vs Empty Space)
     whiteSpaceRatios: {
-      titleSlide: 0.8,              // 80% empty space on title slides
-      heroSlide: 0.6,               // 60% empty space on hero slides
-      contentSlide: 0.4,            // 40% empty space on content slides
-      minimumEmptySpace: 0.3        // Always maintain 30% empty space
+      titleSlide: 0.85,             // [v3.3.0] 85% empty space on title slides
+      heroSlide: 0.70,              // [v3.3.0] 70% empty space on hero slides
+      contentSlide: 0.50,           // [v3.3.0] 50% empty space on content slides
+      minimumEmptySpace: 0.40       // [v3.3.0] Always maintain 40% empty space
+    },
+    
+    // Object Count Distribution (from SVG mockups)
+    objectDistribution: {
+      oneObject: ['title', 'pie', 'hero_image'],
+      twoObjects: ['kpi', 'quote', 'before_after', 'stats', 'section', 'closing'],
+      threeObjects: ['cards', 'process', 'diagrams', 'content', 'comparison'],
+      fourObjects: ['bar_compare', 'timeline', 'agenda']
     }
   }
 };

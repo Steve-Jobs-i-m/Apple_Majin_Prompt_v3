@@ -79,18 +79,20 @@ For detailed requirements of all 32 slide types, see:
 - **006 KPI:** Giant number + label
 - **010 Pie:** Simplified chart (no labels)
 - **014 Hero Image:** Full-bleed gradient
-- **015 Quote:** Quote + attribution
+- **015 Quote:** Quote + attribution + **Markdown-style vertical bar** (3 objects total)
 - **019 Section:** Title + accent line
 
 ### Balanced (3 objects)
 - **005 Cards:** 3 feature cards
 - **012 Icon Trio:** 3 icon placeholders
 - **021 Process:** 3-step workflow
-- **025-027 Diagrams:** Cycle, triangle, pyramid (3 nodes each)
+- **025 Cycle Diagram:** 3 nodes (no connections)
+- **027 Pyramid Diagram:** 3 layers
 
 ### Maximum Complexity (4 objects)
 - **004 Bar Compare:** Title + 3 comparison bars
 - **008 Timeline:** Line + 3 milestone nodes
+- **026 Triangle Diagram:** 3 nodes + **connection lines** (4 objects total)
 - **031 Agenda:** Title + 3 agenda items
 
 ## Implementation Checklist

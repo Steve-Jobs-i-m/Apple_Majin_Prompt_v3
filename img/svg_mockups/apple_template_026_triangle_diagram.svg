@@ -12,10 +12,22 @@
     </style>
   </defs>
   <rect width="1920" height="1080" fill="#000000"/>
+  
+  <!-- Connection lines (new: 4th object for differentiation) -->
+  <line x1="960.0" y1="300.0" x2="700.2" y2="630.0" stroke="#86868B" stroke-width="2" opacity="0.4"/>
+  <line x1="960.0" y1="300.0" x2="1219.8" y2="630.0" stroke="#86868B" stroke-width="2" opacity="0.4"/>
+  <line x1="700.2" y1="690.0" x2="1219.8" y2="690.0" stroke="#86868B" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Top node -->
   <circle cx="960.0" cy="240.0" r="60" fill="#0A84FF" opacity="0.3"/>
   <text x="960.0" y="250.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">1</text>
+  
+  <!-- Bottom left node -->
   <circle cx="700.2" cy="690.0" r="60" fill="#0A84FF" opacity="0.3"/>
   <text x="700.2" y="700.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">2</text>
+  
+  <!-- Bottom right node -->
   <circle cx="1219.8" cy="690.0" r="60" fill="#0A84FF" opacity="0.3"/>
   <text x="1219.8" y="700.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">3</text>
 </svg>
+
