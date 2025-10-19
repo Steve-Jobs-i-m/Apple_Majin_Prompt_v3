@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+        fill: #FFFFFF;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+  <rect x="310.0" y="465.0" width="300" height="150" rx="24" fill="#86868B" opacity="0.15"/>
+  <text x="460.0" y="555.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">Step 1</text>
+  <line x1="640.0" y1="540.0" x2="780.0" y2="540.0" stroke="#86868B" stroke-width="2"/>
+  <rect x="810.0" y="465.0" width="300" height="150" rx="24" fill="#86868B" opacity="0.15"/>
+  <text x="960.0" y="555.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">Step 2</text>
+  <line x1="1140.0" y1="540.0" x2="1280.0" y2="540.0" stroke="#86868B" stroke-width="2"/>
+  <rect x="1310.0" y="465.0" width="300" height="150" rx="24" fill="#86868B" opacity="0.15"/>
+  <text x="1460.0" y="555.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">Step 3</text>
+</svg>

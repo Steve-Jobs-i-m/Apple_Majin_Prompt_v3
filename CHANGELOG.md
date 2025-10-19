@@ -5,6 +5,82 @@ All notable changes to the Apple Majin Prompt v3 project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0] - 2025-10-19
+
+### Added - Minimal SVG Mockups (3-4 Objects Max)
+
+#### Complete SVG Mockup Regeneration
+- **Generated 32 minimal Apple-style SVG mockups** following strict design principles
+  - Maximum 3-4 visual objects per slide
+  - Average: 2.7 objects per slide (70% reduction)
+  - Generous whitespace: 12% horizontal / 15% vertical margins
+  - Large typography: 64-96pt titles, 32pt body
+  - Minimal color palette: 3 colors maximum (black, white, gray, blue accent)
+
+#### Updated `generate_svg_mockups.py`
+- **Completely rewrote SVG generation script** with minimal design focus
+  - New design tokens:
+    - `MARGIN_H`: 230px (12% of 1920px)
+    - `MARGIN_V`: 162px (15% of 1080px)
+    - `FONT_HERO`: 96pt
+    - `FONT_TITLE`: 64pt
+    - `FONT_BODY`: 32pt
+    - `FONT_CAPTION`: 24pt
+  
+- **Implemented 32 slide types** with object count constraints:
+  - 1 object: Title (001), Pie Diagram (010), Hero Image (014)
+  - 2 objects: KPI Display (006), Quote (015), Before/After (016), Stats Contrast (017), Section Divider (019), Content Text (020), Closing (032)
+  - 3 objects: Content (002), Image Text (003), Cards (005, 022, 023), Bar Chart (011), Icon Trio (012), Image Collage (013), Feature Slots (018), Process Steps (021), Progress Bar (024), Diagrams (025-027), Flow Chart (028), Step Up (029), FAQ (030)
+  - 4 objects: Bar Compare (004), Timeline (008), Table (009), Agenda (031)
+
+- **Added helper functions** for clean code:
+  - `create_text()`: Text element with size, weight, color, anchor
+  - `create_rect()`: Rectangle with fill, opacity, radius
+  - `create_line()`: Line with color and width
+
+#### Updated `svg_viewer.html`
+- **Enhanced SVG viewer** with modern UI:
+  - Displays all 32 slides in responsive grid
+  - Object count badges for each slide
+  - Individual slide selection dropdown
+  - Sticky navigation with backdrop blur
+  - Hover effects and smooth transitions
+  - Mobile-responsive layout
+  - Updated styling to match Apple aesthetic
+
+#### Documentation
+- **Created `img/svg_mockups/README.md`**:
+  - Complete slide type catalog with object counts
+  - Design tokens and specifications
+  - Usage instructions
+  - Technical specifications
+  
+- **Created `MINIMAL_SVG_MOCKUPS_COMPLETION_REPORT.md`**:
+  - Comprehensive project completion report
+  - Design principles and achievements
+  - Quality metrics (all ✅)
+  - Before/after comparisons
+  - File structure and usage guide
+
+#### Design Achievements
+- **Object reduction**: 5-10 objects → 2.7 objects (70% reduction)
+- **Whitespace increase**: 6%/7.5% margins → 12%/15% margins (100% increase)
+- **Typography enhancement**: 40-72pt → 64-96pt (33-60% increase)
+- **Color constraint**: Strictly limited to 3 colors per slide
+- **File size**: All SVGs under 1.2KB (lightweight and performant)
+
+#### Generated Files (32 SVG mockups)
+```
+img/svg_mockups/
+├── README.md
+├── apple_template_001_title.svg
+├── apple_template_002_content_two_column.svg
+├── ... (30 more files)
+└── apple_template_032_closing_slide.svg
+```
+
+---
+
 ## [3.2.2] - 2025-10-19
 
 ### Enhanced - Responsive Design Implementation

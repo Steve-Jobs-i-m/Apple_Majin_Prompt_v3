@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+        fill: #FFFFFF;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+  <line x1="430" y1="540.0" x2="1490" y2="540.0" stroke="#86868B" stroke-width="3"/>
+  <circle cx="430.0" cy="540.0" r="16" fill="#FFFFFF"/>
+  <text x="430.0" y="460.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">2022</text>
+  <circle cx="960.0" cy="540.0" r="16" fill="#FFFFFF"/>
+  <text x="960.0" y="460.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">2023</text>
+  <circle cx="1490.0" cy="540.0" r="16" fill="#FFFFFF"/>
+  <text x="1490.0" y="460.0" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">2024</text>
+</svg>

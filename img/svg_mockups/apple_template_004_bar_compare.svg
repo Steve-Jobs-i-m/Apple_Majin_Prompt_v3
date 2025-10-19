@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+        fill: #FFFFFF;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+  <text x="960.0" y="212" font-size="64" font-weight="600" fill="#FFFFFF" text-anchor="middle">Performance</text>
+  <rect x="430" y="400" width="1000" height="80" rx="24" fill="#0A84FF" opacity="0.9"/>
+  <text x="450" y="450" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="start">M4</text>
+  <rect x="430" y="520" width="700" height="80" rx="24" fill="#86868B" opacity="0.5"/>
+  <text x="450" y="570" font-size="32" font-weight="600" fill="#86868B" text-anchor="start">M3</text>
+  <rect x="430" y="640" width="500" height="80" rx="24" fill="#86868B" opacity="0.3"/>
+  <text x="450" y="690" font-size="32" font-weight="600" fill="#86868B" text-anchor="start">M1</text>
+</svg>

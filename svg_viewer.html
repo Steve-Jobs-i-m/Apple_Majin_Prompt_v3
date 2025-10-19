@@ -1,175 +1,352 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple SVG Mockups Gallery</title>
+    <title>Apple-style Minimal SVG Mockups (3-4 Objects Max)</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             background: #000;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #fff;
         }
-        h1 {
+        header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #86868B;
+            font-weight: 400;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            font-size: 14px;
+            color: #86868B;
+        }
+        .stats span {
+            display: inline-block;
+        }
+        .stats strong {
+            color: #0A84FF;
             font-weight: 600;
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 30px;
-            max-width: 1600px;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 40px;
+            max-width: 1800px;
             margin: 0 auto;
         }
         .slide {
-            background: #111;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            background: #1C1C1E;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .slide:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.7);
         }
         .slide h3 {
-            margin: 0 0 15px 0;
+            margin: 0 0 16px 0;
             font-size: 14px;
             font-weight: 500;
-            color: #888;
+            color: #86868B;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .slide .badge {
+            background: #0A84FF;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
         }
         .slide img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 12px;
             background: #000;
+            display: block;
         }
         .navigation {
             text-align: center;
-            margin: 40px 0;
+            margin: 0 0 50px 0;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .filter-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
         }
         select {
-            padding: 10px 20px;
-            background: #222;
+            padding: 12px 24px;
+            background: #2C2C2E;
             color: #fff;
-            border: 1px solid #444;
-            border-radius: 8px;
+            border: 1px solid #3A3A3C;
+            border-radius: 10px;
             font-size: 16px;
             cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        select:hover {
+            background: #3A3A3C;
+            border-color: #0A84FF;
+        }
+        select:focus {
+            outline: none;
+            border-color: #0A84FF;
+            box-shadow: 0 0 0 3px rgba(10,132,255,0.1);
+        }
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px 20px;
+            color: #86868B;
+            font-size: 14px;
+            border-top: 1px solid #2C2C2E;
+        }
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Apple-Inspired SVG Slide Mockups</h1>
+    <header>
+        <h1>🍎 Apple-style Minimal SVG Mockups</h1>
+        <p class="subtitle">3〜4オブジェクト以内のミニマルで洗練されたスライドデザイン</p>
+        <div class="stats">
+            <span>📊 <strong>32</strong> slides</span>
+            <span>🎨 <strong>3-4</strong> objects max</span>
+            <span>📏 <strong>12% / 15%</strong> margins</span>
+            <span>✨ <strong>Minimal</strong> design</span>
+        </div>
+    </header>
     
     <div class="navigation">
-        <label for="slideSelect">View Slide: </label>
-        <select id="slideSelect" onchange="showSlide()">
-            <option value="all">All Slides</option>
-            <option value="001">001 - Hero Title</option>
-            <option value="002">002 - CPU Spec</option>
-            <option value="003">003 - GPU Spec</option>
-            <option value="004">004 - Benchmark Bars</option>
-            <option value="005">005 - Benchmark Cards</option>
-            <option value="006">006 - Product Highlights</option>
-            <option value="007">007 - Battery</option>
-            <option value="008">008 - Pricing</option>
-            <option value="009">009 - Timeline</option>
-            <option value="010">010 - Split Table</option>
-            <option value="011">011 - Pie Chart</option>
-            <option value="012">012 - Bar Chart</option>
-            <option value="013">013 - Icon Trio</option>
-            <option value="014">014 - Image Collage</option>
-            <option value="015">015 - Hero Photo</option>
-            <option value="016">016 - Testimonial</option>
-            <option value="017">017 - Before/After</option>
-            <option value="018">018 - KPI Contrast</option>
-            <option value="019">019 - Feature Slots</option>
-            <option value="020">020 - Closing</option>
-        </select>
+        <div class="filter-group">
+            <label for="slideSelect">スライドを表示:</label>
+            <select id="slideSelect" onchange="showSlide()">
+                <option value="all">すべて表示 (32 slides)</option>
+                <option value="001">001 - Title</option>
+                <option value="002">002 - Content Two Column</option>
+                <option value="003">003 - Image Text</option>
+                <option value="004">004 - Bar Compare</option>
+                <option value="005">005 - Cards Grid</option>
+                <option value="006">006 - KPI Display</option>
+                <option value="007">007 - Pricing</option>
+                <option value="008">008 - Timeline</option>
+                <option value="009">009 - Table Two Column</option>
+                <option value="010">010 - Diagram Pie</option>
+                <option value="011">011 - Bar Chart Simple</option>
+                <option value="012">012 - Icon Trio</option>
+                <option value="013">013 - Image Collage</option>
+                <option value="014">014 - Hero Image</option>
+                <option value="015">015 - Quote Testimonial</option>
+                <option value="016">016 - Before After</option>
+                <option value="017">017 - Stats Contrast</option>
+                <option value="018">018 - Feature Slots</option>
+                <option value="019">019 - Section Divider</option>
+                <option value="020">020 - Content Text Focused</option>
+                <option value="021">021 - Process Steps</option>
+                <option value="022">022 - Header Cards</option>
+                <option value="023">023 - Bullet Cards</option>
+                <option value="024">024 - Progress Bar</option>
+                <option value="025">025 - Cycle Diagram</option>
+                <option value="026">026 - Triangle Diagram</option>
+                <option value="027">027 - Pyramid Diagram</option>
+                <option value="028">028 - Flow Chart</option>
+                <option value="029">029 - Step Up Diagram</option>
+                <option value="030">030 - FAQ Slide</option>
+                <option value="031">031 - Agenda Slide</option>
+                <option value="032">032 - Closing Slide</option>
+            </select>
+        </div>
     </div>
     
     <div class="gallery" id="gallery">
-        <!-- Slides 1-6 -->
         <div class="slide" data-slide="001">
-            <h3>001 - Hero Title</h3>
-            <img src="img/svg_mockups/apple_template_001_hero_title.svg" alt="Hero Title">
+            <h3><span>001 - Title</span><span class="badge">1 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_001_title.svg" alt="Title Slide">
         </div>
         <div class="slide" data-slide="002">
-            <h3>002 - CPU Spec</h3>
-            <img src="img/svg_mockups/apple_template_002_cpu_spec.svg" alt="CPU Spec">
+            <h3><span>002 - Content Two Column</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_002_content_two_column.svg" alt="Content Two Column">
         </div>
         <div class="slide" data-slide="003">
-            <h3>003 - GPU Spec</h3>
-            <img src="img/svg_mockups/apple_template_003_gpu_spec.svg" alt="GPU Spec">
+            <h3><span>003 - Image Text</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_003_image_text.svg" alt="Image Text">
         </div>
         <div class="slide" data-slide="004">
-            <h3>004 - Benchmark Bars</h3>
-            <img src="img/svg_mockups/apple_template_004_benchmark_bars.svg" alt="Benchmark Bars">
+            <h3><span>004 - Bar Compare</span><span class="badge">4 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_004_bar_compare.svg" alt="Bar Compare">
         </div>
         <div class="slide" data-slide="005">
-            <h3>005 - Benchmark Cards</h3>
-            <img src="img/svg_mockups/apple_template_005_benchmark_cards.svg" alt="Benchmark Cards">
+            <h3><span>005 - Cards Grid</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_005_cards_grid.svg" alt="Cards Grid">
         </div>
         <div class="slide" data-slide="006">
-            <h3>006 - Product Highlights</h3>
-            <img src="img/svg_mockups/apple_template_006_product_highlights.svg" alt="Product Highlights">
+            <h3><span>006 - KPI Display</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_006_kpi_display.svg" alt="KPI Display">
         </div>
         <div class="slide" data-slide="007">
-            <h3>007 - Battery</h3>
-            <img src="img/svg_mockups/apple_template_007_battery.svg" alt="Battery">
+            <h3><span>007 - Pricing</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_007_pricing.svg" alt="Pricing">
         </div>
         <div class="slide" data-slide="008">
-            <h3>008 - Pricing</h3>
-            <img src="img/svg_mockups/apple_template_008_pricing.svg" alt="Pricing">
+            <h3><span>008 - Timeline</span><span class="badge">4 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_008_timeline.svg" alt="Timeline">
         </div>
         <div class="slide" data-slide="009">
-            <h3>009 - Timeline</h3>
-            <img src="img/svg_mockups/apple_template_009_timeline.svg" alt="Timeline">
+            <h3><span>009 - Table Two Column</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_009_table_two_column.svg" alt="Table Two Column">
         </div>
         <div class="slide" data-slide="010">
-            <h3>010 - Split Table</h3>
-            <img src="img/svg_mockups/apple_template_010_split_table.svg" alt="Split Table">
+            <h3><span>010 - Diagram Pie</span><span class="badge">1 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_010_diagram_pie.svg" alt="Diagram Pie">
         </div>
         <div class="slide" data-slide="011">
-            <h3>011 - Pie Chart</h3>
-            <img src="img/svg_mockups/apple_template_011_pie_chart.svg" alt="Pie Chart">
+            <h3><span>011 - Bar Chart Simple</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_011_bar_chart_simple.svg" alt="Bar Chart Simple">
         </div>
         <div class="slide" data-slide="012">
-            <h3>012 - Bar Chart</h3>
-            <img src="img/svg_mockups/apple_template_012_bar_chart.svg" alt="Bar Chart">
+            <h3><span>012 - Icon Trio</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_012_icon_trio.svg" alt="Icon Trio">
         </div>
         <div class="slide" data-slide="013">
-            <h3>013 - Icon Trio</h3>
-            <img src="img/svg_mockups/apple_template_013_icon_trio.svg" alt="Icon Trio">
+            <h3><span>013 - Image Collage</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_013_image_collage.svg" alt="Image Collage">
         </div>
         <div class="slide" data-slide="014">
-            <h3>014 - Image Collage</h3>
-            <img src="img/svg_mockups/apple_template_014_image_collage.svg" alt="Image Collage">
+            <h3><span>014 - Hero Image</span><span class="badge">1 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_014_hero_image.svg" alt="Hero Image">
         </div>
         <div class="slide" data-slide="015">
-            <h3>015 - Hero Photo</h3>
-            <img src="img/svg_mockups/apple_template_015_hero_photo.svg" alt="Hero Photo">
+            <h3><span>015 - Quote Testimonial</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_015_quote_testimonial.svg" alt="Quote Testimonial">
         </div>
         <div class="slide" data-slide="016">
-            <h3>016 - Testimonial</h3>
-            <img src="img/svg_mockups/apple_template_016_testimonial.svg" alt="Testimonial">
+            <h3><span>016 - Before After</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_016_before_after.svg" alt="Before After">
         </div>
         <div class="slide" data-slide="017">
-            <h3>017 - Before/After</h3>
-            <img src="img/svg_mockups/apple_template_017_before_after.svg" alt="Before/After">
+            <h3><span>017 - Stats Contrast</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_017_stats_contrast.svg" alt="Stats Contrast">
         </div>
         <div class="slide" data-slide="018">
-            <h3>018 - KPI Contrast</h3>
-            <img src="img/svg_mockups/apple_template_018_kpi_contrast.svg" alt="KPI Contrast">
+            <h3><span>018 - Feature Slots</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_018_feature_slots.svg" alt="Feature Slots">
         </div>
         <div class="slide" data-slide="019">
-            <h3>019 - Feature Slots</h3>
-            <img src="img/svg_mockups/apple_template_019_feature_slots.svg" alt="Feature Slots">
+            <h3><span>019 - Section Divider</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_019_section_divider.svg" alt="Section Divider">
         </div>
         <div class="slide" data-slide="020">
-            <h3>020 - Closing</h3>
-            <img src="img/svg_mockups/apple_template_020_closing.svg" alt="Closing">
+            <h3><span>020 - Content Text Focused</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_020_content_text_focused.svg" alt="Content Text Focused">
+        </div>
+        <div class="slide" data-slide="021">
+            <h3><span>021 - Process Steps</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_021_process_steps.svg" alt="Process Steps">
+        </div>
+        <div class="slide" data-slide="022">
+            <h3><span>022 - Header Cards</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_022_header_cards.svg" alt="Header Cards">
+        </div>
+        <div class="slide" data-slide="023">
+            <h3><span>023 - Bullet Cards</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_023_bullet_cards.svg" alt="Bullet Cards">
+        </div>
+        <div class="slide" data-slide="024">
+            <h3><span>024 - Progress Bar</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_024_progress_bar.svg" alt="Progress Bar">
+        </div>
+        <div class="slide" data-slide="025">
+            <h3><span>025 - Cycle Diagram</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_025_cycle_diagram.svg" alt="Cycle Diagram">
+        </div>
+        <div class="slide" data-slide="026">
+            <h3><span>026 - Triangle Diagram</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_026_triangle_diagram.svg" alt="Triangle Diagram">
+        </div>
+        <div class="slide" data-slide="027">
+            <h3><span>027 - Pyramid Diagram</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_027_pyramid_diagram.svg" alt="Pyramid Diagram">
+        </div>
+        <div class="slide" data-slide="028">
+            <h3><span>028 - Flow Chart</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_028_flow_chart.svg" alt="Flow Chart">
+        </div>
+        <div class="slide" data-slide="029">
+            <h3><span>029 - Step Up Diagram</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_029_step_up_diagram.svg" alt="Step Up Diagram">
+        </div>
+        <div class="slide" data-slide="030">
+            <h3><span>030 - FAQ Slide</span><span class="badge">3 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_030_faq_slide.svg" alt="FAQ Slide">
+        </div>
+        <div class="slide" data-slide="031">
+            <h3><span>031 - Agenda Slide</span><span class="badge">4 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_031_agenda_slide.svg" alt="Agenda Slide">
+        </div>
+        <div class="slide" data-slide="032">
+            <h3><span>032 - Closing Slide</span><span class="badge">2 obj</span></h3>
+            <img src="img/svg_mockups/apple_template_032_closing_slide.svg" alt="Closing Slide">
         </div>
     </div>
+
+    <footer>
+        <p><strong>Apple-style Minimal Design Principles</strong></p>
+        <p>各スライドは3〜4個のビジュアルオブジェクトに制限し、余白を最大化。<br>
+        タイポグラフィは64-96ptの大きなサイズで、カラーは最大3色まで。<br>
+        安全余白は水平12%・垂直15%を確保し、Appleらしい洗練されたデザインを実現。</p>
+        <p style="margin-top: 20px; color: #3A3A3C;">
+            Generated by generate_svg_mockups.py • 2025
+        </p>
+    </footer>
 
     <script>
         function showSlide() {

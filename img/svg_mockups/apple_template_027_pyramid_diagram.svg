@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+        fill: #FFFFFF;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+  <rect x="460.0" y="818" width="1000" height="140" rx="24" fill="#0A84FF" opacity="0.3"/>
+  <text x="960.0" y="898" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">Level 3</text>
+  <rect x="610.0" y="638" width="700" height="140" rx="24" fill="#0A84FF" opacity="0.5"/>
+  <text x="960.0" y="718" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">Level 2</text>
+  <rect x="760.0" y="458" width="400" height="140" rx="24" fill="#0A84FF" opacity="0.7"/>
+  <text x="960.0" y="538" font-size="32" font-weight="600" fill="#FFFFFF" text-anchor="middle">Level 1</text>
+</svg>

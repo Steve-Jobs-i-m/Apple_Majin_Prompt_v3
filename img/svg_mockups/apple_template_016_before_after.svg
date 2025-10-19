@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+        fill: #FFFFFF;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+  <rect x="0" y="0" width="960.0" height="1080" rx="0" fill="#333333" opacity="1"/>
+  <text x="480.0" y="540.0" font-size="64" font-weight="600" fill="#CCCCCC" text-anchor="middle">Before</text>
+  <rect x="960.0" y="0" width="960.0" height="1080" rx="0" fill="#000000" opacity="1"/>
+  <text x="1440.0" y="540.0" font-size="64" font-weight="600" fill="#FFFFFF" text-anchor="middle">After</text>
+</svg>
