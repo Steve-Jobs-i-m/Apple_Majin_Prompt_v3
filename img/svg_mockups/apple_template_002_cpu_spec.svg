@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        fill: #FFFFFF;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+
+  <g transform="translate(200, 340.0)">
+    <text font-size="72" font-weight="600">M4 Chip</text>
+    <rect x="0" y="100" width="300" height="4" fill="#0FD6FF"/>
+    <text y="180" font-size="32" font-weight="400" fill="#A1A1AA">
+      <tspan x="0" dy="0">• 10-core CPU</tspan>
+      <tspan x="0" dy="50">• 4 performance cores</tspan>
+      <tspan x="0" dy="50">• 6 efficiency cores</tspan>
+    </text>
+  </g>
+  <g transform="translate(1420, 290.0)">
+    <rect x="0" y="0" width="400" height="400" rx="48" fill="#121212" stroke="#0FD6FF" stroke-width="2"/>
+    <rect x="80" y="80" width="240" height="240" rx="32" fill="#0FD6FF" opacity="0.2"/>
+    <text x="200" y="220" text-anchor="middle" font-size="96" font-weight="700">M4</text>
+  </g>
+</svg>

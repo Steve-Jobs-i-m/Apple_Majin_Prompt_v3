@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" 
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap');
+      text {
+        font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        fill: #FFFFFF;
+      }
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="#000000"/>
+
+  <!-- Large left frame -->
+  <rect x="200" y="200" width="800" height="680" rx="24" fill="#121212"/>
+  <defs>
+    <linearGradient id="imgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A84FF;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0FD6FF;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  <rect x="200" y="200" width="800" height="680" rx="24" fill="url(#imgGrad1)"/>
+  
+  <!-- Top right frame -->
+  <rect x="1080" y="200" width="640" height="320" rx="24" fill="#121212"/>
+  <rect x="1080" y="200" width="640" height="320" rx="24" fill="url(#imgGrad1)"/>
+  
+  <!-- Bottom right frame -->
+  <rect x="1080" y="560" width="640" height="320" rx="24" fill="#121212"/>
+  <rect x="1080" y="560" width="640" height="320" rx="24" fill="url(#imgGrad1)"/>
+</svg>
