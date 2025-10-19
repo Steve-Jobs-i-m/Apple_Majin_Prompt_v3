@@ -47,8 +47,8 @@ const CONFIG = {
       titleUnderline: {
         left: 60,          // 25→60: Align with title
         top: 120,          // 80→120: More space below title
-        width: 200,        // 260→200: Shorter underline (subtle)
-        height: 3          // 4→3: Thinner line (minimal)
+        width: 160,        // 260→160: Even shorter underline (minimal)
+        height: 2          // 4→2: Very thin line (Apple-style)
       },
       subhead: {
         left: 60,          // 25→60: Align with title
@@ -57,10 +57,10 @@ const CONFIG = {
         height: 50         // 40→50: Taller for breathing room
       },
       body: {
-        left: 60,          // 25→60: Larger left margin
-        top: 200,          // 132→200: Significantly more top space
-        width: 840,        // 910→840: Narrower content area
-        height: 280        // 330→280: Less tall (implies less content)
+        left: 70,          // 60→70: Even larger left margin
+        top: 210,          // 200→210: More top space
+        width: 820,        // 840→820: Even narrower for breathing room
+        height: 260        // 280→260: Less tall (minimal content)
       },
       twoColLeft: {
         left: 60,          // 25→60: Larger margin
@@ -593,18 +593,18 @@ const CONFIG = {
   FONTS: {
     family: 'Inter, SF Pro Display, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Noto Sans JP, Helvetica Neue, Arial, sans-serif',
     sizes: {
-      // Adjusted Typography Scale: Practical sizes for readable slides
-      title: 44,           // Title slide title (readable but impactful)
-      date: 14,            // Date text (subtle)
-      sectionTitle: 36,    // Section title (clear hierarchy)
-      contentTitle: 28,    // Content title (balanced)
-      subhead: 16,         // Subhead (clear but not overwhelming)
-      body: 18,            // Body text (comfortable reading)
+      // Apple-style Typography: Bold and spacious
+      title: 56,           // Title slide title (bold impact)
+      date: 16,            // Date text (subtle)
+      sectionTitle: 48,    // Section title (clear hierarchy)
+      contentTitle: 36,    // Content title (balanced)
+      subhead: 18,         // Subhead (clear but not overwhelming)
+      body: 20,            // Body text (comfortable reading)
       footer: 11,          // Footer (minimal)
-      chip: 13,            // Chip labels
-      laneTitle: 16,       // Lane titles
-      small: 12,           // Small text
-      processStep: 16,     // Process steps
+      chip: 14,            // Chip labels
+      laneTitle: 18,       // Lane titles
+      small: 13,           // Small text
+      processStep: 18,     // Process steps
       axis: 14,            // Axis labels
       ghostNum: 200        // Ghost numbers (massive impact) - unchanged
     },
@@ -653,26 +653,26 @@ const CONFIG = {
     // Version
     version: '3.3.0',
     
-    // Typography Scale (Adjusted for practical use)
-    // Based on readable sizes that fit within slide bounds
+    // Typography Scale (Apple-style)
+    // Based on bold hierarchy with generous spacing
     typography: {
-      hero: 44,           // Hero/Large Title - impactful but readable
-      title: 36,          // Main titles - clear hierarchy
-      subtitle: 18,       // Subtitles/body - comfortable reading
-      caption: 14,        // Captions/labels - readable size
+      hero: 56,           // Hero/Large Title - bold impact
+      title: 48,          // Main titles - clear hierarchy
+      subtitle: 20,       // Subtitles/body - comfortable reading
+      caption: 16,        // Captions/labels - readable size
       
       // Legacy mapping (for backwards compatibility)
-      largeTitle: 44,     
-      title1: 36,         
-      title2: 28,         
-      title3: 18,         // Aligned to subtitle
-      headline: 16,       // Aligned to subhead
-      body: 18,           // Standard body text
-      callout: 16,        // Call-out text
-      subhead: 16,        // Subhead text
-      footnote: 12,       
-      caption1: 14,       
-      caption2: 11        
+      largeTitle: 56,     
+      title1: 48,         
+      title2: 36,         
+      title3: 20,         // Aligned to subtitle
+      headline: 18,       // Aligned to subhead
+      body: 20,           // Standard body text (slightly larger)
+      callout: 18,        // Call-out text
+      subhead: 18,        // Subhead text
+      footnote: 13,       
+      caption1: 16,       
+      caption2: 13        
     },
     
     // Spacing Scale (8pt grid system) - DOUBLED for breathing room
@@ -764,15 +764,15 @@ const CONFIG = {
       slow: 500
     },
     
-    // Content Limits - v3.3.0 STRICT enforcement for minimalism
+    // Content Limits - Apple-style STRICT enforcement
     limits: {
-      maxObjectsPerSlide: 4,        // [v3.3.0] Hard limit: 1-4 objects maximum
-      maxObjectsPerSlideStrict: 3,  // [v3.3.0] Recommended: 3 objects for pure minimalism
-      maxTextLength: 100,           // [v3.3.0] 150→100: Even shorter, punchier text
-      maxBulletPoints: 3,           // [v3.3.0] 6→3: Fewer bullets, more impact
-      maxLinesInCard: 2,            // [v3.3.0] Maximum text lines per card (reduced)
-      maxCharsPerLine: 35,          // [v3.3.0] Characters per line for readability
-      autoSplitThreshold: 120       // [v3.3.0] Auto-split slides when text exceeds this
+      maxObjectsPerSlide: 3,        // Hard limit: 1-3 objects maximum (Apple-style)
+      maxObjectsPerSlideStrict: 3,  // Recommended: 3 objects for pure minimalism
+      maxTextLength: 80,            // Even shorter, punchier text (Apple-style)
+      maxBulletPoints: 3,           // Fewer bullets, more impact
+      maxLinesInCard: 2,            // Maximum text lines per card
+      maxCharsPerLine: 40,          // Characters per line for readability
+      autoSplitThreshold: 100       // Auto-split slides when text exceeds this
     },
     
     // Minimal Design Rules v3.3.0
@@ -789,7 +789,7 @@ const CONFIG = {
       // Ultra Minimal Mode Settings
       hideContentTitles: false,     // Hide titles in content slides
       hideLogoInContent: false,     // Hide header logos in content slides
-      hideTitleUnderline: true,     // [v3.3.0] Hide decorative underlines (minimal)
+      hideTitleUnderline: false,    // Show very thin underlines (Apple-style)
       ultraMinimalMode: false,      // MASTER SWITCH: Hide ALL titles, logos, underlines
       
       // Fine-grained control per slide type
@@ -807,15 +807,15 @@ const CONFIG = {
       accentColorUsage: 'highlight' // One accent color for emphasis only
     },
     
-    // Typography Enhancement (Adjusted)
+    // Typography Enhancement (Apple-style)
     typographyEnhancement: {
       preferBoldOverSize: false,    // Use size hierarchy, not bold
-      minHeadingSize: 24,           // Minimum size for any heading (practical)
-      maxTextLinesBeforeSplit: 6,   // Split slide if text exceeds 6 lines
-      lineHeightMultiplier: 1.2,    // Consistent line height
-      letterSpacingTight: -0.5,     // For large titles (44pt, 36pt)
-      letterSpacingNormal: 0,       // For body text (18pt)
-      letterSpacingWide: 0.5        // For small caps/labels (14pt)
+      minHeadingSize: 28,           // Minimum size for any heading (Apple-style)
+      maxTextLinesBeforeSplit: 5,   // Split slide if text exceeds 5 lines
+      lineHeightMultiplier: 1.3,    // More generous line height (Apple-style)
+      letterSpacingTight: -0.5,     // For large titles (56pt, 48pt)
+      letterSpacingNormal: 0,       // For body text (20pt)
+      letterSpacingWide: 0.5        // For small caps/labels (16pt)
     },
     
     // White Space Ratios v3.3.0 (Content vs Empty Space)
