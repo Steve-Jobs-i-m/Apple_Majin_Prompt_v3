@@ -851,6 +851,10 @@
                 <label for="showDateColumn">タイトルスライドに日付を表示</label>
               </div>
               <div class="checkbox-wrapper" style="border-top: 1px solid #e2e7ea; margin-top: 15px; padding-top: 15px;">
+                <input type="checkbox" id="appleStyleTitle">
+                <label for="appleStyleTitle">🍎 Apple-styleタイトルスライド（中央配置、ロゴ・日付なし）</label>
+              </div>
+              <div class="checkbox-wrapper" style="border-top: 1px solid #e2e7ea; margin-top: 15px; padding-top: 15px;">
                 <input type="checkbox" id="enableGradient">
                 <label for="enableGradient">グラデーションを適用</label>
               </div>
@@ -1047,6 +1051,7 @@
       showTitleUnderline: $('showTitleUnderline').checked,
       showBottomBar: $('showBottomBar').checked,
       showDateColumn: $('showDateColumn').checked,
+      appleStyleTitle: $('appleStyleTitle').checked,
       enableGradient: $('enableGradient').checked,
       gradientStart: $('gradientStartText').value,
       gradientEnd: $('gradientEndText').value,
@@ -1195,6 +1200,9 @@
       if (loadedSettings.showDateColumn !== undefined) {
         $('showDateColumn').checked = loadedSettings.showDateColumn;
       }
+      if (loadedSettings.appleStyleTitle !== undefined) {
+        $('appleStyleTitle').checked = loadedSettings.appleStyleTitle;
+      }
       if (loadedSettings.enableGradient !== undefined) {
         $('enableGradient').checked = loadedSettings.enableGradient;
       }
@@ -1267,6 +1275,7 @@
       showTitleUnderline: $('showTitleUnderline').checked,
       showBottomBar: $('showBottomBar').checked,
       showDateColumn: $('showDateColumn').checked,
+      appleStyleTitle: $('appleStyleTitle').checked,
       enableGradient: $('enableGradient').checked,
       gradientStart: $('gradientStartText').value,
       gradientEnd: $('gradientEndText').value,
@@ -1297,6 +1306,7 @@
     $('showTitleUnderline').checked = settings.showTitleUnderline !== false;
     $('showBottomBar').checked = settings.showBottomBar !== false;
     $('showDateColumn').checked = settings.showDateColumn !== false;
+    $('appleStyleTitle').checked = settings.appleStyleTitle || false;
     $('enableGradient').checked = settings.enableGradient || false;
     $('gradientStart').value = settings.gradientStart || '#4285F4';
     $('gradientStartText').value = settings.gradientStart || '#4285F4';
