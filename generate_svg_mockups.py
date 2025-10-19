@@ -267,9 +267,16 @@ def create_hero_image():
     return svg
 
 def create_quote_testimonial():
-    """015: Quote - 2 objects (quote + attribution)"""
+    """015: Quote - 3 objects (vertical bar + quote + attribution)
+    Markdown-style blockquote with thin gray vertical bar on left"""
     svg = create_svg_header()
-    svg += create_text(MARGIN_H + 200, CANVAS_HEIGHT/2 - 50, '"Revolutionary design"', FONT_TITLE, 600)
+    # Vertical blockquote bar (Markdown-style)
+    bar_x = MARGIN_H + 150
+    bar_y = CANVAS_HEIGHT/2 - 110
+    svg += create_rect(bar_x, bar_y, 4, 210, TEXT_GRAY, 0.4, 2)
+    # Quote text (without quotation marks for cleaner look)
+    svg += create_text(MARGIN_H + 200, CANVAS_HEIGHT/2 - 50, "Revolutionary design", FONT_TITLE, 600)
+    # Attribution
     svg += create_text(MARGIN_H + 200, CANVAS_HEIGHT/2 + 80, "— Tech Review", FONT_BODY, 400, TEXT_GRAY)
     svg += create_svg_footer()
     return svg
@@ -395,7 +402,8 @@ def create_cycle_diagram():
     return svg
 
 def create_triangle_diagram():
-    """026: Triangle diagram - 3 objects (3 nodes in triangle)"""
+    """026: Triangle diagram - 4 objects (3 nodes + connection lines)
+    Differentiated from cycle/pyramid with connecting lines between nodes"""
     svg = create_svg_header()
     cx, cy = CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2
     h = 300
@@ -404,6 +412,13 @@ def create_triangle_diagram():
         (cx - h * 0.866, cy + h/2),      # Bottom left
         (cx + h * 0.866, cy + h/2)       # Bottom right
     ]
+    
+    # Connection lines (4th visual element for differentiation)
+    svg += f'  <line x1="{points[0][0]}" y1="{points[0][1] + 60}" x2="{points[1][0]}" y2="{points[1][1] - 60}" stroke="{TEXT_GRAY}" stroke-width="2" opacity="0.4"/>\n'
+    svg += f'  <line x1="{points[0][0]}" y1="{points[0][1] + 60}" x2="{points[2][0]}" y2="{points[2][1] - 60}" stroke="{TEXT_GRAY}" stroke-width="2" opacity="0.4"/>\n'
+    svg += f'  <line x1="{points[1][0]}" y1="{points[1][1]}" x2="{points[2][0]}" y2="{points[2][1]}" stroke="{TEXT_GRAY}" stroke-width="2" opacity="0.4"/>\n'
+    
+    # Nodes
     for i, (x, y) in enumerate(points):
         svg += f'  <circle cx="{x}" cy="{y}" r="60" fill="{ACCENT_BLUE}" opacity="0.3"/>\n'
         svg += create_text(x, y + 10, f"{i+1}", FONT_BODY, 600, TEXT_WHITE, "middle")

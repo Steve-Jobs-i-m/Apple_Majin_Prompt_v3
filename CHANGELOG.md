@@ -51,6 +51,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Version history with v3.3.0 entry
   - Repository structure updates
 
+### Changed - SVG Mockup Design Refinements
+- **015 Quote Testimonial**: Added Markdown-style vertical blockquote bar (2→3 objects)
+  - Thin gray vertical bar (4px width, 2px radius)
+  - Cleaner quote text without quotation marks
+  - Better visual hierarchy with bar separator
+  
+- **026 Triangle Diagram**: Added connection lines for differentiation (3→4 objects)
+  - Gray connection lines between three nodes
+  - Distinguishes from similar cycle/pyramid diagrams
+  - Maintains minimal aesthetic with subtle line opacity
+
 ### Added - Minimal SVG Mockups (3-4 Objects Max)
 
 #### Complete SVG Mockup Regeneration
