@@ -1298,44 +1298,8 @@ function createAgendaSlide(slide, data, layout, pageNum, settings) {
     }
   }
 
-  const n = Math.max(1, items.length);
-
-  const topPadding = layout.pxToPt(30);
-  const bottomPadding = layout.pxToPt(10);
-  const drawableHeight = area.height - topPadding - bottomPadding;
-  const gapY = drawableHeight / Math.max(1, n - 1);
-  const cx = area.left + layout.pxToPt(44);
-  const top0 = area.top + topPadding;
-
-
-  for (let i = 0; i < n; i++) {
-    const cy = top0 + gapY * i;
-    const sz = layout.pxToPt(28);
-    
-    // 番号ボックス
-    const numBox = slide.insertShape(SlidesApp.ShapeType.RECTANGLE, cx - sz/2, cy - sz/2, sz, sz);
-    numBox.getFill().setSolidFill(settings.primaryColor);
-    numBox.getBorder().setTransparent();
-    
-    const num = numBox.getText(); 
-    num.setText(String(i + 1));
-    applyTextStyle(num, { 
-      size: 12, 
-      bold: true, 
-      color: CONFIG.COLORS.background_white, 
-      align: SlidesApp.ParagraphAlignment.CENTER 
-    });
-
-    // テキストボックス
-    let cleanText = String(items[i] || '');
-    cleanText = cleanText.replace(/^\s*\d+[\.\s]*/, '');
-
-    const txt = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, cx + layout.pxToPt(28), cy - layout.pxToPt(16), area.width - layout.pxToPt(70), layout.pxToPt(32));
-    setStyledText(txt, cleanText, { size: CONFIG.FONTS.sizes.processStep });
-    try { 
-      txt.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE); 
-    } catch(e){}
-  }
+  // 番号なしの改行箇条書きとして表示
+  drawNumberedItems(slide, layout, area, items, settings);
 
   drawBottomBarAndFooter(slide, layout, pageNum, settings);
 }

@@ -300,34 +300,45 @@ function drawNumberedItems(slide, layout, area, items, settings) {
   // アジェンダ用の座布団を作成
   createContentCushion(slide, area, settings, layout);
   
-  const n = Math.max(1, items.length);
-  const topPadding = layout.pxToPt(30);
-  const bottomPadding = layout.pxToPt(10);
-  const drawableHeight = area.height - topPadding - bottomPadding;
-  const gapY = drawableHeight / Math.max(1, n - 1);
-  const cx = area.left + layout.pxToPt(44);
-  const top0 = area.top + topPadding;
-
-  const line = slide.insertShape(SlidesApp.ShapeType.RECTANGLE, cx - layout.pxToPt(1), top0 + layout.pxToPt(6), layout.pxToPt(2), gapY * (n - 1));
-  line.getFill().setSolidFill(CONFIG.COLORS.faint_gray);
-  line.getBorder().setTransparent();
-
-  for (let i = 0; i < n; i++) {
-    const cy = top0 + gapY * i;
-    const sz = layout.pxToPt(28);
-    const numBox = slide.insertShape(SlidesApp.ShapeType.RECTANGLE, cx - sz/2, cy - sz/2, sz, sz);
-    numBox.getFill().setSolidFill(settings.primaryColor);
-    numBox.getBorder().setTransparent();
-    const num = numBox.getText(); num.setText(String(i + 1));
-    applyTextStyle(num, { size: 12, bold: true, color: CONFIG.COLORS.background_white, align: SlidesApp.ParagraphAlignment.CENTER });
-
-    // 元の箇条書きテキストから先頭の数字を除去
-    let cleanText = String(items[i] || '');
+  // 番号なしの改行箇条書きとして表示
+  const padding = layout.pxToPt(30); // パディング
+  const textRect = {
+    left: area.left + padding,
+    top: area.top + padding,
+    width: area.width - (padding * 2),
+    height: area.height - (padding * 2)
+  };
+  
+  // 改行で結合（中黒なし、番号なし）
+  const cleanItems = items.map(item => {
+    let cleanText = String(item || '');
+    // 先頭の数字を除去
     cleanText = cleanText.replace(/^\s*\d+[\.\s]*/, '');
-
-    const txt = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, cx + layout.pxToPt(28), cy - layout.pxToPt(16), area.width - layout.pxToPt(70), layout.pxToPt(32));
-    setStyledText(txt, cleanText, { size: CONFIG.FONTS.sizes.processStep });
-    try { txt.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE); } catch(e){}
+    return cleanText;
+  });
+  
+  const bodyShape = slide.insertShape(
+    SlidesApp.ShapeType.TEXT_BOX, 
+    textRect.left, 
+    textRect.top, 
+    textRect.width, 
+    textRect.height
+  );
+  
+  // 改行で結合（中黒や番号を追加しない）
+  const combinedText = cleanItems.join('\n\n');
+  setStyledText(bodyShape, combinedText, { 
+    size: CONFIG.FONTS.sizes.body,
+    align: SlidesApp.ParagraphAlignment.START
+  });
+  
+  // 行間を調整
+  try {
+    bodyShape.getText().getParagraphs().forEach(p => {
+      p.getRange().getParagraphStyle().setLineSpacing(130).setSpaceAbove(8).setSpaceBelow(8);
+    });
+  } catch (e) {
+    Logger.log(`Paragraph spacing error: ${e.message}`);
   }
 }
 
