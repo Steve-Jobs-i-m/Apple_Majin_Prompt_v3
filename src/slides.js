@@ -253,18 +253,35 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
       
       createContentCushion(slide, bodyRect, settings, layout);
       
+      // テキストボックスを座布団の内側に配置（パディングを追加）
+      const padding = layout.pxToPt(20); // 20pxのパディング
+      const textRect = {
+        left: bodyRect.left + padding,
+        top: bodyRect.top + padding,
+        width: bodyRect.width - (padding * 2),
+        height: bodyRect.height - (padding * 2)
+      };
+      const bodyShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textRect.left, textRect.top, textRect.width, textRect.height);
+      
       if (isAgenda) {
-        drawNumberedItems(slide, layout, bodyRect, points, settings);
+        // アジェンダの場合は改行箇条書き（中黒なし）
+        const cleanItems = points.map(item => {
+          let cleanText = String(item || '');
+          cleanText = cleanText.replace(/^\s*\d+[\.\s]*/, '');
+          return cleanText;
+        });
+        const combinedText = cleanItems.join('\n\n');
+        setStyledText(bodyShape, combinedText, { 
+          size: CONFIG.FONTS.sizes.body,
+          align: SlidesApp.ParagraphAlignment.START
+        });
+        try {
+          bodyShape.getText().getParagraphs().forEach(p => {
+            p.getRange().getParagraphStyle().setLineSpacing(130).setSpaceAbove(8).setSpaceBelow(8);
+          });
+        } catch (e) {}
       } else {
-        // テキストボックスを座布団の内側に配置（パディングを追加）
-        const padding = layout.pxToPt(20); // 20pxのパディング
-        const textRect = {
-          left: bodyRect.left + padding,
-          top: bodyRect.top + padding,
-          width: bodyRect.width - (padding * 2),
-          height: bodyRect.height - (padding * 2)
-        };
-        const bodyShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textRect.left, textRect.top, textRect.width, textRect.height);
+        // 通常のコンテンツは中黒付き箇条書き
         setBulletsWithInlineStyles(bodyShape, points);
       }
     }
@@ -1299,7 +1316,7 @@ function createAgendaSlide(slide, data, layout, pageNum, settings) {
   }
 
   // 番号なしの改行箇条書きとして表示
-  drawNumberedItems(slide, layout, area, items, settings);
+  drawAgendaItems(slide, layout, area, items, settings);
 
   drawBottomBarAndFooter(slide, layout, pageNum, settings);
 }

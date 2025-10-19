@@ -296,7 +296,15 @@ function drawArrowBetweenRects(slide, a, b, arrowH, arrowGap, settings) {
 }
 
 
-function drawNumberedItems(slide, layout, area, items, settings) {
+/**
+ * アジェンダスライド用の改行箇条書きを描画（番号なし、中黒なし）
+ * @param {Slide} slide - スライドオブジェクト
+ * @param {Object} layout - レイアウトマネージャー
+ * @param {Object} area - 描画エリア
+ * @param {Array} items - アジェンダ項目の配列
+ * @param {Object} settings - ユーザー設定
+ */
+function drawAgendaItems(slide, layout, area, items, settings) {
   // アジェンダ用の座布団を作成
   createContentCushion(slide, area, settings, layout);
   
@@ -340,5 +348,10 @@ function drawNumberedItems(slide, layout, area, items, settings) {
   } catch (e) {
     Logger.log(`Paragraph spacing error: ${e.message}`);
   }
+}
+
+// 後方互換性のためのエイリアス
+function drawNumberedItems(slide, layout, area, items, settings) {
+  drawAgendaItems(slide, layout, area, items, settings);
 }
 
