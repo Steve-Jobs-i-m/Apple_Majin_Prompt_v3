@@ -12,6 +12,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="JSONデータからGoogleスライドを自動生成するWebアプリケーション">
+  <meta name="theme-color" content="#ffba00">
   <title>Google Slide Generator</title>
   <base target="_top">
   <style>
@@ -57,10 +60,13 @@
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .editor-section:hover, .settings-section:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-      border-color: #c2e7ff;
+    /* デスクトップのみホバー効果を適用 */
+    @media (hover: hover) and (pointer: fine) {
+      .editor-section:hover, .settings-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        border-color: #c2e7ff;
+      }
     }
     .editor-section { padding: 0; }
     .settings-section { padding: 0; }
@@ -143,8 +149,18 @@
       cursor: pointer;
       transition: border-color 0.2s ease;
     }
-    .color-picker-wrapper input[type="color"]:hover {
-      border-color: #ffba00;
+    /* デスクトップのみホバー効果 */
+    @media (hover: hover) and (pointer: fine) {
+      .color-picker-wrapper input[type="color"]:hover {
+        border-color: #ffba00;
+      }
+    }
+    
+    /* タッチデバイス用のアクティブ状態 */
+    @media (hover: none) and (pointer: coarse) {
+      .color-picker-wrapper input[type="color"]:active {
+        border-color: #ffba00;
+      }
     }
     .button-group {
       margin-top: 25px;
@@ -172,8 +188,18 @@
       box-shadow: none;
       transform: none;
     }
-    .btn:hover:not(:disabled) { 
-      transform: translateY(-2px);
+    /* デスクトップのみホバー効果 */
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover:not(:disabled) { 
+        transform: translateY(-2px);
+      }
+    }
+    
+    /* タッチデバイス用のアクティブ状態 */
+    @media (hover: none) and (pointer: coarse) {
+      .btn:active:not(:disabled) {
+        transform: scale(0.98);
+      }
     }
     #generateBtn {
       background: linear-gradient(135deg, #ffba00, #f46524);
@@ -221,8 +247,15 @@
       justify-content: space-between;
       align-items: center;
     }
-    .collapsible-header:hover {
-      background: linear-gradient(135deg, #b3d9ff, #c8d9fd);
+    @media (hover: hover) and (pointer: fine) {
+      .collapsible-header:hover {
+        background: linear-gradient(135deg, #b3d9ff, #c8d9fd);
+      }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .collapsible-header:active {
+        background: linear-gradient(135deg, #b3d9ff, #c8d9fd);
+      }
     }
     .collapsible-content {
       display: none;
@@ -266,9 +299,17 @@
       flex-shrink: 0;
       line-height: 1;
     }
-    .preview-btn:hover {
-      background: #f46524;
-      transform: translateY(-1px);
+    @media (hover: hover) and (pointer: fine) {
+      .preview-btn:hover {
+        background: #f46524;
+        transform: translateY(-1px);
+      }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .preview-btn:active {
+        background: #f46524;
+        transform: scale(0.95);
+      }
     }
     .note-warning {
       display: none;
@@ -335,9 +376,17 @@
       font-weight: 600;
       transition: all 0.2s ease;
     }
-    .btn-preset:hover {
-      background: #1557b0;
-      transform: translateY(-1px);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-preset:hover {
+        background: #1557b0;
+        transform: translateY(-1px);
+      }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .btn-preset:active {
+        background: #1557b0;
+        transform: scale(0.95);
+      }
     }
     .btn-preset:disabled {
       background: #6c757d;
@@ -355,9 +404,17 @@
       font-weight: 600;
       transition: all 0.2s ease;
     }
-    .btn-preset-danger:hover {
-      background: #c82333;
-      transform: translateY(-1px);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-preset-danger:hover {
+        background: #c82333;
+        transform: translateY(-1px);
+      }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .btn-preset-danger:active {
+        background: #c82333;
+        transform: scale(0.95);
+      }
     }
     .btn-preset-danger:disabled {
       background: #6c757d;
@@ -375,9 +432,17 @@
       font-weight: 600;
       transition: all 0.2s ease;
     }
-    .btn-secondary:hover {
-      background: #5a6268;
-      transform: translateY(-1px);
+    @media (hover: hover) and (pointer: fine) {
+      .btn-secondary:hover {
+        background: #5a6268;
+        transform: translateY(-1px);
+      }
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .btn-secondary:active {
+        background: #5a6268;
+        transform: scale(0.95);
+      }
     }
     .gradient-preview-section {
       margin-top: 20px;
@@ -454,6 +519,252 @@
       color: #6c757d;
       font-size: 12px;
       font-weight: 500;
+    }
+    
+    /* ========================================
+       レスポンシブデザイン対応
+       ======================================== */
+    
+    /* タブレット（768px以下） */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 15px;
+      }
+      
+      h1 {
+        font-size: 28px;
+        margin-bottom: 25px;
+      }
+      
+      h2 {
+        font-size: 18px;
+        padding: 12px 15px;
+      }
+      
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .editor-content, .settings-content {
+        padding: 15px 20px 20px 20px;
+      }
+      
+      #slideDataInput {
+        height: 400px;
+        font-size: 13px;
+      }
+      
+      .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .collapsible-header {
+        font-size: 15px;
+        padding: 10px 15px;
+      }
+      
+      .collapsible-content {
+        padding: 15px;
+      }
+      
+      .btn {
+        padding: 15px;
+        font-size: 15px;
+      }
+      
+      .preset-control-row {
+        flex-wrap: wrap;
+      }
+      
+      .preset-select {
+        flex: 1 1 100%;
+        margin-bottom: 8px;
+      }
+      
+      .btn-preset, .btn-preset-danger {
+        flex: 1;
+      }
+    }
+    
+    /* モバイル（480px以下） */
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px 10px;
+      }
+      
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      
+      h2 {
+        font-size: 16px;
+        padding: 10px 12px;
+      }
+      
+      .editor-content, .settings-content {
+        padding: 12px 15px 15px 15px;
+      }
+      
+      #slideDataInput {
+        height: 300px;
+        font-size: 12px;
+        padding: 12px;
+      }
+      
+      .settings-grid label {
+        font-size: 13px;
+      }
+      
+      .settings-grid input[type="text"],
+      .settings-grid select {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      
+      .color-picker-wrapper {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      
+      .color-picker-wrapper input[type="color"] {
+        width: 50px;
+        height: 40px;
+      }
+      
+      .collapsible-header {
+        font-size: 14px;
+        padding: 10px 12px;
+      }
+      
+      .collapsible-content {
+        padding: 12px;
+      }
+      
+      .checkbox-wrapper {
+        gap: 8px;
+      }
+      
+      .checkbox-wrapper label {
+        font-size: 13px;
+      }
+      
+      .note-info, .note-warning {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+      
+      .btn {
+        padding: 12px;
+        font-size: 14px;
+      }
+      
+      .btn-preset, .btn-preset-danger {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+      
+      .btn-secondary {
+        padding: 8px 10px !important;
+        font-size: 11px !important;
+      }
+      
+      #status {
+        font-size: 14px;
+        padding: 15px;
+      }
+      
+      .preset-management {
+        padding: 15px;
+      }
+      
+      .gradient-preview-box {
+        height: 50px;
+        font-size: 14px;
+      }
+      
+      .json-validation {
+        padding: 12px;
+      }
+      
+      .validation-status {
+        font-size: 13px;
+      }
+      
+      .validation-details {
+        font-size: 12px;
+      }
+    }
+    
+    /* 極小モバイル（360px以下） */
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 20px;
+      }
+      
+      h2 {
+        font-size: 15px;
+        padding: 8px 10px;
+      }
+      
+      .color-picker-wrapper input[type="text"] {
+        flex: 1;
+        min-width: 0;
+      }
+      
+      .folder-url-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      
+      .folder-url-row input {
+        margin-bottom: 8px;
+      }
+      
+      #openFolderBtn {
+        width: 100%;
+      }
+      
+      .url-input-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .url-input-wrapper input {
+        margin-bottom: 8px;
+      }
+      
+      .url-input-wrapper .btn-secondary {
+        width: 100%;
+      }
+    }
+    
+    /* 横向きタブレット（1024px以下） */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* 大画面（1400px以上） */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1600px;
+      }
+      
+      .main-grid {
+        grid-template-columns: 1.6fr 1fr;
+      }
+      
+      #slideDataInput {
+        height: 600px;
+      }
     }
   </style>
 </head>

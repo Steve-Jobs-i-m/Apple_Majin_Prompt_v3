@@ -5,6 +5,46 @@ All notable changes to the Apple Majin Prompt v3 project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.2] - 2025-10-19
+
+### Enhanced - Responsive Design Implementation
+
+#### Mobile & Tablet Support
+- **Added comprehensive responsive design** for all screen sizes
+  - Viewport meta tags: `width=device-width, initial-scale=1.0`
+  - Theme color meta tag: `#ffba00` for mobile browsers
+  - Description meta tag for SEO
+  
+- **Responsive breakpoints**:
+  - Desktop (1400px+): Optimized layout with 1600px max-width
+  - Laptop (1024px-1400px): 2-column layout for settings
+  - Tablet (768px-1024px): Single column layout
+  - Mobile (480px-768px): Optimized for touch
+  - Compact Mobile (360px-480px): Ultra-compact layout
+  - Tiny Mobile (<360px): Stacked inputs
+
+- **Touch-friendly enhancements**:
+  - Separated hover effects for desktop (`@media (hover: hover)`)
+  - Added active states for touch devices (`@media (hover: none)`)
+  - Scale animations instead of translateY for touch
+  - Larger tap targets on mobile (44px minimum)
+  
+- **Responsive adjustments**:
+  - H1: 36px → 28px (tablet) → 24px (mobile) → 20px (tiny)
+  - Grid columns: 2 columns → 1 column on tablet/mobile
+  - Textarea height: 500px → 400px (tablet) → 300px (mobile)
+  - Font sizes: Scaled down 10-20% on mobile
+  - Padding/spacing: Reduced 20-30% on mobile
+  - Buttons: Adjusted padding and font size per breakpoint
+  
+- **Layout optimizations**:
+  - Preset controls: Stack vertically on mobile
+  - Color pickers: Wrap on small screens
+  - URL inputs: Full-width buttons on tiny screens
+  - Folder URL row: Vertical layout on compact screens
+
+---
+
 ## [3.2.1] - 2025-10-19
 
 ### Added - UI for Minimal Mode Settings
