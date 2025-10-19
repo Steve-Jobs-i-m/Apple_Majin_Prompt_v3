@@ -593,19 +593,19 @@ const CONFIG = {
   FONTS: {
     family: 'Inter, SF Pro Display, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Noto Sans JP, Helvetica Neue, Arial, sans-serif',
     sizes: {
-      // v3.3.0 Typography Scale: 96pt Hero, 64pt Title, 32pt Body, 24pt Caption
-      title: 96,           // [v3.3.0] 64→96: Hero title (maximum impact)
-      date: 24,            // [v3.3.0] 18→24: Date text (aligned to caption)
-      sectionTitle: 64,    // [v3.3.0] 56→64: Section title (bold statement)
-      contentTitle: 64,    // [v3.3.0] 32→64: Content title (clear hierarchy)
-      subhead: 24,         // [v3.3.0] 18→24: Subhead (aligned to caption)
-      body: 32,            // [v3.3.0] 18→32: Body text (comfortable reading)
-      footer: 18,          // [v3.3.0] 11→18: Footer (more readable)
-      chip: 18,            // [v3.3.0] 13→18: Chip labels
-      laneTitle: 24,       // [v3.3.0] 16→24: Lane titles (aligned to caption)
-      small: 18,           // [v3.3.0] 12→18: Small text
-      processStep: 24,     // [v3.3.0] 18→24: Process steps (clear)
-      axis: 18,            // [v3.3.0] 14→18: Axis labels
+      // Adjusted Typography Scale: Practical sizes for readable slides
+      title: 44,           // Title slide title (readable but impactful)
+      date: 14,            // Date text (subtle)
+      sectionTitle: 36,    // Section title (clear hierarchy)
+      contentTitle: 28,    // Content title (balanced)
+      subhead: 16,         // Subhead (clear but not overwhelming)
+      body: 18,            // Body text (comfortable reading)
+      footer: 11,          // Footer (minimal)
+      chip: 13,            // Chip labels
+      laneTitle: 16,       // Lane titles
+      small: 12,           // Small text
+      processStep: 16,     // Process steps
+      axis: 14,            // Axis labels
       ghostNum: 200        // Ghost numbers (massive impact) - unchanged
     },
     weights: {
@@ -653,26 +653,26 @@ const CONFIG = {
     // Version
     version: '3.3.0',
     
-    // Typography Scale (v3.3.0 - Minimal Design)
-    // Based on: 96pt Hero, 64pt Title, 32pt Body, 24pt Caption
+    // Typography Scale (Adjusted for practical use)
+    // Based on readable sizes that fit within slide bounds
     typography: {
-      hero: 96,           // [v3.3.0] Hero/Large Title - maximum visual impact
-      title: 64,          // [v3.3.0] Main titles - bold statements
-      subtitle: 32,       // [v3.3.0] Subtitles/body - comfortable reading
-      caption: 24,        // [v3.3.0] Captions/labels - minimum readable size
+      hero: 44,           // Hero/Large Title - impactful but readable
+      title: 36,          // Main titles - clear hierarchy
+      subtitle: 18,       // Subtitles/body - comfortable reading
+      caption: 14,        // Captions/labels - readable size
       
       // Legacy mapping (for backwards compatibility)
-      largeTitle: 96,     
-      title1: 64,         
-      title2: 40,         
-      title3: 32,         // Aligned to subtitle
-      headline: 24,       // Aligned to caption
-      body: 32,           // [v3.3.0] Enlarged from 18pt
-      callout: 24,        // Aligned to caption
-      subhead: 24,        // Aligned to caption
-      footnote: 18,       
-      caption1: 24,       
-      caption2: 18        
+      largeTitle: 44,     
+      title1: 36,         
+      title2: 28,         
+      title3: 18,         // Aligned to subtitle
+      headline: 16,       // Aligned to subhead
+      body: 18,           // Standard body text
+      callout: 16,        // Call-out text
+      subhead: 16,        // Subhead text
+      footnote: 12,       
+      caption1: 14,       
+      caption2: 11        
     },
     
     // Spacing Scale (8pt grid system) - DOUBLED for breathing room
@@ -807,15 +807,15 @@ const CONFIG = {
       accentColorUsage: 'highlight' // One accent color for emphasis only
     },
     
-    // Typography Enhancement v3.3.0
+    // Typography Enhancement (Adjusted)
     typographyEnhancement: {
       preferBoldOverSize: false,    // Use size hierarchy, not bold
-      minHeadingSize: 32,           // [v3.3.0] Minimum size for any heading (increased)
-      maxTextLinesBeforeSplit: 4,   // [v3.3.0] Split slide if text exceeds 4 lines
+      minHeadingSize: 24,           // Minimum size for any heading (practical)
+      maxTextLinesBeforeSplit: 6,   // Split slide if text exceeds 6 lines
       lineHeightMultiplier: 1.2,    // Consistent line height
-      letterSpacingTight: -0.5,     // For large titles (96pt, 64pt)
-      letterSpacingNormal: 0,       // For body text (32pt)
-      letterSpacingWide: 0.5        // For small caps/labels (24pt)
+      letterSpacingTight: -0.5,     // For large titles (44pt, 36pt)
+      letterSpacingNormal: 0,       // For body text (18pt)
+      letterSpacingWide: 0.5        // For small caps/labels (14pt)
     },
     
     // White Space Ratios v3.3.0 (Content vs Empty Space)
