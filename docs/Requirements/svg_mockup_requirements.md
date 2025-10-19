@@ -1,21 +1,59 @@
-# Apple-Inspired Slide Requirements (with SVG References)
+# Apple-Style Minimal Slide Requirements (SVG Mockups v3.3.0)
 
 ## Purpose
-- Capture the Apple-like keynote expectations for each slide layout using live SVG mockups as visual evidence.
-- Bridge design and engineering by pairing narrative requirements with the exact vector assets (`img/svg_mockups/*.svg`).
-- Enable quick regression checks: if a generated Google Slide drifts from the SVG, it must be brought back into alignment.
+- Define Apple-like minimal slide expectations using SVG mockups as visual references.
+- Bridge design and engineering with exact vector assets (`img/svg_mockups/*.svg`).
+- Enable regression checks: if a generated Google Slide drifts from the SVG, realign immediately.
+- **NEW in v3.3.0**: Strict 3-4 object limit per slide, doubled whitespace, enlarged typography.
 
 ## How to Use This Document
-1. Review the global tokens before implementing or adjusting layouts in Apps Script.
-2. For each slide section below, reference the bullet requirements and the embedded SVG preview.
-3. When tokens or layouts change, update the SVG and the requirement bullets together, then circulate the diff to design reviewers.
+1. Review the **Minimal Design Tokens** before implementing layouts in Apps Script.
+2. For each slide section, reference the requirements and SVG preview.
+3. When tokens or layouts change, update both SVG and requirements, then circulate to design reviewers.
+4. **Object count badges** indicate visual element limits for each slide type.
 
-## Global Design Tokens and Principles
-- **Canvas:** 1920×1080 (16:9). All margins/offsets adhere to the 8pt Apple grid.
-- **Typography:** Prefer SF Pro Display (weight 400–700); fall back to Inter / Helvetica Neue / Arial. Letter spacing stays between 0 and 0.5px unless noted.
-- **Color Palette:** Black and near-black backgrounds (#000000–#121212), neutral grays (#1F1F25–#A1A1AA), accent aqua/blue (#0A84FF, #0FD6FF), success green (#30D158), and highlight orange (#FF9F0A).
-- **Shapes & Radii:** Rounded rectangles with 20–48px corner radius, subtle shadows/glows not exceeding 24px blur.
-- **Object Count:** Keep visible elements to ≤4 per slide to maintain focus; split slides when extra content is required.
+## Minimal Design Tokens and Principles (v3.3.0)
+
+### Canvas & Grid
+- **Resolution:** 1920×1080 (16:9)
+- **Grid System:** 8pt Apple grid
+- **Safe Margins:** 
+  - Horizontal: **12%** (230px) - *doubled from 6%*
+  - Vertical: **15%** (162px) - *doubled from 7.5%*
+
+### Typography (Enlarged 33-60%)
+- **Hero Title:** 96pt (weight 600-700) - *was 72pt*
+- **Section Title:** 64pt (weight 600) - *was 48pt*
+- **Body Text:** 32pt (weight 400) - *was 24pt*
+- **Caption:** 24pt (weight 400) - *was 16pt*
+- **Letter Spacing:** -0.5px for large titles, 0px for body
+- **Fallback Fonts:** Inter → SF Pro Display → Helvetica Neue → Arial
+
+### Color Palette (3 Colors Maximum)
+- **Background:** `#000000` (pure black)
+- **Primary Text:** `#FFFFFF` (pure white)
+- **Secondary Text:** `#86868B` (medium gray)
+- **Accent:** `#0A84FF` (Apple Blue) - use sparingly
+- **Success:** `#30D158` (green) - data visualization only
+- **Warning:** `#FF9F0A` (orange) - data visualization only
+
+### Shapes & Radii
+- **Corner Radius:** 24px (consistent across all elements)
+- **Shadows:** Minimal or none - rely on color contrast
+- **Opacity:** 0.1-0.3 for backgrounds, 0.8-1.0 for primary elements
+
+### Object Count Limits (STRICT)
+- **Title Slides:** 1 object (text only)
+- **Hero Slides:** 2 objects (text + image OR number + label)
+- **Content Slides:** 3 objects (title + 2 elements OR 3 cards)
+- **Complex Slides:** 4 objects maximum (e.g., timeline with nodes)
+- **Rule:** If exceeding 4 objects, split into multiple slides
+
+### Whitespace Philosophy
+- **Minimum Empty Space:** 30% of canvas must remain empty
+- **Hero Slides:** 60% whitespace
+- **Title Slides:** 80% whitespace
+- **Content Slides:** 40% whitespace minimum
 
 ---
 
