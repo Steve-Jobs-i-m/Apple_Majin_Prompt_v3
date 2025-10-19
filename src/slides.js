@@ -303,7 +303,7 @@ function createCompareSlide(slide, data, layout, pageNum, settings) {
 
 function createProcessSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'processSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'processSlide', data.title, settings, 'process');
   const dy = drawSubheadIfAny(slide, layout, 'processSlide', data.subhead);
   
   // 小見出しの高さに応じてプロセスエリアを動的に調整
@@ -390,7 +390,7 @@ function createProcessSlide(slide, data, layout, pageNum, settings) {
 
 function createProcessListSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'processSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'processSlide', data.title, settings, 'process');
   const dy = drawSubheadIfAny(slide, layout, 'processSlide', data.subhead);
 
   const area = offsetRect(layout.getRect('processSlide.area'), 0, dy);
@@ -436,7 +436,7 @@ function createProcessListSlide(slide, data, layout, pageNum, settings) {
 
 function createTimelineSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'timelineSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'timelineSlide', data.title, settings, 'timeline');
   const dy = drawSubheadIfAny(slide, layout, 'timelineSlide', data.subhead);
   
   // 小見出しの高さに応じてタイムラインエリアを動的に調整
@@ -538,7 +538,7 @@ function createTimelineSlide(slide, data, layout, pageNum, settings) {
 
 function createDiagramSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'diagramSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'diagramSlide', data.title, settings, 'diagram');
   const dy = drawSubheadIfAny(slide, layout, 'diagramSlide', data.subhead);
   const lanes = Array.isArray(data.lanes) ? data.lanes : [];
   
@@ -623,7 +623,7 @@ function createDiagramSlide(slide, data, layout, pageNum, settings) {
 
 function createCycleSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title, settings, 'cycle');
   const dy = drawSubheadIfAny(slide, layout, 'contentSlide', data.subhead);
   const area = offsetRect(layout.getRect('contentSlide.body'), 0, dy);
   const items = Array.isArray(data.items) && data.items.length === 4 ? data.items : [];
@@ -790,7 +790,7 @@ function createCardsSlide(slide, data, layout, pageNum, settings) {
 
 function createHeaderCardsSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'cardsSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'cardsSlide', data.title, settings, 'headerCards');
   const dy = drawSubheadIfAny(slide, layout, 'cardsSlide', data.subhead);
   
   // 小見出しの高さに応じてヘッダーカードグリッドエリアを動的に調整
@@ -842,7 +842,7 @@ function createHeaderCardsSlide(slide, data, layout, pageNum, settings) {
 
 function createTableSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'tableSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'tableSlide', data.title, settings, 'table');
   const dy = drawSubheadIfAny(slide, layout, 'tableSlide', data.subhead);
   
   // 小見出しの高さに応じてテーブルエリアを動的に調整
@@ -963,7 +963,7 @@ function createTableSlide(slide, data, layout, pageNum, settings) {
 
 function createProgressSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'progressSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'progressSlide', data.title, settings, 'progress');
   const dy = drawSubheadIfAny(slide, layout, 'progressSlide', data.subhead);
   
   // 小見出しの高さに応じてプログレスエリアを動的に調整
@@ -1163,7 +1163,7 @@ function createKpiSlide(slide, data, layout, pageNum, settings) {
 
 function createBulletCardsSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title, settings, 'bulletCards');
   const dy = drawSubheadIfAny(slide, layout, 'contentSlide', data.subhead);
   const area = offsetRect(layout.getRect('contentSlide.body'), 0, dy);
   const items = Array.isArray(data.items) ? data.items.slice(0, 3) : [];
@@ -1250,7 +1250,7 @@ function createBulletCardsSlide(slide, data, layout, pageNum, settings) {
 
 function createAgendaSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'processSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'processSlide', data.title, settings, 'agenda');
   const dy = drawSubheadIfAny(slide, layout, 'processSlide', data.subhead);
 
   const area = offsetRect(layout.getRect('processSlide.area'), 0, dy);
@@ -1317,7 +1317,7 @@ function createAgendaSlide(slide, data, layout, pageNum, settings) {
  */
 function createFaqSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title || 'よくあるご質問', settings);
+  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title || 'よくあるご質問', settings, 'faq');
   const dy = drawSubheadIfAny(slide, layout, 'contentSlide', data.subhead);
   const area = offsetRect(layout.getRect('contentSlide.body'), 0, dy);
   const items = Array.isArray(data.items) ? data.items.slice(0, 4) : [];
@@ -1903,7 +1903,7 @@ function smartFormatTriangleText(text) {
 
 function createTriangleSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'triangleSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'triangleSlide', data.title, settings, 'triangle');
   const dy = drawSubheadIfAny(slide, layout, 'triangleSlide', data.subhead);
   
   // 小見出しの高さに応じてトライアングルエリアを動的に調整
@@ -2143,7 +2143,7 @@ function createTriangleSlide(slide, data, layout, pageNum, settings) {
  */
 function createPyramidSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'pyramidSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'pyramidSlide', data.title, settings, 'pyramid');
   const dy = drawSubheadIfAny(slide, layout, 'pyramidSlide', data.subhead);
   
   // 小見出しの高さに応じてピラミッドエリアを動的に調整
@@ -2269,7 +2269,7 @@ function createPyramidSlide(slide, data, layout, pageNum, settings) {
  */
 function createFlowChartSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'flowChartSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'flowChartSlide', data.title, settings, 'flowChart');
   const dy = drawSubheadIfAny(slide, layout, 'flowChartSlide', data.subhead);
   
   const flows = Array.isArray(data.flows) ? data.flows : [{ steps: data.steps || [] }];
@@ -2387,7 +2387,7 @@ function drawFlowRow(slide, flow, area, settings, layout, maxStepsPerRow = null)
  */
 function createStepUpSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'stepUpSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'stepUpSlide', data.title, settings, 'stepUp');
   const dy = drawSubheadIfAny(slide, layout, 'stepUpSlide', data.subhead);
   const area = offsetRect(layout.getRect('stepUpSlide.stepArea'), 0, dy);
   const items = Array.isArray(data.items) ? data.items : [];
@@ -2485,7 +2485,7 @@ function createStepUpSlide(slide, data, layout, pageNum, settings) {
  */
 function createImageTextSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'imageTextSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'imageTextSlide', data.title, settings, 'imageText');
   const dy = drawSubheadIfAny(slide, layout, 'imageTextSlide', data.subhead);
   
   const imageUrl = data.image || '';

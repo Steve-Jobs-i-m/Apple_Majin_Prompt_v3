@@ -29,11 +29,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Updated slide generation functions**:
   - Modified `drawStandardTitleHeader()` to accept `slideType` parameter
-  - Updated `createQuoteSlide()` to hide title and adjust content positioning
-  - Updated `createKpiSlide()` to hide title and expand content area
-  - Updated `createStatsCompareSlide()` to hide title conditionally
-  - Updated `createBarCompareSlide()` to hide title conditionally
-  - All other slides default to traditional behavior (backward compatible)
+  - ✅ **Updated ALL 21 slide generation functions** to support conditional title hiding:
+    - `createContentSlide()` - content
+    - `createCompareSlide()` - compare
+    - `createProcessSlide()` - process
+    - `createProcessListSlide()` - process
+    - `createTimelineSlide()` - timeline
+    - `createDiagramSlide()` - diagram
+    - `createCycleSlide()` - cycle
+    - `createCardsSlide()` - cards
+    - `createHeaderCardsSlide()` - headerCards
+    - `createTableSlide()` - table
+    - `createProgressSlide()` - progress
+    - `createQuoteSlide()` - quote (with position adjustment)
+    - `createKpiSlide()` - kpi (with position adjustment)
+    - `createBulletCardsSlide()` - bulletCards
+    - `createAgendaSlide()` - agenda
+    - `createFaqSlide()` - faq
+    - `createStatsCompareSlide()` - statsCompare (with position adjustment)
+    - `createBarCompareSlide()` - barCompare (with position adjustment)
+    - `createTriangleSlide()` - triangle
+    - `createPyramidSlide()` - pyramid
+    - `createFlowChartSlide()` - flowChart
+    - `createStepUpSlide()` - stepUp
+    - `createImageTextSlide()` - imageText
+  - All slides maintain backward compatibility (default: show titles)
 
 - **Benefits of title hiding**:
   - Object count reduction: -2 to -3 objects per slide
