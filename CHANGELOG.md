@@ -5,11 +5,54 @@ All notable changes to the Apple Majin Prompt v3 project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.1] - 2025-10-19
+
+### Added - UI for Minimal Mode Settings
+
+#### Web UI Enhancement
+- **Added Minimal Mode Settings UI section** in Web App
+  - New collapsible section: "🎯 ミニマルモード設定（Ultra Minimal Mode）"
+  - Added 7 checkboxes for granular control:
+    - `ultraMinimalMode` - Master switch for all titles/logos
+    - `hideContentTitles` - Hide all content slide titles
+    - `hideLogoInContent` - Hide all content slide logos
+    - `hideTitleInQuote` - Hide quote slide titles
+    - `hideTitleInKpi` - Hide KPI slide titles
+    - `hideTitleInHero` - Hide hero slide titles
+    - `hideTitleInStats` - Hide stats slide titles
+  
+- **Backend Integration**:
+  - Updated `getCurrentSettings()` to include minimal mode settings
+  - Updated `loadSettingsToForm()` to restore minimal mode settings
+  - Updated `getAllSettings()` for preset management
+  - Updated `applyAllSettings()` for preset restoration
+  - Updated `saveSettings()` in webApp.js for persistence
+  - Updated `loadSettings()` in webApp.js for restoration
+  - Updated `createPresentation()` to apply settings to CONFIG
+
+#### Quote Slide Design Refinement
+- **Changed quote slide design** from rounded border to left vertical bar (Markdown/Apple style)
+  - Replaced ROUND_RECTANGLE card with 4px vertical bar at left edge
+  - Changed text alignment from CENTER to START (left-aligned)
+  - Increased font size: 24pt → 28pt
+  - Added line height: 1.5 for better readability
+  - Reduced objects from 4 to 3 (bar + text + author)
+  - Added config: `quoteBar.width: 4px`, `quoteBar.leftOffset: 32px`
+
+### Fixed - Configuration Issues
+- **Identified potential bugs** (not yet fixed):
+  - Quote bar height calculation may exceed text area
+  - Config values in `quoteBar` not being used (hardcoded in slides.js)
+  - Missing error logging in try-catch blocks
+  - Empty author name shows "— " instead of nothing
+
+---
+
 ## [3.2.0] - 2025-10-19
 
 ### Enhanced - Minimal Design System for Apple-Like Aesthetics
 
-#### Title Header Hiding for Ultra-Minimal Design (NEW)
+#### Title Header Hiding for Ultra-Minimal Design
 - **Added conditional title/logo hiding system** for pure minimal aesthetics
   - `ultraMinimalMode`: Master switch to hide ALL titles and logos
   - `hideContentTitles`: Hide titles in all content slides

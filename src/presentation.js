@@ -52,6 +52,29 @@ function createPresentation(slideData, settings) {
   CONFIG.BACKGROUND_IMAGES.closing = settings.closingBgUrl;
   CONFIG.BACKGROUND_IMAGES.section = settings.sectionBgUrl;
   CONFIG.BACKGROUND_IMAGES.main = settings.mainBgUrl;
+  
+  // Apply Minimal Mode Settings to CONFIG
+  if (settings.ultraMinimalMode !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.ultraMinimalMode = settings.ultraMinimalMode;
+  }
+  if (settings.hideContentTitles !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.hideContentTitles = settings.hideContentTitles;
+  }
+  if (settings.hideLogoInContent !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.hideLogoInContent = settings.hideLogoInContent;
+  }
+  if (settings.hideTitleInQuote !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.hideTitleInQuote = settings.hideTitleInQuote;
+  }
+  if (settings.hideTitleInKpi !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.hideTitleInKpi = settings.hideTitleInKpi;
+  }
+  if (settings.hideTitleInHero !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.hideTitleInHero = settings.hideTitleInHero;
+  }
+  if (settings.hideTitleInStats !== undefined) {
+    CONFIG.APPLE_TOKENS.minimalRules.hideTitleInStats = settings.hideTitleInStats;
+  }
 
   __SLIDE_DATA_FOR_AGENDA = slideData;
 

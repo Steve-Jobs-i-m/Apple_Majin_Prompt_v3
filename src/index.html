@@ -573,6 +573,49 @@
 
           <div class="collapsible-section">
             <div class="collapsible-header">
+              <span>🎯 ミニマルモード設定（Ultra Minimal Mode）</span>
+              <span class="collapsible-icon">▼</span>
+            </div>
+            <div class="collapsible-content">
+              <div class="note-info">
+                スライドのタイトル見出しやロゴを非表示にして、より洗練されたミニマルデザインを実現します。
+              </div>
+              <div class="checkbox-wrapper">
+                <input type="checkbox" id="ultraMinimalMode">
+                <label for="ultraMinimalMode"><strong>ウルトラミニマルモード</strong>（すべてのタイトル・ロゴを非表示）</label>
+              </div>
+              <div style="margin: 15px 0; padding: 12px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #ffba00;">
+                <div style="font-weight: 600; margin-bottom: 8px; color: #333;">個別設定：</div>
+                <div class="checkbox-wrapper" style="margin-left: 10px;">
+                  <input type="checkbox" id="hideContentTitles">
+                  <label for="hideContentTitles">すべてのコンテンツスライドのタイトルを非表示</label>
+                </div>
+                <div class="checkbox-wrapper" style="margin-left: 10px;">
+                  <input type="checkbox" id="hideLogoInContent">
+                  <label for="hideLogoInContent">すべてのコンテンツスライドのロゴを非表示</label>
+                </div>
+                <div class="checkbox-wrapper" style="margin-left: 10px;">
+                  <input type="checkbox" id="hideTitleInQuote">
+                  <label for="hideTitleInQuote">引用スライドのタイトルを非表示</label>
+                </div>
+                <div class="checkbox-wrapper" style="margin-left: 10px;">
+                  <input type="checkbox" id="hideTitleInKpi">
+                  <label for="hideTitleInKpi">KPIスライドのタイトルを非表示</label>
+                </div>
+                <div class="checkbox-wrapper" style="margin-left: 10px;">
+                  <input type="checkbox" id="hideTitleInHero">
+                  <label for="hideTitleInHero">ヒーロースライドのタイトルを非表示</label>
+                </div>
+                <div class="checkbox-wrapper" style="margin-left: 10px;">
+                  <input type="checkbox" id="hideTitleInStats">
+                  <label for="hideTitleInStats">統計スライドのタイトルを非表示</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="collapsible-section">
+            <div class="collapsible-header">
               <span>ロゴ設定</span>
               <span class="collapsible-icon">▼</span>
             </div>
@@ -703,7 +746,16 @@
       sectionBgUrl: $('sectionBgUrl').value.trim(),
       mainBgUrl: $('mainBgUrl').value.trim(),
       closingBgUrl: $('closingBgUrl').value.trim(),
-      driveFolderUrl: $('driveFolderUrl').value.trim()
+      driveFolderUrl: $('driveFolderUrl').value.trim(),
+      
+      // Minimal Mode Settings
+      ultraMinimalMode: $('ultraMinimalMode').checked,
+      hideContentTitles: $('hideContentTitles').checked,
+      hideLogoInContent: $('hideLogoInContent').checked,
+      hideTitleInQuote: $('hideTitleInQuote').checked,
+      hideTitleInKpi: $('hideTitleInKpi').checked,
+      hideTitleInHero: $('hideTitleInHero').checked,
+      hideTitleInStats: $('hideTitleInStats').checked
     };
   }
 
@@ -866,6 +918,29 @@
         $('closingBgUrl').value = loadedSettings.closingBgUrl;
       }
       
+      // Minimal Mode Settings
+      if (loadedSettings.ultraMinimalMode !== undefined) {
+        $('ultraMinimalMode').checked = loadedSettings.ultraMinimalMode;
+      }
+      if (loadedSettings.hideContentTitles !== undefined) {
+        $('hideContentTitles').checked = loadedSettings.hideContentTitles;
+      }
+      if (loadedSettings.hideLogoInContent !== undefined) {
+        $('hideLogoInContent').checked = loadedSettings.hideLogoInContent;
+      }
+      if (loadedSettings.hideTitleInQuote !== undefined) {
+        $('hideTitleInQuote').checked = loadedSettings.hideTitleInQuote;
+      }
+      if (loadedSettings.hideTitleInKpi !== undefined) {
+        $('hideTitleInKpi').checked = loadedSettings.hideTitleInKpi;
+      }
+      if (loadedSettings.hideTitleInHero !== undefined) {
+        $('hideTitleInHero').checked = loadedSettings.hideTitleInHero;
+      }
+      if (loadedSettings.hideTitleInStats !== undefined) {
+        $('hideTitleInStats').checked = loadedSettings.hideTitleInStats;
+      }
+      
       // グラデーションオプションの表示状態を更新
       toggleGradientOptions();
     }
@@ -889,7 +964,16 @@
       titleBgUrl: $('titleBgUrl').value,
       sectionBgUrl: $('sectionBgUrl').value,
       mainBgUrl: $('mainBgUrl').value,
-      closingBgUrl: $('closingBgUrl').value
+      closingBgUrl: $('closingBgUrl').value,
+      
+      // Minimal Mode Settings
+      ultraMinimalMode: $('ultraMinimalMode').checked,
+      hideContentTitles: $('hideContentTitles').checked,
+      hideLogoInContent: $('hideLogoInContent').checked,
+      hideTitleInQuote: $('hideTitleInQuote').checked,
+      hideTitleInKpi: $('hideTitleInKpi').checked,
+      hideTitleInHero: $('hideTitleInHero').checked,
+      hideTitleInStats: $('hideTitleInStats').checked
     };
   }
 
@@ -913,6 +997,15 @@
     $('sectionBgUrl').value = settings.sectionBgUrl || '';
     $('mainBgUrl').value = settings.mainBgUrl || '';
     $('closingBgUrl').value = settings.closingBgUrl || '';
+    
+    // Minimal Mode Settings
+    $('ultraMinimalMode').checked = settings.ultraMinimalMode || false;
+    $('hideContentTitles').checked = settings.hideContentTitles || false;
+    $('hideLogoInContent').checked = settings.hideLogoInContent || false;
+    $('hideTitleInQuote').checked = settings.hideTitleInQuote || false;
+    $('hideTitleInKpi').checked = settings.hideTitleInKpi || false;
+    $('hideTitleInHero').checked = settings.hideTitleInHero || false;
+    $('hideTitleInStats').checked = settings.hideTitleInStats || false;
     
     toggleGradientOptions();
     updateGradientPreview();

@@ -19,6 +19,14 @@ function saveSettings(settings) {
     storableSettings.appleStyleTitle = String(storableSettings.appleStyleTitle || 'false');
     storableSettings.appleStyleTable = String(storableSettings.appleStyleTable || 'false');
     storableSettings.themeMode = settings.themeMode || 'light';
+    // Minimal Mode Settings
+    storableSettings.ultraMinimalMode = String(storableSettings.ultraMinimalMode || 'false');
+    storableSettings.hideContentTitles = String(storableSettings.hideContentTitles || 'false');
+    storableSettings.hideLogoInContent = String(storableSettings.hideLogoInContent || 'false');
+    storableSettings.hideTitleInQuote = String(storableSettings.hideTitleInQuote || 'false');
+    storableSettings.hideTitleInKpi = String(storableSettings.hideTitleInKpi || 'false');
+    storableSettings.hideTitleInHero = String(storableSettings.hideTitleInHero || 'false');
+    storableSettings.hideTitleInStats = String(storableSettings.hideTitleInStats || 'false');
     PropertiesService.getUserProperties().setProperties(storableSettings, false);
     return {
       status: 'success',
@@ -72,7 +80,15 @@ function loadSettings() {
     // Apple-style options (FR-02, FR-03)
     appleStyleTitle: properties.appleStyleTitle === 'true' ? true : false,
     appleStyleTable: properties.appleStyleTable === 'true' ? true : false,
-    themeMode: properties.themeMode || 'light'
+    themeMode: properties.themeMode || 'light',
+    // Minimal Mode Settings
+    ultraMinimalMode: properties.ultraMinimalMode === 'true' ? true : false,
+    hideContentTitles: properties.hideContentTitles === 'true' ? true : false,
+    hideLogoInContent: properties.hideLogoInContent === 'true' ? true : false,
+    hideTitleInQuote: properties.hideTitleInQuote === 'true' ? true : false,
+    hideTitleInKpi: properties.hideTitleInKpi === 'true' ? true : false,
+    hideTitleInHero: properties.hideTitleInHero === 'true' ? true : false,
+    hideTitleInStats: properties.hideTitleInStats === 'true' ? true : false
   };
 }
 
