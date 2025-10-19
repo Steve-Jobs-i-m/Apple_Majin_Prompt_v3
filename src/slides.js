@@ -190,7 +190,7 @@ function createClosingSlide(slide, data, layout, pageNum, settings) {
 
 function createContentSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'contentSlide', data.title, settings, 'content');
   
   const dy = drawSubheadIfAny(slide, layout, 'contentSlide', data.subhead);
   const isAgenda = isAgendaTitle(data.title || '');
@@ -284,7 +284,7 @@ function createContentSlide(slide, data, layout, pageNum, settings) {
 
 function createCompareSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'compareSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'compareSlide', data.title, settings, 'compare');
   
   const dy = drawSubheadIfAny(slide, layout, 'compareSlide', data.subhead);
   
@@ -734,7 +734,7 @@ function createCycleSlide(slide, data, layout, pageNum, settings) {
 
 function createCardsSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'cardsSlide', data.title, settings);
+  drawStandardTitleHeader(slide, layout, 'cardsSlide', data.title, settings, 'cards');
   const dy = drawSubheadIfAny(slide, layout, 'cardsSlide', data.subhead);
   
   // 小見出しの高さに応じてカードグリッドエリアを動的に調整
@@ -1041,11 +1041,17 @@ function createProgressSlide(slide, data, layout, pageNum, settings) {
 
 function createQuoteSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'quoteSlide', data.title || '引用', settings);
+  
+  // Pass slideType to enable conditional title hiding
+  drawStandardTitleHeader(slide, layout, 'quoteSlide', data.title || '引用', settings, 'quote');
+  
   const dy = drawSubheadIfAny(slide, layout, 'quoteSlide', data.subhead);
   
+  // Adjust quote area position if title is hidden
+  const titleHidden = shouldHideTitleHeader('quote', settings);
+  
   // 小見出しの高さに応じて座布団の位置を調整
-  const baseTop = 120;
+  const baseTop = titleHidden ? 80 : 120; // Title hidden: move up 40px
   const subheadHeight = data.subhead ? layout.pxToPt(40) : 0; // 小見出しの高さ
   const margin = layout.pxToPt(10); // 小見出しと座布団の間隔
   
@@ -1053,7 +1059,7 @@ function createQuoteSlide(slide, data, layout, pageNum, settings) {
     left: 40,
     top: baseTop + subheadHeight + margin,
     width: 880,
-    height: 320 - subheadHeight - margin // 高さも調整
+    height: (titleHidden ? 400 : 320) - subheadHeight - margin // More height if title hidden
   }), 0, dy);
   const bgCard = slide.insertShape(SlidesApp.ShapeType.ROUND_RECTANGLE, area.left, area.top, area.width, area.height);
   bgCard.getFill().setSolidFill(CONFIG.COLORS.background_white);
@@ -1092,12 +1098,23 @@ function createQuoteSlide(slide, data, layout, pageNum, settings) {
 
 function createKpiSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'kpiSlide', data.title || '主要指標', settings);
+  
+  // Pass slideType to enable conditional title hiding
+  drawStandardTitleHeader(slide, layout, 'kpiSlide', data.title || '主要指標', settings, 'kpi');
+  
   const dy = drawSubheadIfAny(slide, layout, 'kpiSlide', data.subhead);
+  
+  // Adjust grid area if title is hidden
+  const titleHidden = shouldHideTitleHeader('kpi', settings);
+  const baseGridTop = titleHidden ? 60 : 132; // Move up significantly if title hidden
   
   // 小見出しの高さに応じてKPIグリッドエリアを動的に調整
   const baseArea = layout.getRect('kpiSlide.gridArea');
-  const adjustedArea = adjustAreaForSubhead(baseArea, data.subhead, layout);
+  const adjustedArea = {
+    ...adjustAreaForSubhead(baseArea, data.subhead, layout),
+    top: baseGridTop,
+    height: titleHidden ? 400 : 330 // More height if title hidden
+  };
   const area = offsetRect(adjustedArea, 0, dy);
   
   const items = Array.isArray(data.items) ? data.items : [];
@@ -1597,14 +1614,22 @@ function parseNumericValue(str) {
  */
 function createStatsCompareSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'compareSlide', data.title, settings);
+  
+  // Pass slideType to enable conditional title hiding
+  drawStandardTitleHeader(slide, layout, 'compareSlide', data.title, settings, 'statsCompare');
+  
   const dy = drawSubheadIfAny(slide, layout, 'compareSlide', data.subhead);
+
+  // Adjust area if title is hidden
+  const titleHidden = shouldHideTitleHeader('statsCompare', settings);
+  const baseTop = titleHidden ? 60 : 130;
+  const areaHeight = titleHidden ? 400 : 330;
 
   const area = offsetRect(layout.getRect({
     left: 25,
-    top: 130,
+    top: baseTop,
     width: 910,
-    height: 330
+    height: areaHeight
   }), 0, dy);
   const stats = Array.isArray(data.stats) ? data.stats : [];
   if (stats.length === 0) {
@@ -1711,14 +1736,22 @@ function createStatsCompareSlide(slide, data, layout, pageNum, settings) {
  */
 function createBarCompareSlide(slide, data, layout, pageNum, settings) {
   setMainSlideBackground(slide, layout);
-  drawStandardTitleHeader(slide, layout, 'compareSlide', data.title, settings);
+  
+  // Pass slideType to enable conditional title hiding
+  drawStandardTitleHeader(slide, layout, 'compareSlide', data.title, settings, 'barCompare');
+  
   const dy = drawSubheadIfAny(slide, layout, 'compareSlide', data.subhead);
+
+  // Adjust area if title is hidden
+  const titleHidden = shouldHideTitleHeader('barCompare', settings);
+  const baseTop = titleHidden ? 60 : 130;
+  const areaHeight = titleHidden ? 400 : 340;
 
   const area = offsetRect(layout.getRect({
     left: 40,
-    top: 130,
+    top: baseTop,
     width: 880,
-    height: 340
+    height: areaHeight
   }), 0, dy);
   const stats = Array.isArray(data.stats) ? data.stats : [];
   if (stats.length === 0) {
@@ -2598,21 +2631,43 @@ function offsetRect(rect, dx, dy) {
   };
 }
 
-function drawStandardTitleHeader(slide, layout, key, title, settings) {
-  const logoRect = safeGetRect(layout, `${key}.headerLogo`);
+function drawStandardTitleHeader(slide, layout, key, title, settings, slideType) {
+  // Check if title should be hidden for minimal design
+  const hideTitle = slideType && shouldHideTitleHeader(slideType, settings);
+  const hideLogo = slideType && shouldHideLogo(slideType, settings);
   
-  try {
-    if (CONFIG.LOGOS.header && logoRect) {
-      const imageData = insertImageFromUrlOrFileId(CONFIG.LOGOS.header);
-      if (imageData) {
-        const logo = slide.insertImage(imageData);
-        const asp = logo.getHeight() / logo.getWidth();
-        logo.setLeft(logoRect.left).setTop(logoRect.top).setWidth(logoRect.width).setHeight(logoRect.width * asp);
-      }
-    }
-  } catch (e) {
-    Logger.log(`Header logo error: ${e.message}`);
+  // Ultra minimal mode or title hiding: draw nothing
+  if (hideTitle && hideLogo) {
+    Logger.log(`[Minimal Design] Hiding all title elements for slideType: ${slideType}`);
+    return;
   }
+  
+  // Draw logo only if not hidden
+  if (!hideLogo) {
+    const logoRect = safeGetRect(layout, `${key}.headerLogo`);
+    
+    try {
+      if (CONFIG.LOGOS.header && logoRect) {
+        const imageData = insertImageFromUrlOrFileId(CONFIG.LOGOS.header);
+        if (imageData) {
+          const logo = slide.insertImage(imageData);
+          const asp = logo.getHeight() / logo.getWidth();
+          logo.setLeft(logoRect.left).setTop(logoRect.top).setWidth(logoRect.width).setHeight(logoRect.width * asp);
+        }
+      }
+    } catch (e) {
+      Logger.log(`Header logo error: ${e.message}`);
+    }
+  } else {
+    Logger.log(`[Minimal Design] Hiding logo for slideType: ${slideType}`);
+  }
+  
+  // Draw title only if not hidden
+  if (hideTitle) {
+    Logger.log(`[Minimal Design] Hiding title for slideType: ${slideType}`);
+    return;
+  }
+  
   const titleRect = safeGetRect(layout, `${key}.title`);
   if (!titleRect) {
     Logger.log(`[rect-missing] key=${key}.title`);
@@ -2638,7 +2693,11 @@ function drawStandardTitleHeader(slide, layout, key, title, settings) {
     titleShape.setContentAlignment(SlidesApp.ContentAlignment.TOP);
   } catch (e) {}
   
-  if (settings.showTitleUnderline && title) {
+  // Draw underline only if enabled and not in ultra minimal mode
+  const hideUnderline = CONFIG.APPLE_TOKENS.minimalRules.hideTitleUnderline || 
+                        CONFIG.APPLE_TOKENS.minimalRules.ultraMinimalMode;
+  
+  if (settings.showTitleUnderline && title && !hideUnderline) {
     const uRect = safeGetRect(layout, `${key}.titleUnderline`);
     if (!uRect) {
       Logger.log(`[rect-missing] key=${key}.titleUnderline`);

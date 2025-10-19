@@ -34,82 +34,82 @@ const CONFIG = {
     },
     contentSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 30,         // 20→30: More margin from edge
+        top: 30,           // 20→30: More vertical space
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 60,          // 25→60: Larger left margin
+        top: 40,           // 20→40: More top space
+        width: 780,        // 830→780: Narrower for breathing room
+        height: 80         // 65→80: Taller title area
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 60,          // 25→60: Align with title
+        top: 120,          // 80→120: More space below title
+        width: 200,        // 260→200: Shorter underline (subtle)
+        height: 3          // 4→3: Thinner line (minimal)
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 60,          // 25→60: Align with title
+        top: 140,          // 90→140: More space
+        width: 840,        // 910→840: Narrower
+        height: 50         // 40→50: Taller for breathing room
       },
       body: {
-        left: 25,
-        top: 132,
-        width: 910,
-        height: 330
+        left: 60,          // 25→60: Larger left margin
+        top: 200,          // 132→200: Significantly more top space
+        width: 840,        // 910→840: Narrower content area
+        height: 280        // 330→280: Less tall (implies less content)
       },
       twoColLeft: {
-        left: 25,
-        top: 132,
-        width: 440,
-        height: 330
+        left: 60,          // 25→60: Larger margin
+        top: 200,          // 132→200: More top space
+        width: 380,        // 440→380: Narrower columns
+        height: 280        // 330→280: Less tall
       },
       twoColRight: {
-        left: 495,
-        top: 132,
-        width: 440,
-        height: 330
+        left: 520,         // 495→520: More gap between columns
+        top: 200,          // 132→200: More top space
+        width: 380,        // 440→380: Narrower columns
+        height: 280        // 330→280: Less tall
       }
     },
     compareSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 30,         // 20→30: More margin
+        top: 30,           // 20→30: More space
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 60,          // 25→60: Larger left margin
+        top: 40,           // 20→40: More top space
+        width: 780,        // 830→780: Narrower
+        height: 80         // 65→80: Taller
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 60,          // 25→60: Align with title
+        top: 120,          // 80→120: More space
+        width: 200,        // 260→200: Shorter underline
+        height: 3          // 4→3: Thinner line
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 60,          // 25→60: Align with title
+        top: 140,          // 90→140: More space
+        width: 840,        // 910→840: Narrower
+        height: 50         // 40→50: Taller
       },
       leftBox: {
-        left: 25,
-        top: 112,
-        width: 445,
-        height: 350
+        left: 60,          // 25→60: Larger margin
+        top: 200,          // 112→200: More top space
+        width: 380,        // 445→380: Narrower for breathing room
+        height: 280        // 350→280: Less tall
       },
       rightBox: {
-        left: 490,
-        top: 112,
-        width: 445,
-        height: 350
+        left: 520,         // 490→520: More gap between boxes
+        top: 200,          // 112→200: More top space
+        width: 380,        // 445→380: Narrower
+        height: 280        // 350→280: Less tall
       }
     },
     processSlide: {
@@ -207,33 +207,33 @@ const CONFIG = {
     },
     cardsSlide: {
       headerLogo: {
-        right: 20,
-        top: 20,
+        right: 30,
+        top: 30,
         width: 75
       },
       title: {
-        left: 25,
-        top: 20,
-        width: 830,
-        height: 65
+        left: 60,
+        top: 40,
+        width: 780,
+        height: 80
       },
       titleUnderline: {
-        left: 25,
-        top: 80,
-        width: 260,
-        height: 4
+        left: 60,
+        top: 120,
+        width: 200,
+        height: 3
       },
       subhead: {
-        left: 25,
-        top: 90,
-        width: 910,
-        height: 40
+        left: 60,
+        top: 140,
+        width: 840,
+        height: 50
       },
       gridArea: {
-        left: 25,
-        top: 120,
-        width: 910,
-        height: 340
+        left: 60,          // 25→60: Larger margin
+        top: 200,          // 120→200: More top space
+        width: 840,        // 910→840: Narrower grid
+        height: 280        // 340→280: Less tall (fewer items)
       }
     },
     tableSlide: {
@@ -589,19 +589,19 @@ const CONFIG = {
   FONTS: {
     family: 'Inter, SF Pro Display, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Noto Sans JP, Helvetica Neue, Arial, sans-serif',
     sizes: {
-      title: 40,
-      date: 16,
-      sectionTitle: 38,
-      contentTitle: 24,
-      subhead: 16,
-      body: 14,
-      footer: 9,
-      chip: 11,
-      laneTitle: 13,
-      small: 10,
-      processStep: 14,
-      axis: 12,
-      ghostNum: 180
+      title: 64,           // 40→64: Main title (significantly larger)
+      date: 18,            // 16→18: Date text
+      sectionTitle: 56,    // 38→56: Section title (commanding presence)
+      contentTitle: 32,    // 24→32: Content title (clear hierarchy)
+      subhead: 18,         // 16→18: Subhead (readable)
+      body: 18,            // 14→18: Body text (comfortable reading)
+      footer: 11,          // 9→11: Footer (still readable)
+      chip: 13,            // 11→13: Chip labels
+      laneTitle: 16,       // 13→16: Lane titles
+      small: 12,           // 10→12: Small text
+      processStep: 18,     // 14→18: Process steps (clear)
+      axis: 14,            // 12→14: Axis labels
+      ghostNum: 200        // 180→200: Ghost numbers (massive impact)
     },
     weights: {
       light: 300,
@@ -641,38 +641,38 @@ const CONFIG = {
   },
   FOOTER_TEXT: `© ${new Date().getFullYear()} Your Company`,
   
-  // Apple Design Tokens
+  // Apple Design Tokens (Enhanced for Minimal Design)
   APPLE_TOKENS: {
-    // Typography Scale (based on Apple HIG)
+    // Typography Scale (based on Apple HIG) - ENLARGED for impact
     typography: {
-      largeTitle: 72,     // Hero titles
-      title1: 48,         // Section titles
-      title2: 32,         // Card headers
-      title3: 24,         // Content titles
-      headline: 20,       // Emphasized text
-      body: 16,           // Standard body text
-      callout: 14,        // Secondary text
-      subhead: 13,        // Tertiary text
+      largeTitle: 96,     // 72→96: Hero titles (maximum visual impact)
+      title1: 64,         // 48→64: Section titles (bold statements)
+      title2: 40,         // 32→40: Card headers (clear hierarchy)
+      title3: 28,         // 24→28: Content titles (readable from distance)
+      headline: 24,       // 20→24: Emphasized text (stronger presence)
+      body: 18,           // 16→18: Standard body text (comfortable reading)
+      callout: 16,        // 14→16: Secondary text (still prominent)
+      subhead: 14,        // 13→14: Tertiary text (minimum comfortable size)
       footnote: 12,       // Small annotations
       caption1: 11,       // Captions
       caption2: 10        // Tiny text
     },
     
-    // Spacing Scale (8pt grid system)
+    // Spacing Scale (8pt grid system) - DOUBLED for breathing room
     spacing: {
-      xs: 4,    // 4px
-      sm: 8,    // 8px
-      md: 16,   // 16px
-      lg: 24,   // 24px
-      xl: 32,   // 32px
-      xxl: 48,  // 48px
-      xxxl: 64  // 64px
+      xs: 8,     // 4→8px: Minimal spacing
+      sm: 16,    // 8→16px: Tight spacing
+      md: 32,    // 16→32px: Standard spacing (DOUBLED)
+      lg: 48,    // 24→48px: Generous spacing (DOUBLED)
+      xl: 64,    // 32→64px: Section spacing (DOUBLED)
+      xxl: 96,   // 48→96px: Major section breaks (DOUBLED)
+      xxxl: 128  // 64→128px: Hero spacing (DOUBLED)
     },
     
-    // Safe Margins (percentage-based for responsive)
+    // Safe Margins (percentage-based for responsive) - DOUBLED for minimalism
     safeMargins: {
-      horizontal: 0.06,  // 6% left/right
-      vertical: 0.075    // 7.5% top/bottom
+      horizontal: 0.12,  // 6%→12%: Left/right breathing room (DOUBLED)
+      vertical: 0.15     // 7.5%→15%: Top/bottom breathing room (DOUBLED)
     },
     
     // Border Radius
@@ -742,11 +742,66 @@ const CONFIG = {
       slow: 500
     },
     
-    // Content Limits
+    // Content Limits - STRICT enforcement for minimalism
     limits: {
-      maxObjectsPerSlide: 4,
-      maxTextLength: 150,
-      maxBulletPoints: 6
+      maxObjectsPerSlide: 4,        // Hard limit: 3-4 objects maximum
+      maxObjectsPerSlideStrict: 3,  // Recommended: 3 objects for pure minimalism
+      maxTextLength: 120,           // 150→120: Shorter, punchier text
+      maxBulletPoints: 4,           // 6→4: Fewer bullets, more impact
+      maxLinesInCard: 3,            // Maximum text lines per card
+      maxCharsPerLine: 40,          // Characters per line for readability
+      autoSplitThreshold: 150       // Auto-split slides when text exceeds this
+    },
+    
+    // Minimal Design Rules
+    minimalRules: {
+      titleSlideObjectLimit: 1,     // Title slides: ONLY 1 text object
+      heroSlideObjectLimit: 2,      // Hero slides: Maximum 2 objects
+      contentSlideObjectLimit: 3,   // Content slides: Maximum 3 objects
+      cardLayoutMaxItems: 3,        // Card layouts: Maximum 3 cards
+      processStepsMax: 3,           // Process slides: Maximum 3 steps
+      timelineItemsMax: 4,          // Timeline: Maximum 4 milestones
+      comparisonItemsMax: 3,        // Comparison: Maximum 3 items per side
+      enforceStrictMode: true,      // Enable strict object counting
+      
+      // Ultra Minimal Mode Settings (NEW)
+      hideContentTitles: false,     // Hide titles in content slides
+      hideLogoInContent: false,     // Hide header logos in content slides
+      hideTitleUnderline: true,     // Hide decorative underlines (already minimal)
+      ultraMinimalMode: false,      // MASTER SWITCH: Hide ALL titles, logos, underlines
+      
+      // Fine-grained control per slide type
+      hideTitleInQuote: true,       // Quotes don't need titles (quote is the focus)
+      hideTitleInKpi: true,         // KPIs speak for themselves (numbers are the focus)
+      hideTitleInHero: true,        // Hero slides are visual (image/text is the focus)
+      hideTitleInStats: true        // Stats slides focus on data comparison
+    },
+    
+    // Color Usage Restrictions (Apple's 3-color rule)
+    colorRestrictions: {
+      maxColorsPerSlide: 3,         // Use only 3 colors per slide
+      primaryColorUsage: 'text',    // Black for text
+      secondaryColorUsage: 'subtle',// Gray for supporting elements
+      accentColorUsage: 'highlight' // One accent color for emphasis only
+    },
+    
+    // Typography Enhancement
+    typographyEnhancement: {
+      preferBoldOverSize: false,    // Use size hierarchy, not bold
+      minHeadingSize: 28,           // Minimum size for any heading
+      maxTextLinesBeforeSplit: 5,   // Split slide if text exceeds 5 lines
+      lineHeightMultiplier: 1.2,    // Consistent line height
+      letterSpacingTight: -0.5,     // For large titles
+      letterSpacingNormal: 0,       // For body text
+      letterSpacingWide: 0.5        // For small caps/labels
+    },
+    
+    // White Space Ratios (Content vs Empty Space)
+    whiteSpaceRatios: {
+      titleSlide: 0.8,              // 80% empty space on title slides
+      heroSlide: 0.6,               // 60% empty space on hero slides
+      contentSlide: 0.4,            // 40% empty space on content slides
+      minimumEmptySpace: 0.3        // Always maintain 30% empty space
     }
   }
 };

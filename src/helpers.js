@@ -348,3 +348,77 @@ function clearLegacyUserProperties() {
     };
   }
 }
+
+/**
+ * Determine if title header should be hidden for minimal design
+ * @param {string} slideType - Type of slide (e.g., 'quote', 'kpi', 'content')
+ * @param {Object} settings - User settings object
+ * @return {boolean} True if title should be hidden
+ */
+function shouldHideTitleHeader(slideType, settings) {
+  const rules = CONFIG.APPLE_TOKENS.minimalRules;
+  
+  // Ultra minimal mode: hide ALL titles
+  if (rules.ultraMinimalMode) {
+    return true;
+  }
+  
+  // General content title hiding setting
+  if (rules.hideContentTitles) {
+    return true;
+  }
+  
+  // Slide-type specific rules
+  const hideRules = {
+    'quote': rules.hideTitleInQuote,
+    'kpi': rules.hideTitleInKpi,
+    'hero': rules.hideTitleInHero,
+    'stats': rules.hideTitleInStats,
+    'statsCompare': rules.hideTitleInStats,
+    'barCompare': rules.hideTitleInStats
+  };
+  
+  return hideRules[slideType] || false;
+}
+
+/**
+ * Determine if logo should be hidden for minimal design
+ * @param {string} slideType - Type of slide
+ * @param {Object} settings - User settings object
+ * @return {boolean} True if logo should be hidden
+ */
+function shouldHideLogo(slideType, settings) {
+  const rules = CONFIG.APPLE_TOKENS.minimalRules;
+  
+  // Ultra minimal mode: hide ALL logos
+  if (rules.ultraMinimalMode) {
+    return true;
+  }
+  
+  // General logo hiding setting
+  if (rules.hideLogoInContent) {
+    return true;
+  }
+  
+  return false;
+}
+
+/**
+ * Calculate adjusted top position when title is hidden
+ * Provides more vertical space and better centering
+ * @param {Object} layout - Layout manager
+ * @param {number} originalTop - Original top position in pt
+ * @param {boolean} titleHidden - Whether title is hidden
+ * @return {number} Adjusted top position in pt
+ */
+function getAdjustedTopForHiddenTitle(layout, originalTop, titleHidden) {
+  if (!titleHidden) {
+    return originalTop;
+  }
+  
+  // When title is hidden, move content up and center it better
+  // Original title area is approximately 120-140pt, reclaim half of it
+  const reclaimedSpace = layout.pxToPt(80); // Reclaim 80px worth of space
+  return Math.max(layout.pxToPt(60), originalTop - reclaimedSpace);
+}
+

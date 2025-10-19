@@ -5,6 +5,154 @@ All notable changes to the Apple Majin Prompt v3 project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2025-10-19
+
+### Enhanced - Minimal Design System for Apple-Like Aesthetics
+
+#### Title Header Hiding for Ultra-Minimal Design (NEW)
+- **Added conditional title/logo hiding system** for pure minimal aesthetics
+  - `ultraMinimalMode`: Master switch to hide ALL titles and logos
+  - `hideContentTitles`: Hide titles in all content slides
+  - `hideLogoInContent`: Hide header logos in content slides
+  - `hideTitleUnderline`: Hide decorative underlines (default: true)
+  
+- **Slide-type specific title hiding**:
+  - `hideTitleInQuote`: true - Quotes don't need titles (quote is focus)
+  - `hideTitleInKpi`: true - KPIs speak for themselves (numbers are focus)
+  - `hideTitleInHero`: true - Hero slides are visual (image is focus)
+  - `hideTitleInStats`: true - Stats slides focus on data comparison
+
+- **Implemented helper functions**:
+  - `shouldHideTitleHeader(slideType, settings)` - Determines if title should be hidden
+  - `shouldHideLogo(slideType, settings)` - Determines if logo should be hidden
+  - `getAdjustedTopForHiddenTitle(layout, originalTop, titleHidden)` - Calculates adjusted positioning
+
+- **Updated slide generation functions**:
+  - Modified `drawStandardTitleHeader()` to accept `slideType` parameter
+  - Updated `createQuoteSlide()` to hide title and adjust content positioning
+  - Updated `createKpiSlide()` to hide title and expand content area
+  - Updated `createStatsCompareSlide()` to hide title conditionally
+  - Updated `createBarCompareSlide()` to hide title conditionally
+  - All other slides default to traditional behavior (backward compatible)
+
+- **Benefits of title hiding**:
+  - Object count reduction: -2 to -3 objects per slide
+  - Vertical space gain: +80-120px of usable space
+  - Content area expansion: 280px → 400px height (+43%)
+  - Visual focus: Content becomes the hero element
+
+#### Typography Enhancement (1.5-2x Larger Fonts)
+- **Dramatically enlarged all font sizes for impact and readability**:
+  - `largeTitle`: 72pt → **96pt** (+33%) - Hero titles with maximum visual impact
+  - `title1`: 48pt → **64pt** (+33%) - Section titles with commanding presence  
+  - `title2`: 32pt → **40pt** (+25%) - Card headers with clear hierarchy
+  - `title3`: 24pt → **28pt** (+17%) - Content titles readable from distance
+  - `headline`: 20pt → **24pt** (+20%) - Emphasized text with stronger presence
+  - `body`: 16pt → **18pt** (+12.5%) - Standard body text for comfortable reading
+  - `callout`: 14pt → **16pt** (+14%) - Secondary text still prominent
+  - `subhead`: 13pt → **14pt** (+8%) - Tertiary text at minimum comfortable size
+
+- **Updated FONTS.sizes across all slide types**:
+  - `title`: 40pt → **64pt** (+60%)
+  - `sectionTitle`: 38pt → **56pt** (+47%)
+  - `contentTitle`: 24pt → **32pt** (+33%)
+  - `body`: 14pt → **18pt** (+29%)
+  - `processStep`: 14pt → **18pt** (+29%)
+  - `ghostNum`: 180pt → **200pt** (+11%)
+  - `subhead`: 16pt → **18pt** (+12.5%)
+
+#### Spacing Enhancement (2x Larger Margins)
+- **Doubled all spacing tokens for generous breathing room**:
+  - `xs`: 4px → **8px** (100% increase)
+  - `sm`: 8px → **16px** (100% increase)
+  - `md`: 16px → **32px** (100% increase)
+  - `lg`: 24px → **48px** (100% increase)
+  - `xl`: 32px → **64px** (100% increase)
+  - `xxl`: 48px → **96px** (100% increase)
+  - `xxxl`: 64px → **128px** (100% increase)
+
+- **Doubled safe margins for title slides**:
+  - `horizontal`: 6% → **12%** (100% increase)
+  - `vertical`: 7.5% → **15%** (100% increase)
+
+#### Layout Restructuring (More White Space)
+- **Significantly increased margins and reduced content area width**:
+  - Left margin: 25px → **60px** (+140%)
+  - Top margin: 20px → **40px** (+100%)
+  - Content width: 910px → **840px** (-70px for breathing room)
+  - Content height: 330px → **280px** (-50px to reduce clutter)
+  - Title underline: 260px → **200px** (-60px, more subtle)
+  - Underline thickness: 4px → **3px** (thinner, more minimal)
+
+- **Applied to all major slide layouts**:
+  - `contentSlide`: Larger margins, narrower content area
+  - `compareSlide`: Increased box spacing, narrower boxes
+  - `cardsSlide`: More top space, narrower grid
+  - All header logos moved to (30, 30) from (20, 20)
+
+#### Strict Object Limits for Minimalism
+- **Added `minimalRules` configuration**:
+  - `titleSlideObjectLimit`: **1** (ONLY one text object)
+  - `heroSlideObjectLimit`: **2** (maximum 2 objects)
+  - `contentSlideObjectLimit`: **3** (maximum 3 objects)
+  - `cardLayoutMaxItems`: **3** (maximum 3 cards)
+  - `processStepsMax`: **3** (maximum 3 steps)
+  - `timelineItemsMax`: **4** (maximum 4 milestones)
+  - `comparisonItemsMax`: **3** (maximum 3 items per side)
+  - `enforceStrictMode`: **true** (enable strict counting)
+
+#### Content Restrictions
+- **Updated `limits` configuration**:
+  - `maxTextLength`: 150 → **120** characters (-20%)
+  - `maxBulletPoints`: 6 → **4** points (-33%)
+  - `maxLinesInCard`: **3** lines (new)
+  - `maxCharsPerLine`: **40** characters (new)
+  - `autoSplitThreshold`: **150** characters (new)
+
+#### Color Usage Guidelines
+- **Added `colorRestrictions` for Apple's 3-color rule**:
+  - `maxColorsPerSlide`: **3** (primary, secondary, accent only)
+  - `primaryColorUsage`: 'text' (black for text)
+  - `secondaryColorUsage`: 'subtle' (gray for supporting elements)
+  - `accentColorUsage`: 'highlight' (one accent color for emphasis only)
+
+#### Typography Enhancement Rules
+- **Added `typographyEnhancement` guidelines**:
+  - `preferBoldOverSize`: **false** (use size hierarchy, not bold)
+  - `minHeadingSize`: **28pt** (minimum size for any heading)
+  - `maxTextLinesBeforeSplit`: **5** (split slide if text exceeds 5 lines)
+  - `lineHeightMultiplier`: **1.2** (consistent line height)
+  - Letter spacing: tight (-0.5) for large titles, normal (0) for body, wide (0.5) for labels
+
+#### White Space Management
+- **Added `whiteSpaceRatios` configuration**:
+  - `titleSlide`: **0.8** (80% empty space)
+  - `heroSlide`: **0.6** (60% empty space)
+  - `contentSlide`: **0.4** (40% empty space)
+  - `minimumEmptySpace`: **0.3** (always maintain 30% empty space)
+
+### Added
+- Created comprehensive **Minimal Design Guidelines** documentation (`docs/MINIMAL_DESIGN_GUIDELINES.md`)
+  - Detailed before/after comparisons
+  - Implementation checklist
+  - Best practices for minimal design
+  - Slide type-specific restrictions
+  - Typography and spacing reference tables
+
+### Changed
+- All design tokens in `CONFIG.APPLE_TOKENS` significantly expanded
+- All font sizes in `CONFIG.FONTS.sizes` increased by 12-60%
+- All layout positions in `CONFIG.POS_PX` updated for larger margins
+- Stricter enforcement of "Less is More" philosophy
+
+### Future Work
+- [ ] Implement object counting in slide generation functions
+- [ ] Add automatic slide splitting for long content
+- [ ] Create validation warnings for design rule violations
+- [ ] Build minimal design compliance checker
+
+---
+
 ## [3.1.0] - 2024-10-17
 
 ### Added - Apple Design System Implementation
