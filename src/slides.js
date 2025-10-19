@@ -1061,38 +1061,71 @@ function createQuoteSlide(slide, data, layout, pageNum, settings) {
     width: 880,
     height: (titleHidden ? 400 : 320) - subheadHeight - margin // More height if title hidden
   }), 0, dy);
-  const bgCard = slide.insertShape(SlidesApp.ShapeType.ROUND_RECTANGLE, area.left, area.top, area.width, area.height);
-  bgCard.getFill().setSolidFill(CONFIG.COLORS.background_white);
-  const border = bgCard.getBorder();
-  border.getLineFill().setSolidFill(CONFIG.COLORS.card_border);
-  border.setWeight(2);
-  const padding = layout.pxToPt(40);
   
-  // 引用符を削除し、テキストエリアを全幅で使用
-  const textLeft = area.left + padding,
-    textTop = area.top + padding;
-  const textWidth = area.width - (padding * 2),
-    textHeight = area.height - (padding * 2);
-  const quoteTextHeight = textHeight - layout.pxToPt(30);
-  const textShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textLeft, textTop, textWidth, quoteTextHeight);
+  // Apple/Markdown style: Left vertical bar instead of rounded border
+  // 左端のバーティカルライン（引用マーク）
+  const barWidth = layout.pxToPt(4);  // 4px幅の太いライン
+  const barLeft = area.left;
+  const barTop = area.top;
+  const barHeight = area.height;
+  
+  const quoteBar = slide.insertShape(
+    SlidesApp.ShapeType.RECTANGLE, 
+    barLeft, 
+    barTop, 
+    barWidth, 
+    barHeight
+  );
+  quoteBar.getFill().setSolidFill(settings.primaryColor || CONFIG.COLORS.primary_color);
+  quoteBar.getBorder().setTransparent();
+  
+  // テキストエリア（左端バーの右側に配置）
+  const textPaddingLeft = layout.pxToPt(32);  // バーから32px離す
+  const textPaddingRight = layout.pxToPt(40);
+  const textPaddingVertical = layout.pxToPt(20);
+  
+  const textLeft = barLeft + barWidth + textPaddingLeft;
+  const textTop = area.top + textPaddingVertical;
+  const textWidth = area.width - barWidth - textPaddingLeft - textPaddingRight;
+  const textHeight = area.height - (textPaddingVertical * 2);
+  const quoteTextHeight = textHeight - layout.pxToPt(40); // 著者名スペース確保
+  
+  // 引用文テキスト（左揃え、控えめなサイズ）
+  const textShape = slide.insertShape(
+    SlidesApp.ShapeType.TEXT_BOX, 
+    textLeft, 
+    textTop, 
+    textWidth, 
+    quoteTextHeight
+  );
   setStyledText(textShape, data.text || '', {
-    size: 24,
-    align: SlidesApp.ParagraphAlignment.CENTER, // 中央揃えに変更
-    color: CONFIG.COLORS.text_primary
+    size: 28,  // 24→28pt: より読みやすく
+    align: SlidesApp.ParagraphAlignment.START,  // 左揃えに変更（Markdown風）
+    color: CONFIG.COLORS.text_primary,
+    lineHeight: 1.5  // 行間を広く
   });
   try {
-    textShape.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+    textShape.setContentAlignment(SlidesApp.ContentAlignment.TOP);
   } catch (e) {}
-  const authorTop = textTop + quoteTextHeight;
-  const authorShape = slide.insertShape(SlidesApp.ShapeType.TEXT_BOX, textLeft, authorTop, textWidth, layout.pxToPt(30));
+  
+  // 著者名（引用文の下、左揃え）
+  const authorTop = textTop + quoteTextHeight + layout.pxToPt(10);
+  const authorShape = slide.insertShape(
+    SlidesApp.ShapeType.TEXT_BOX, 
+    textLeft, 
+    authorTop, 
+    textWidth, 
+    layout.pxToPt(30)
+  );
   setStyledText(authorShape, `— ${data.author || ''}`, {
     size: 16,
-    color: CONFIG.COLORS.neutral_gray,
-    align: SlidesApp.ParagraphAlignment.END
+    color: CONFIG.COLORS.text_secondary || CONFIG.COLORS.neutral_gray,
+    align: SlidesApp.ParagraphAlignment.START  // 左揃えに変更
   });
   try {
-    authorShape.setContentAlignment(SlidesApp.ContentAlignment.MIDDLE);
+    authorShape.setContentAlignment(SlidesApp.ContentAlignment.TOP);
   } catch (e) {}
+  
   drawBottomBarAndFooter(slide, layout, pageNum, settings);
 }
 

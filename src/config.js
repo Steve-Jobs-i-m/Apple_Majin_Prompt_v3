@@ -321,6 +321,10 @@ const CONFIG = {
         top: 100,
         width: 910,
         height: 40
+      },
+      quoteBar: {
+        width: 4,          // Left vertical bar width (Markdown-style)
+        leftOffset: 32      // Distance between bar and text
       }
     },
     kpiSlide: {
