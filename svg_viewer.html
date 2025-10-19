@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple SVG Mockups Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .slide {
+            background: #111;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .slide h3 {
+            margin: 0 0 15px 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #888;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background: #000;
+        }
+        .navigation {
+            text-align: center;
+            margin: 40px 0;
+        }
+        select {
+            padding: 10px 20px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Apple-Inspired SVG Slide Mockups</h1>
+    
+    <div class="navigation">
+        <label for="slideSelect">View Slide: </label>
+        <select id="slideSelect" onchange="showSlide()">
+            <option value="all">All Slides</option>
+            <option value="001">001 - Hero Title</option>
+            <option value="002">002 - CPU Spec</option>
+            <option value="003">003 - GPU Spec</option>
+            <option value="004">004 - Benchmark Bars</option>
+            <option value="005">005 - Benchmark Cards</option>
+            <option value="006">006 - Product Highlights</option>
+            <option value="007">007 - Battery</option>
+            <option value="008">008 - Pricing</option>
+            <option value="009">009 - Timeline</option>
+            <option value="010">010 - Split Table</option>
+            <option value="011">011 - Pie Chart</option>
+            <option value="012">012 - Bar Chart</option>
+            <option value="013">013 - Icon Trio</option>
+            <option value="014">014 - Image Collage</option>
+            <option value="015">015 - Hero Photo</option>
+            <option value="016">016 - Testimonial</option>
+            <option value="017">017 - Before/After</option>
+            <option value="018">018 - KPI Contrast</option>
+            <option value="019">019 - Feature Slots</option>
+            <option value="020">020 - Closing</option>
+        </select>
+    </div>
+    
+    <div class="gallery" id="gallery">
+        <!-- Slides 1-6 -->
+        <div class="slide" data-slide="001">
+            <h3>001 - Hero Title</h3>
+            <img src="img/svg_mockups/apple_template_001_hero_title.svg" alt="Hero Title">
+        </div>
+        <div class="slide" data-slide="002">
+            <h3>002 - CPU Spec</h3>
+            <img src="img/svg_mockups/apple_template_002_cpu_spec.svg" alt="CPU Spec">
+        </div>
+        <div class="slide" data-slide="003">
+            <h3>003 - GPU Spec</h3>
+            <img src="img/svg_mockups/apple_template_003_gpu_spec.svg" alt="GPU Spec">
+        </div>
+        <div class="slide" data-slide="004">
+            <h3>004 - Benchmark Bars</h3>
+            <img src="img/svg_mockups/apple_template_004_benchmark_bars.svg" alt="Benchmark Bars">
+        </div>
+        <div class="slide" data-slide="005">
+            <h3>005 - Benchmark Cards</h3>
+            <img src="img/svg_mockups/apple_template_005_benchmark_cards.svg" alt="Benchmark Cards">
+        </div>
+        <div class="slide" data-slide="006">
+            <h3>006 - Product Highlights</h3>
+            <img src="img/svg_mockups/apple_template_006_product_highlights.svg" alt="Product Highlights">
+        </div>
+        <div class="slide" data-slide="007">
+            <h3>007 - Battery</h3>
+            <img src="img/svg_mockups/apple_template_007_battery.svg" alt="Battery">
+        </div>
+        <div class="slide" data-slide="008">
+            <h3>008 - Pricing</h3>
+            <img src="img/svg_mockups/apple_template_008_pricing.svg" alt="Pricing">
+        </div>
+        <div class="slide" data-slide="009">
+            <h3>009 - Timeline</h3>
+            <img src="img/svg_mockups/apple_template_009_timeline.svg" alt="Timeline">
+        </div>
+        <div class="slide" data-slide="010">
+            <h3>010 - Split Table</h3>
+            <img src="img/svg_mockups/apple_template_010_split_table.svg" alt="Split Table">
+        </div>
+        <div class="slide" data-slide="011">
+            <h3>011 - Pie Chart</h3>
+            <img src="img/svg_mockups/apple_template_011_pie_chart.svg" alt="Pie Chart">
+        </div>
+        <div class="slide" data-slide="012">
+            <h3>012 - Bar Chart</h3>
+            <img src="img/svg_mockups/apple_template_012_bar_chart.svg" alt="Bar Chart">
+        </div>
+        <div class="slide" data-slide="013">
+            <h3>013 - Icon Trio</h3>
+            <img src="img/svg_mockups/apple_template_013_icon_trio.svg" alt="Icon Trio">
+        </div>
+        <div class="slide" data-slide="014">
+            <h3>014 - Image Collage</h3>
+            <img src="img/svg_mockups/apple_template_014_image_collage.svg" alt="Image Collage">
+        </div>
+        <div class="slide" data-slide="015">
+            <h3>015 - Hero Photo</h3>
+            <img src="img/svg_mockups/apple_template_015_hero_photo.svg" alt="Hero Photo">
+        </div>
+        <div class="slide" data-slide="016">
+            <h3>016 - Testimonial</h3>
+            <img src="img/svg_mockups/apple_template_016_testimonial.svg" alt="Testimonial">
+        </div>
+        <div class="slide" data-slide="017">
+            <h3>017 - Before/After</h3>
+            <img src="img/svg_mockups/apple_template_017_before_after.svg" alt="Before/After">
+        </div>
+        <div class="slide" data-slide="018">
+            <h3>018 - KPI Contrast</h3>
+            <img src="img/svg_mockups/apple_template_018_kpi_contrast.svg" alt="KPI Contrast">
+        </div>
+        <div class="slide" data-slide="019">
+            <h3>019 - Feature Slots</h3>
+            <img src="img/svg_mockups/apple_template_019_feature_slots.svg" alt="Feature Slots">
+        </div>
+        <div class="slide" data-slide="020">
+            <h3>020 - Closing</h3>
+            <img src="img/svg_mockups/apple_template_020_closing.svg" alt="Closing">
+        </div>
+    </div>
+
+    <script>
+        function showSlide() {
+            const select = document.getElementById('slideSelect');
+            const value = select.value;
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach(slide => {
+                if (value === 'all') {
+                    slide.style.display = 'block';
+                } else {
+                    const slideNum = slide.getAttribute('data-slide');
+                    slide.style.display = slideNum === value ? 'block' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
